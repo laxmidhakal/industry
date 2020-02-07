@@ -1,10 +1,10 @@
 @extends('main')
 @section('content')
-<section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
+<section class="main-page-top set-bg" data-setbg="img/page-top-bg/4.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
-        <h2 class="display-4">Contact</h2>
+        <h2 class="display-4 text-white text-padding">Contact</h2>
        
       </div>
     </div>
@@ -53,8 +53,8 @@
               <img src="img/icons/phone.png" alt="" class="">
             </div>
             <div class="hib-text">
-              <h6>+546 990221 123</h6>
-              <p>contact@industryalinc.com</p>
+              <h6>(+977) 01-5901288</h6>
+              <p>contact@yourdomain.com</p>
             </div>
           </div>
           <div class="header-info-box">
@@ -62,8 +62,8 @@
               <img src="img/icons/map-marker.png" alt="" class="">
             </div>
             <div class="hib-text">
-              <h6>Main Str, no 23</h6>
-              <p>NY, New York PK 23589</p>
+              <h6>K.M.C. 32, Pepsicola</h6>
+              <p>Kathmandu, Nepal </p>
             </div>
           </div>
         </div>

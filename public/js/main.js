@@ -79,7 +79,7 @@ $(window).on('load', function() {
 		nav: false,
 		loop: true,
 		margin:20,
-		autoplay: true,
+		autoplay: false,
 		responsive:{
 			0:{
 				items:1,

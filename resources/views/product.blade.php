@@ -1,11 +1,11 @@
 @extends('main')
 @section('content')
 
-<section class="page-top-section set-bg" data-setbg="img/page-top-bg/1.jpg">
+<section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
-        <h2 class="display-4">Product</h2>
+        <h2 class="display-4 text-white text-padding">Product</h2>
         
         
       </div>

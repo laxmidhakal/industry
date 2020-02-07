@@ -5,21 +5,36 @@
                 <div class="col-md-6">
                     <ul >
                         
-                        <li class="list-inline-item"><p  class="text-light "> Welcome to Global SAS Trading Private Limited</p></li>
+                        <li class="list-inline-item"><p  class="text-light "> Welcome to Global SAS Trading Pvt. Ltd.</p></li>
                     </ul>
                 </div>
                 
                 <div class="col-md-6 text-md-right">
                     <ul class="list-inline">
-                      <li class="list-inline-item"><p  class="text-light"><i class="fa fa-phone"></i></p></li>
-                      <li class="list-inline-item"><p  class="text-light">+977-21-522451/53768</p></li>
-                      <li class="list-inline-item"><p  class="text-light"><i class="fa fa-envelope" aria-hidden="true"></i></p></li>
-                      <li class="list-inline-item"><p  class="text-light">info@gmail.com</p></li>
-                      <li class="list-inline-item"><p  class="text-light"><i class="fa fa-facebook"></i></p></li>
-                      <li class="list-inline-item"><p  class="text-light"><i class="fa fa-twitter" ></i></p></li>
-                      <li class="list-inline-item"><p  class="text-light"><i class="fa fa-linkedin-square" aria-hidden="true"></i></p></li>
+                      <li class="list-inline-item text-light main-font-12">
+                        <i class="fa fa-phone mr-1"></i> 
+                        +977-21-522451/53768
+                    </li>
+                    <li class="list-inline-item text-light main-font-12">
+                        <i class="fa fa-envelope mr-1"></i> 
+                        info@gmail.com
+                    </li>
 
-                      
+                    <li class="list-inline-item my-auto">
+                        <a href="" class=" link facebook text-center">
+                            <i class="fa fa-facebook main-spin"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="" class="link twitter text-center">
+                            <i class="fa fa-twitter main-spin" ></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="" class="link linkedin text-center">
+                            <i class="fa fa-linkedin main-spin"></i>
+                        </a>
+                    </li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +46,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <a href="index.html" class="site-logo mt-md-2 pl-md-0 ">
-                        <img src="img/sas.jpg" alt="" style="width: 80px; height: 70px; " >
+                        <img src="img/sas.png" alt="" class="img-fluid main-logo" >
                     </a>
                 </div>
                 

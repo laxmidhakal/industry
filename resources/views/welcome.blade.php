@@ -6,9 +6,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8">
-                        <h2><span>Power</span><span>& Energy</span><span>Industry</span></h2>
+                        <h2 class="main-slide-text"><span>Lorem </span><span>ipsum </span><span>dolor sit</span></h2>
                         <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                        <a href="#" class="site-btn sb-dark">our Services</a>
+                        <a href="#" class="site-btn sb-dark">Our Company</a>
                     </div>
                 </div>
             </div>
@@ -17,9 +17,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8">
-                        <h2><span>Power</span><span>& Energy</span><span>Industry</span></h2>
+                        <h2 class="main-slide-text"><span>Lorem </span><span>ipsum </span><span>dolor sit</span></h2>
                         <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                        <a href="#" class="site-btn sb-dark">our Services</a>
+                        <a href="#" class="site-btn sb-dark">our Comapany</a>
                     </div>
                 </div>
             </div>
@@ -30,12 +30,19 @@
 
 <section class="clients-section spad">
     <div class="container">
-        <div class="client-text">
-            <h2>A group of productive enterprises that produce or supply Goods, Services, or Sources of Income</h2>
-            <p>Visuals are such a big part of an About Us page, and Active Campaign does a great job showing off their employees and their office environment. They also have a small section describing what a normal day in the office is like. This helps entice prospective employees while also putting a face to the company and making it more relatable.</p>
+        <div class="text-center">
+            <h2 class="mb-5">Welcome to Global SAS Trading Company</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline">Read More</button>
         </div>
 
     </div>
+
 </section>
 <section class="reserch-section spad">
     <div class="container">
@@ -73,46 +80,46 @@
                         <div id="client-carousel" class="client-slider owl-carousel">
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/team/1.jpg" alt="">
+                                    <img src="img/product.jpg" alt="">
                                     <div class="member-info">
-                                        <h3 class="text-light">Jessica Steing</h3>
-                                        <p>Engeneer Chemist </p>
+                                        <h3 class="text-light">Product Name</h3>
+                                        <p>Some Text </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/team/2.jpg" alt="">
+                                    <img src="img/product.jpg" alt="">
                                     <div class="member-info">
-                                        <h3 class="text-light">Jessica Steing</h3>
-                                        <p>Engeneer Chemist </p>
+                                        <h3 class="text-light">Product Name</h3>
+                                        <p>Some Text </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/team/3.jpg" alt="">
+                                    <img src="img/product.jpg" alt="">
                                     <div class="member-info">
-                                        <h3 class="text-light">Jessica Steing</h3>
-                                        <p>Engeneer Chemist </p>
+                                        <h3 class="text-light">Product Name</h3>
+                                        <p>Some Text </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/team/2.jpg" alt="">
+                                    <img src="img/product.jpg" alt="">
                                     <div class="member-info">
-                                        <h3 class="text-light">Jessica Steing</h3>
-                                        <p>Engeneer Chemist </p>
+                                        <h3 class="text-light">Product Name</h3>
+                                        <p>Some Text </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/team/2.jpg" alt="">
+                                    <img src="img/product.jpg" alt="">
                                     <div class="member-info">
-                                        <h3 class="text-light">Jessica Steing</h3>
-                                        <p>Engeneer Chemist </p>
+                                        <h3 class="text-light">Product Name</h3>
+                                        <p>Some Text </p>
                                     </div>
                                 </div>
                             </div>

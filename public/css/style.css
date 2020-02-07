@@ -640,7 +640,7 @@
    padding-left: 25px;
    padding-bottom: 15px;
    display: inline-block;
-   background: #ffc000;
+   /*background: #ffc000;*/
  }
  
  .hero-item h2 span:nth-child(1) {
@@ -1089,16 +1089,19 @@
  .copyright {
    color: #646470;
    font-size: 14px;
-   padding-top: 25px;
+   /*padding-top: 25px;*/
+   text-align: center;
  }
  
  .copyright a {
    color: #646470;
    text-decoration: underline;
+   
  }
  
  .copyright a:hover {
    color: #ffc000;
+   
  }
  
  .footer-menu {

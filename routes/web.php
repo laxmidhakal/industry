@@ -20,3 +20,9 @@ Route::get('/gallery', 'IndustryController@gallery')->name('gallery');
 Route::get('/product', 'IndustryController@product')->name('product');
 Route::get('/team', 'IndustryController@team')->name('team');
 Route::get('/contact', 'IndustryController@contact')->name('contact');
+
+Auth::routes();
+
+Route::get('/home', 'Backend\HomeController@index')->name('home');
+Route::get('/home/dashboard', 'Backend\HomeController@dash')->name('dash');
+
