@@ -1,210 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{url('/')}}/backend/css/summernote.css">
-    <link rel="stylesheet" href="{{url('/')}}/backend/pace-progress/themes/black/pace-theme-flat-top.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-  <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+<body>
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
 
-        <!-- Navbar -->
-         @include('layouts.navbar')
-        <!-- /.navbar -->
-        
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-
-        <!-- Main Sidebar Container -->
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{url('/')}}/manager">Home</a></li>
-                                <li class="breadcrumb-item active">Abc</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-            <section class="content">
-                <div class="container-fluid">
-                <div class="flash-message">
-                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                    @if(Session::has('alert-' . $msg))
-                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                    @endif
-                    @endforeach
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
                 </div>
-                @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        &nbsp;
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
-                @endif
-                <!-- Main content -->
-                    @yield('content')
-                <!-- /.content -->
-                </div>
-                </div>
-            </section>
-        <!-- /.content-wrapper -->
-        @include('layouts.footer')
+            </div>
+        </nav>
 
+        @yield('content')
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{url('/')}}/backend/js/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{url('/')}}/backend/js/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="{{url('/')}}/backend/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="{{url('/')}}/backend/js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="{{url('/')}}/backend/js/sparkline.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{url('/')}}/backend/js/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="{{url('/')}}/backend/js/moment.min.js"></script>
-    <script src="{{url('/')}}/backend/js/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{url('/')}}/backend/js/tempusdominus-bootstrap-4.js"></script>
-    <!-- Summernote -->
-    <script src="{{url('/')}}/backend/js/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{url('/')}}/backend/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{url('/')}}/backend/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{url('/')}}/backend/js/dashboard.js"></script>
-    <script src="{{url('/')}}/backend/pace-progress/pace.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $('form').submit(function(event) {
-            $(this).find("button[type='submit']").prop('disabled',true);
-        });
-    </script>
-    <script>
-        $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#date').daterangepicker({
-                singleDatePicker: true,
-                autoUpdateInput: false,
-                // showDropdowns : true,
-                startDate : true,
-            locale:{
-                format: 'YYYY/MM/DD',
-                cancleLabel: 'clear',
-            },
-        }).on("apply.daterangepicker", function (e, picker) {
-        picker.element.val(picker.startDate.format(picker.locale.format));
-    });
-        $('#date1').daterangepicker({
-                singleDatePicker: true,
-                autoUpdateInput: false,
-                // showDropdowns : true,
-                startDate : true,
-            locale:{
-                format: 'YYYY/MM/DD',
-                cancleLabel: 'clear',
-            },
-        }).on("apply.daterangepicker", function (e, picker) {
-        picker.element.val(picker.startDate.format(picker.locale.format));
-    });
-    $('.modal').modal({
-        show:false,
-        keyboard: true,
-        backdrop: 'static'
-    });
-});
-</script>
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-<script>
-    function myFunction() {
-        if(!confirm(" Danger!!!! Are You Sure to delete this??"))
-            event.preventDefault();
-    }
-</script>
-
-<script type="text/javascript">
-    $(document).on('change', '#item_id', function(event) {
-// console.log('abc');
-var item_id =$('#item_id').val();
-$.ajax({
-    type:'POST',
-url:'sale/getItemPrice', //Make sure your URL is correct
-dataType: 'json', //Make sure your returning data type dffine as json
-data: {
-    "_token": "{{ csrf_token() }}",
-    item_id: item_id,
-},
- beforeSend: function() {
-        $("#loaderDiv").show();
-    },
-
-
-success:function(data){
-    $("#item_p").val(data[0].sale_price);
-     $("#loaderDiv").hide();
-}
-
-
-});
-});
-
-</script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script> 
-
-
-
-
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

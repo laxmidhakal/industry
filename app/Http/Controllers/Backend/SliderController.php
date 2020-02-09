@@ -4,8 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
+use App\Slider;
+use DB;
+use Validator;
+use Auth;
 
-class HomeController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.home');
+        //
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +30,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +41,16 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $slider = new Slider;
+        $slider->title = Input::get('title');
+        $slider->slug = $slider->title;
+        $slider->image = Input::file('');
+        $slider->description = Input::get('description');
+        $slider->created_by = Auth::user()->id;
+        $slider->save();
+        //var_dump($name); die();
+
+        return redirect()->route('slider');
     }
 
     /**

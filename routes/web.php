@@ -24,5 +24,8 @@ Route::get('/contact', 'IndustryController@contact')->name('contact');
 Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
-Route::get('/home/dashboard', 'Backend\HomeController@dash')->name('dash');
+Route::resource('/about', 'Backend\AboutController');
+
+Route::post('/home/dashboard/slider', 'Backend\SliderController@store')->name('slider');
+
 

@@ -83,7 +83,7 @@
                 </div>
             </section>
         <!-- /.content-wrapper -->
-        @include('layouts.footer')
+        @include('backend.footer')
 
     </div>
     <!-- ./wrapper -->
