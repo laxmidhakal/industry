@@ -80,7 +80,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! str_replace('/?', '?', $gallery_details->render()) !!}
           </div>
           <!-- /.card-footer-->
         </div>
