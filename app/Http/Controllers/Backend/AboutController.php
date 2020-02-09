@@ -32,7 +32,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
+        $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
         return view('backend.about.index',compact('abouts'));
     }
 
