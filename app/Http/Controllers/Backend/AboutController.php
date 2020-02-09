@@ -12,15 +12,17 @@ use Response;
 use Validator;
 use Session;
 use File;
+use Route;
 
 use App\About;
 
 class AboutController extends Controller
 {
-    public function __construct(Request $request)
+    public function __construct(Request $request, Helper $helper)
     {
         $this->middleware('auth');
         $this->request = $request;
+        $this->helper = $helper;
     }
     /**
      * Display a listing of the resource.
@@ -64,7 +66,7 @@ class AboutController extends Controller
         }
         $main_store = new About;
         $main_store->title = Input::get('title');
-        $main_store->slug = $main_store->title;
+        $main_store->slug = $this->helper->slug_converter($main_store->title);
         $image = Input::file('image');
         if($image != ""){
             $destinationPath = 'images/about/'; // upload path
