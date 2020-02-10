@@ -52,11 +52,7 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-              
-                
-              
                 @foreach($companies as $company)
-                
                 <tr>
                   <td>{{$company->id}}</td>
                   <td>{{$company->title}}</td>
@@ -76,8 +72,6 @@
                   </td>
                 </tr>
                 @endforeach
-                
-
               </table>
             </div>
           </div>
@@ -96,7 +90,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Company </h4>
+            <h4 class="modal-title">Slider </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

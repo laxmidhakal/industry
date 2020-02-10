@@ -21,26 +21,26 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/slider" class="nav-link">
+          <a href="{{URL::to('/')}}/home/slider" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Slider</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/about" class="nav-link">
+          <a href="{{URL::to('/')}}/home/about" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>About</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/gallery" class="nav-link">
+          <a href="{{URL::to('/')}}/home/gallery" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Gallery</p>
           </a>
         </li>
         
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/companies" class="nav-link">
+          <a href="{{URL::to('/')}}/home/companies" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Company</p>
           </a>
