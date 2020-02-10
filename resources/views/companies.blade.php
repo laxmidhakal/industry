@@ -1,4 +1,5 @@
 @extends('main')
+@section('tab_title'){{$page_title}}@endsection
 @section('content')
 
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/3.jpg">
@@ -61,26 +62,15 @@
         </div>
       </div>
       <div class="col-lg-8 order-1 order-lg-2">
+      @foreach($companies_details as $main_data)
         <div class="blog-post">
           <div class="blog-thumb set-bg" data-setbg="img/blog/1.jpg">
-            
           </div>
-          
-          <h2>All you need to know about Engineering </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin estst quis, blandit sollicitudi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin estst quis, blandit sollicitudi</p>
-          
-        </div>
-        <div class="blog-post">
-          <div class="blog-thumb set-bg" data-setbg="img/blog/2.jpg">
-            
-          </div>
-          
-          <h2>Green Energy for everyone</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin estst quis, blandit sollicitudi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin estst quis, blandit sollicitudi</p>
-          
+          <h2>{{$main_data->title}} </h2>
+          <p>This is for testing</p>
         </div>
         
-        
+      @endforeach
       </div>
     </div>
   </div>

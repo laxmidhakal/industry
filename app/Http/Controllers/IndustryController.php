@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\About;
+use App\Company;
 
 class IndustryController extends Controller
 {
@@ -15,14 +16,16 @@ class IndustryController extends Controller
 
 	public function indexAbout()
 	{
-		$about_details = About::get();
+		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title = "About";
 		return view('about',compact(['about_details','page_title']));
 	}
 
 	public function indexCompanies()
 	{
-		return view('companies');
+		$companies_details = Company::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$page_title = "Companies";
+		return view('companies',compact(['companies_details' ,'page_title']));
 	}
 
 	public function indexGallery()
