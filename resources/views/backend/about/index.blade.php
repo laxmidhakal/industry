@@ -44,31 +44,32 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead class="bg-secondary">
                   <tr>
-                    <th>SN</th>
+                    <th style="width: 10px">SN</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Image</th>
-                    <th>Label</th>
-                    <th>Action</th>
+                    <th style="width: 10px" class="text-center">Image</th>
+                    <th style="width: 10px" class="text-center">Label</th>
+                    <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>
               
-                @foreach($abouts as $about)
+                @foreach($abouts as $key=>$about)
               
                 <tr>
-                  <td>{{$about->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$about->title}}</td>
                   <td>{{$about->description}}</td>
                   <td>
-                    <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img">
-                      
-                    </div>
+                    @if($about->image_enc != "")
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
+                    @else
+                      <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    @endif
                   </td>
-                  <td>
+                  <td class="text-center">
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
-                  <td>
+                  <td class="text-center">
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
@@ -78,9 +79,12 @@
               </table>
             </div>
           </div>
+          <style type="text/css">
+
+          </style>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $abouts->links("pagination::bootstrap-4") !!}
           </div>
           <!-- /.card-footer-->
         </div>

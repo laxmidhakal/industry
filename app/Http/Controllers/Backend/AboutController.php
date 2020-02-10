@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use App\Helper\Helper;
 use Auth;
 use Redirect;
 use Response;
@@ -30,7 +31,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $abouts=About::get();
+        $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
         return view('backend.about.index',compact('abouts'));
     }
 
