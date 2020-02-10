@@ -14,7 +14,6 @@ use Session;
 use File;
 use Route;
 use App\About;
-use App\Helper\Helper;
 
 class AboutController extends Controller
 {
