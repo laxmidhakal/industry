@@ -45,8 +45,7 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Title</th>
-                    
+                    <th>Product</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
@@ -54,14 +53,15 @@
                 @foreach($products as $product)
                 <tr>
                   <td>{{$product->id}}</td>
-                  <td>{{$product->title}}</td>
-                  
+                  <td>
+                  <a href="{{URL::to('/')}}/home/productdetail/{{$category->id}}/edit">
+                    {{$product->title}}</td>
+                  </a>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                     <td><a href="{{URL::to('/')}}/home/category/{{$product->id}}/show"><i class="icon ion-md-eye"></i></a></td>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
