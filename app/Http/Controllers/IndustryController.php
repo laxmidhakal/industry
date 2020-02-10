@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\About;
+
 class IndustryController extends Controller
 {
 	public function index()
@@ -11,32 +13,34 @@ class IndustryController extends Controller
 		return view('welcome');
 	}
 
-	public function about()
+	public function indexAbout()
 	{
-		return view('about');
+		$about_detail = About::get();
+		$page_title = "About";
+		return view('about',compact(['about_detail','page_title']));
 	}
 
-	public function companies()
+	public function indexCompanies()
 	{
 		return view('companies');
 	}
 
-	public function gallery()
+	public function indexGallery()
 	{
 		return view('gallery');
 	}
 
-	public function product()
+	public function indexProduct()
 	{
 		return view('product');
 	}
 
-	public function team()
+	public function indexTeam()
 	{
 		return view('team');
 	}
 
-	public function contact()
+	public function indexContact()
 	{
 		return view('contact');
 	}

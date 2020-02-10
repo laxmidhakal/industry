@@ -14,12 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-Route::get('/about', 'IndustryController@about')->name('about');
-Route::get('/companies', 'IndustryController@companies')->name('companies');
-Route::get('/gallery', 'IndustryController@gallery')->name('gallery');
-Route::get('/product', 'IndustryController@product')->name('product');
-Route::get('/team', 'IndustryController@team')->name('team');
-Route::get('/contact', 'IndustryController@contact')->name('contact');
+Route::get('/about', 'IndustryController@indexAbout')->name('about');
+Route::get('/companies', 'IndustryController@indexCompanies')->name('companies');
+Route::get('/gallery', 'IndustryController@indexGallery')->name('gallery');
+Route::get('/product', 'IndustryController@indexProduct')->name('product');
+Route::get('/team', 'IndustryController@indexTeam')->name('team');
+Route::get('/contact', 'IndustryController@indexContact')->name('contact');
 
 Auth::routes();
 

@@ -1,4 +1,5 @@
 @extends('main')
+@section('tab_title'){{$page_title}}@endsection
 @section('content')
 <!-- Page top section  -->
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
@@ -13,7 +14,6 @@
 	</div>
 </section>
 <!-- Page top section end  -->
-
 
 <!-- About section -->
 <section class="main-about">
