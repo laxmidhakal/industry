@@ -7,8 +7,6 @@
 		<div class="row">
 			<div class="col-lg-5">
 				<h2 class="display-4  text-white text-padding">About us</h2>
-				
-				
 			</div>
 		</div>
 	</div>
@@ -19,14 +17,15 @@
 <section class="main-about">
 	<div class="container">
 		<div class="row">
+			@foreach($about_details as $main_data)
 			<div class="col-lg-6">
-				<img src="img/about.jpg" alt="">
+				<img src="{{URL::to('/')}}/images/about/{{$main_data->image_enc}}" alt="">
 			</div>
 			<div class="col-lg-6">
 				<div class="about-text">
-					<h2>We produce or supply Goods, & Services</h2>
-					<p>Visuals are such a big part of an About Us page, and Active Campaign does a great job showing off their employees and their office environment. They also have a small section describing what a normal day in the office is like. This helps entice prospective employees while also putting a face to the company and making it more relatable. </p>
-					<div class="about-sign">
+					<h2>{{$main_data->title}}</h2>
+					<p>{!! $main_data->description !!} </p>
+					<!-- <div class="about-sign">
 						<div class="sign">
 							<img src="img/sign.png" alt="">
 						</div>
@@ -34,9 +33,10 @@
 							<h5>Michael Smith</h5>
 							<span>CEO Industrial INC</span>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
+			@endforeach
 		</div>
 	</div>
 </section>

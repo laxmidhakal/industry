@@ -15,9 +15,9 @@ class IndustryController extends Controller
 
 	public function indexAbout()
 	{
-		$about_detail = About::get();
+		$about_details = About::get();
 		$page_title = "About";
-		return view('about',compact(['about_detail','page_title']));
+		return view('about',compact(['about_details','page_title']));
 	}
 
 	public function indexCompanies()
