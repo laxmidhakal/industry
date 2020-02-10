@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\About;
 use App\Company;
+use App\Gallery;
 
 class IndustryController extends Controller
 {
@@ -30,7 +31,9 @@ class IndustryController extends Controller
 
 	public function indexGallery()
 	{
-		return view('gallery');
+		$gallery_details = Gallery::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$page_title = "Gallery";
+		return view('gallery' ,compact(['gallery_details' ,'page_title']));
 	}
 
 	public function indexProduct()

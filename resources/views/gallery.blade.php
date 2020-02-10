@@ -19,47 +19,13 @@
   <div class="container">
         <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
+              @foreach($gallery_details as $main_data)
                 <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-1.jpg" data-src="img/thumb-1.jpg" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
                     <a href="img/thumb-1.jpg">
-                        <img class="img-responsive" src="img/thumb-1.jpg">
+                        <img src="img/team/2.jpg" alt="">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-2.jpg" data-src="img/thumb-2.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-2.jpg">
-                        <img class="img-responsive" src="img/thumb-2.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-13.jpg" data-src="img/thumb-13.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-13.jpg">
-                        <img class="img-responsive" src="img/thumb-13.jpg">
-                    </a>
-                </li>
-
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-4.jpg" data-src="img/thumb-4.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-4.jpg">
-                        <img class="img-responsive" src="img/thumb-4.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-4.jpg" data-src="img/thumb-4.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-4.jpg">
-                        <img class="img-responsive" src="img/thumb-4.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-4.jpg" data-src="img/thumb-4.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-4.jpg">
-                        <img class="img-responsive" src="img/thumb-4.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-4.jpg" data-src="img/thumb-4.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-4.jpg">
-                        <img class="img-responsive" src="img/thumb-4.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-4.jpg" data-src="img/thumb-4.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="img/thumb-4.jpg">
-                        <img class="img-responsive" src="img/thumb-4.jpg">
-                    </a>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>
