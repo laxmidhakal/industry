@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\About;
 use App\Company;
 use App\Gallery;
+use App\product;
 
 class IndustryController extends Controller
 {
@@ -38,6 +39,7 @@ class IndustryController extends Controller
 
 	public function indexProduct()
 	{
+		
 		return view('product');
 	}
 
