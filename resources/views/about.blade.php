@@ -1,8 +1,5 @@
 @extends('main')
 @section('content')
-
-
-
 <!-- Page top section  -->
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
 	<div class="container">
