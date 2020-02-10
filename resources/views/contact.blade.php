@@ -26,20 +26,24 @@
     <div class="row">
       
       <div class="col-lg-8">
-        <form class="contact-form">
+        <form class="contact-form" method="POST" action="{{route('contact.store')}}">
+            {{ csrf_field() }}
+          
           <div class="row">
             <div class="col-lg-6">
-              <input type="text" placeholder="Your Name">
+              <input type="text"  id="name" placeholder="Enter Your Name" name="name">
+
             </div>
             <div class="col-lg-6">
-              <input type="text" placeholder="Your Email">
+              <input type="text" placeholder="Your Email" name="email" id="email">
             </div>
             <div class="col-lg-4">
             </div>
             <div class="col-lg-12">
-              <input type="text" placeholder="Subject">
-              <textarea class="text-msg" placeholder="Message"></textarea>
-              <button class="site-btn" type="submit">send message</button>
+              <input type="text"  id="subject" placeholder="Subject" name="subject">
+
+              <textarea class="text-msg" placeholder="Message" id="message" name="message"></textarea>
+              <button class="site-btn" type="submit" name="submit">send message</button>
             </div>
           </div>
         </form>

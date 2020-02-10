@@ -61,6 +61,7 @@
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                     <td><a href="{{URL::to('/')}}/home/category/{{$product->id}}/show"><i class="icon ion-md-eye"></i></a></td>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
