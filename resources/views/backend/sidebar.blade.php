@@ -40,9 +40,21 @@
         </li>
         
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/companies" class="nav-link">
+          <a href="{{URL::to('/')}}/home/company" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Company</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/product" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Product</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/team" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Team</p>
           </a>
         </li>
       </ul>

@@ -28,7 +28,11 @@ Route::get('/home', 'Backend\HomeController@index')->name('home');
 Route::resource('/home/slider', 'Backend\SliderController');
 Route::resource('/home/about', 'Backend\AboutController');
 Route::resource('/home/gallery', 'Backend\GalleryController');
-Route::resource('/home/companies', 'Backend\CompanyController');
+Route::resource('/home/company', 'Backend\CompanyController');
+Route::resource('/home/product', 'Backend\ProductController');
+Route::resource('/home/team', 'Backend\TeamController');
+
+
 
 
 
