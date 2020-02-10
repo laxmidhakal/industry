@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Input;
 use Auth;
 use Redirect;
@@ -13,8 +12,8 @@ use Validator;
 use Session;
 use File;
 use Route;
-
 use App\About;
+use App\Helper\Helper;
 
 class AboutController extends Controller
 {

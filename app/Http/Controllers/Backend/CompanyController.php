@@ -12,10 +12,10 @@ use Validator;
 use Session;
 use File;
 use Route;
-use App\Slider;
+use App\Company;
 use App\Helper\Helper;
 
-class SliderController extends Controller
+class CompanyController extends Controller
 {
     public function __construct(Request $request, Helper $helper)
     {
@@ -25,8 +25,8 @@ class SliderController extends Controller
     }
     public function index()
     {
-        $sliders=Slider::get();
-        return view('backend.slider.index',compact('sliders'));
+        $companies=Company::get();
+        return view('backend.company.index',compact('companies'));
     }
 
     /**
@@ -36,7 +36,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -47,40 +47,40 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-       $rules = array(
-           'title' => 'required|unique:galleries',
-           'description' => 'required',
-           'image' => 'required|mimes:jpeg,jpg|max:1024',
-       );
-       $validator = Validator::make(Input::all(), $rules);
-       if ($validator->fails()) {
-       return redirect('/home')
-       ->withErrors($validator)
-       ->withInput();
-       }
-       $main_store = new Slider;
-       $main_store->title = Input::get('title');
-       $main_store->slug = $this->helper->slug_converter($main_store->title);
-       $image = Input::file('image');
-       if($image != ""){
-           $destinationPath = 'images/slider/'; // upload path
-           $extension = $image->getClientOriginalExtension(); // getting image extension
-           $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-           $image->move($destinationPath, $fileName); /*move file on destination*/
-           $file_path = $destinationPath.'/'.$fileName;
-           $main_store->image_enc = $fileName;
-           $main_store->image = $image->getClientOriginalName();
-       }
-       $main_store->description = Input::get('description');
-       $main_store->created_by = Auth::user()->id;
-       if($main_store->save()){
-           $this->request->session()->flash('alert-success', 'Data save successfully!!');
-       }else{
-           $this->request->session()->flash('alert-waring', 'Data could not be add!!');
-       }
-       //var_dump($name); die();
+        $rules = array(
+            'title' => 'required|unique:companies',
+            'description' => 'required',
+            'image' => 'required|mimes:jpeg,jpg|max:1024',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+        return redirect('/home')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $main_store = new Company;
+        $main_store->title = Input::get('title');
+        $main_store->slug = $this->helper->slug_converter($main_store->title);
+        $image = Input::file('image');
+        if($image != ""){
+            $destinationPath = 'images/company/'; // upload path
+            $extension = $image->getClientOriginalExtension(); // getting image extension
+            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+            $image->move($destinationPath, $fileName); /*move file on destination*/
+            $file_path = $destinationPath.'/'.$fileName;
+            $main_store->image_enc = $fileName;
+            $main_store->image = $image->getClientOriginalName();
+        }
+        $main_store->description = Input::get('description');
+        $main_store->created_by = Auth::user()->id;
+        if($main_store->save()){
+            $this->request->session()->flash('alert-success', 'Data save successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
+        }
+        //var_dump($name); die();
 
-       return back()->withInput();
+        return back()->withInput();
     }
 
     /**

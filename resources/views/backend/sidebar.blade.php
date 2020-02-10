@@ -32,6 +32,19 @@
             <p>About</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/gallery" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Gallery</p>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/companies" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Company</p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
