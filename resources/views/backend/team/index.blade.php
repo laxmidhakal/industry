@@ -52,14 +52,14 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($companies as $company)
+                @foreach($teams as $team)
                 <tr>
-                  <td>{{$company->id}}</td>
-                  <td>{{$company->title}}</td>
-                  <td>{{$company->description}}</td>
+                  <td>{{$team->id}}</td>
+                  <td>{{$team->title}}</td>
+                  <td>{{$team->description}}</td>
                   <td>
                     <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" class="img-fluid back-img">
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img">
                       
                     </div>
                   </td>
@@ -90,12 +90,12 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Slider </h4>
+            <h4 class="modal-title">Team </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('company.store')}}" enctype="multipart/form-data">
+          <form role="form" method="POST" action="{{route('team.store')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
