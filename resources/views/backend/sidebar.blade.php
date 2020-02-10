@@ -57,6 +57,18 @@
             <p>Team</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/productdetail" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>ProductDetail</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/contact" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Contact</p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

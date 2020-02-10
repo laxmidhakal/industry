@@ -45,23 +45,31 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
+                    <th>Product</th>
                     <th>Title</th>
-                    
+                    <th>Description</th>
+                    <th>Image</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($products as $product)
+                @foreach($productdetails as $detail)
                 <tr>
-                  <td>{{$product->id}}</td>
-                  <td>{{$product->title}}</td>
-                  
+                  <td>{{$detail->id}}</td>
+                  <td >{{$detail->product->title}}</td>
+                  <td>{{$detail->title}}</td>
+                  <td>{{$detail->description}}</td>
+                  <td>
+                    <div class="">
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$detail->image_enc}}" class="img-fluid back-img">
+                      
+                    </div>
+                  </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                     <td><a href="{{URL::to('/')}}/home/category/{{$product->id}}/show"><i class="icon ion-md-eye"></i></a></td>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
@@ -84,21 +92,38 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">gallery </h4>
+            <h4 class="modal-title">Detail </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+          <form role="form" method="POST" action="{{route('productdetail.store')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body" >
+              <div class="form-group">
+                <label for="product_id">Select </label>
+                <select name="product_id" id="product_id">
+                  <option value="">--Select Product</option>
+                  @foreach($products as $product)
+                  <option value="{{$product->id}}">{{$product->title}}</option>
+                  @endforeach
+                </select>
+              </div>
               <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
               </div>
-              
+              <div class="form-group">
+                <label for="decription">Description</label>
+                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description">
+              </div>
 
-              
+              <div class="form-group">
+                <label for="image">File input</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

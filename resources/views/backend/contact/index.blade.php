@@ -45,23 +45,26 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Title</th>
-                    
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($products as $product)
+                @foreach($contacts as $contact)
                 <tr>
-                  <td>{{$product->id}}</td>
-                  <td>{{$product->title}}</td>
-                  
+                  <td>{{$contact->id}}</td>
+                  <td>{{$contact->name}}</td>
+                  <td>{{$contact->email}}</td>
+                  <td>{{$contact->subject}}</td>
+                  <td>{{$contact->message}}</td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                     <td><a href="{{URL::to('/')}}/home/category/{{$product->id}}/show"><i class="icon ion-md-eye"></i></a></td>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
@@ -89,22 +92,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
-              </div>
-              
-
-              
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
+          
         </div>
         <!-- /.modal-content -->
       </div>

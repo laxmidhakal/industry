@@ -31,6 +31,10 @@ Route::resource('/home/gallery', 'Backend\GalleryController');
 Route::resource('/home/company', 'Backend\CompanyController');
 Route::resource('/home/product', 'Backend\ProductController');
 Route::resource('/home/team', 'Backend\TeamController');
+Route::resource('/home/productdetail', 'Backend\ProductDetailController');
+Route::resource('/home/contact', 'Backend\ContactController');
+
+
 
 
 
