@@ -25,10 +25,10 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
-Route::resource('/slider', 'Backend\SliderController');
-Route::resource('/about', 'Backend\AboutController');
-Route::resource('/gallery', 'Backend\GalleryController');
-Route::resource('/companies', 'Backend\CompanyController');
+Route::resource('/home/slider', 'Backend\SliderController');
+Route::resource('/home/about', 'Backend\AboutController');
+Route::resource('/home/gallery', 'Backend\GalleryController');
+Route::resource('/home/companies', 'Backend\CompanyController');
 
 
 

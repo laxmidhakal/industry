@@ -59,7 +59,7 @@
                   <td>{{$slider->description}}</td>
                   <td>
                     <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image}}" class="img-fluid back-img">
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img">
                       
                     </div>
                   </td>
