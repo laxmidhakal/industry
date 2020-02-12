@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <a href="index.html" class="site-logo mt-md-2 pl-md-0 ">
-                        <img src="img/sas.png" alt="" class="img-fluid main-logo" >
+                        <img src="{{URL::to('/')}}/img/sas.png" alt="" class="img-fluid main-logo" >
                     </a>
                 </div>
                 
@@ -88,18 +88,10 @@
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
 
                             <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="{{URL::to('/product')}}">Product</a>
-                            <ul class="sub-menu">
-                            <li><a
-                            href="{{URL::to('/product')}}">Trading</a></li>
-
-                            <li><a
-                            href="{{URL::to('/product')}}">Restaurant</a></li>
-
-                            <li><a 
-                                href="{{URL::to('/product')}}">Green trade</a></li>
-
-                             <li><a 
-                              href="{{URL::to('/product')}}">Green trade</a></li>
+                                <ul class="sub-menu">
+                                    @foreach($product_menu as $menu_pro)
+                                    <li><a href="{{URL::to('/')}}/product/{{$menu_pro->slug}}">{{$menu_pro->title}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="{{Request::route()->getName() == 'team' ? 'active' : ''}}"><a href="{{URL::to('/team')}}">Team</a></li>
