@@ -1,5 +1,6 @@
 @extends('main')
-@section('content')@section('tab_title'){{$page_title}}@endsection
+@section('tab_title'){{$page_title}}@endsection
+@section('content')
 
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
   <div class="container">
@@ -23,7 +24,7 @@
             <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="">
             <div class="member-info">
               <h3>{{$main_data->title}}</h3>
-              <p>{!! $main_data->description !!} </p>
+              <p>{!! $main_data->designation !!} </p>
              
             </div>
           </div>

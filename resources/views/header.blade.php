@@ -80,12 +80,17 @@
 
                             <li class="{{Request::route()->getName() == 'about' ? 'active' : ''}}"><a href="{{URL::to('/about')}}">About</a></li>
                             <li class="{{Request::route()->getName() == 'companies' ? 'active' : ''}}"><a  href="{{URL::to('/companies')}}">Companies </a>
-                                <ul class="sub-menu">
-                                    <li><a href="elements.html">Elements</a></li>
-                                </ul>
+                                
                             </li>
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
-                            <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="{{URL::to('/product')}}">Product</a></li>
+                            <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="{{URL::to('/product')}}">Product</a>
+                                <ul class="sub-menu">
+                                    <li><a href="elements.html">Trading</a></li>
+                                    <li><a href="elements.html">Restaurant</a></li>
+                                    <li><a href="elements.html">Green trade</a></li>
+                                    <li><a href="elements.html">Green trade</a></li>
+                                </ul>
+                            </li>
                             <li class="{{Request::route()->getName() == 'team' ? 'active' : ''}}"><a href="{{URL::to('/team')}}">Team</a></li>
                             <li class="{{Request::route()->getName() == 'contact' ? 'active' : ''}}"><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
