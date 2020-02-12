@@ -34,20 +34,16 @@
           <div class="row">
             <div class="col-lg-6">
               <input type="text"  id="name" placeholder="Enter Your Name" name="name">
-
             </div>
             <div class="col-lg-6">
               <input type="text" placeholder="Your Email" name="email" id="email">
             </div>
-            <div class="col-lg-4">
-            </div>
+            
             <div class="col-lg-12">
               <input type="text"  id="subject" placeholder="Subject" name="subject">
 
               <textarea class="text-msg" placeholder="Message" id="message" name="message"></textarea>
-              <textarea id="description" class="form-control mb-20 editor" name="description" rows="10" cols="50">
-                this is my text
-              </textarea>
+
               <button class="site-btn" type="submit" name="submit">send message</button>
             </div>
           </div>
@@ -80,17 +76,4 @@
     </div>
   </div>
 </section>
-<section class="cta-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 d-flex align-items-center">
-        <h2>We produce or supply Goods, Services, or Sources</h2>
-      </div>
-      <div class="col-lg-3 text-lg-right" >
-        <a href="#" class="site-btn sb-dark">contact us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 @endsection
