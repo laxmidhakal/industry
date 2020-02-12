@@ -7,7 +7,6 @@
     <div class="row">
       <div class="col-lg-7">
         <h2 class="display-4 text-white text-padding">Companies</h2>
-       
       </div>
     </div>
   </div>
@@ -16,8 +15,6 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6 sidebar order-2 order-lg-1">
-        
-        
         <div class="sb-widget">
           <h2 class="sb-title">Product</h2>
           <div class="recent-post">
