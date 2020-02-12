@@ -29,13 +29,15 @@
 
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="footer-widget">
+                    @foreach($settings as $setting)
+
                     <h2 class="fw-title">Contact Us</h2>
                     <div class="footer-info-box">
                         <div class="fib-icon">
                             <img src="img/icons/map-marker.png" alt="" class="">
                         </div>
                         <div class="fib-text">
-                            <p>K.M.C. 32, Pepsicola<br>Kathmandu, Nepal </p>
+                            <p>{{$setting->address}}<br>{{$setting->address}}, Nepal </p>
                         </div>
                     </div>
                     <div class="footer-info-box">
@@ -43,9 +45,10 @@
                             <img src="img/icons/phone.png" alt="" class="">
                         </div>
                         <div class="fib-text">
-                            <p>(+977) 01-5901288<br>contact@yourdomain.com</p>
+                            <p>(+977) {{$setting->phone}}<br>{{$setting->email}}</p>
                         </div>
                     </div>
+                    @endforeach
 
                 </div>
             </div>
