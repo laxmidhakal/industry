@@ -20,9 +20,9 @@
         <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
               @foreach($gallery_details as $main_data)
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/thumb-1.jpg" data-src="img/thumb-1.jpg" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                    <a href="img/thumb-1.jpg">
-                        <img src="img/team/2.jpg" alt="">
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-sub-html="{!! strip_tags($main_data->description) !!}" >
+                    <a href="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}">
+                        <img src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
                     </a>
                 </li>
                 @endforeach
