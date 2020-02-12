@@ -1,5 +1,6 @@
 @extends('main')
-@section('content')
+@section('content')@section('tab_title'){{$page_title}}@endsection
+
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
   <div class="container">
     <div class="row">
@@ -16,75 +17,24 @@
 <section class="blog-section spadpadding">
   <div class="container">
     <div class="row">
+      @foreach($team_details as $main_data)
   <div class="col-md-4">
     <div class="team-member">
-            <img src="img/team/1.jpg" alt="">
+            <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="">
             <div class="member-info">
-              <h3>Michael Smith</h3>
-              <p>Engeneer Chemist </p>
+              <h3>{{$main_data->title}}</h3>
+              <p>{!! $main_data->description !!} </p>
              
             </div>
           </div>
   </div>
-  <div class="col-md-4">
-    <div class="team-member">
-            <img src="img/team/2.jpg" alt="">
-            <div class="member-info">
-              <h3>Jessica Steing</h3>
-              <p>Engeneer Chemist </p>
-             
-            </div>
-          </div>
-  </div>
-  <div class="col-md-4">
-    <div class="team-member">
-            <img src="img/team/3.jpg" alt="">
-            <div class="member-info">
-              <h3>Chris Williams</h3>
-              <p>Engeneer Chemist </p>
-             
-            </div>
-          </div>
-  </div>
+  @endforeach
+  
+  
 </div>
   </div>
 </section>
-<section class="blog-section spadpadding">
-  <div class="container">
-    <div class="row">
-  <div class="col-md-4">
-    <div class="team-member">
-            <img src="img/team/1.jpg" alt="">
-            <div class="member-info">
-              <h3>Michael Smith</h3>
-              <p>Engeneer Chemist </p>
-             
-            </div>
-          </div>
-  </div>
-  <div class="col-md-4">
-    <div class="team-member">
-            <img src="img/team/2.jpg" alt="">
-            <div class="member-info">
-              <h3>Jessica Steing</h3>
-              <p>Engeneer Chemist </p>
-             
-            </div>
-          </div>
-  </div>
-  <div class="col-md-4">
-    <div class="team-member">
-            <img src="img/team/3.jpg" alt="">
-            <div class="member-info">
-              <h3>Chris Williams</h3>
-              <p>Engeneer Chemist </p>
-             
-            </div>
-          </div>
-  </div>
-</div>
-  </div>
-</section>
+
 <section class="cta-section">
   <div class="container">
     <div class="row">
