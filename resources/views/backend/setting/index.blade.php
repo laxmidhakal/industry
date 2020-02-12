@@ -45,18 +45,26 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Product</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Image</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($products as $product)
+                @foreach($settings as $setting)
                 <tr>
-                  <td>{{$product->id}}</td>
+                  <td>{{$setting->id}}</td>
+                  <td>{{$setting->address}}</td>
+                  <td>{{$setting->phone}}</td>
+                  <td>{{$setting->email}}</td>
                   <td>
-                  <a href="{{URL::to('/')}}/home/product/{{$product->slug}}/detail">
-                    {{$product->title}}</td>
-                  </a>
+                    <div class="">
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
+                      
+                    </div>
+                  </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
@@ -84,21 +92,33 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">gallery </h4>
+            <h4 class="modal-title">Setting </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+          <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
               </div>
-              
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="number" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+              </div>
 
-              
+              <div class="form-group">
+                <label for="image">File input</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

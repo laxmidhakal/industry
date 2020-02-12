@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</h1>
+          <h1 class="text-capitalize">product Detail Page</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
+            <li class="breadcrumb-item active text-capitalize">product Detail Page</li>
           </ol>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="card">
       <div class="card-header">
 
-        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">product Detail + </button>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -97,18 +97,10 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('productdetail.store')}}" enctype="multipart/form-data">
+          <form role="form" method="POST" action="{{URL::to('/')}}/home/product/detail/store" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input type="hidden" name="product_id" value="{{$product_id}}">
             <div class="modal-body" >
-              <div class="form-group">
-                <label for="product_id">Select </label>
-                <select name="product_id" id="product_id">
-                  <option value="">--Select Product</option>
-                  @foreach($products as $product)
-                  <option value="{{$product->id}}">{{$product->title}}</option>
-                  @endforeach
-                </select>
-              </div>
               <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">

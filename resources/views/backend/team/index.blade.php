@@ -104,7 +104,11 @@
               </div>
               <div class="form-group">
                 <label for="decription">Description</label>
-                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description">
+                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description" hidden="">
+              </div>
+              <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" class="form-control" id="designation" placeholder="Enter Designation" name="designation">
               </div>
 
               <div class="form-group">

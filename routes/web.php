@@ -29,10 +29,11 @@ Route::resource('/home/slider', 'Backend\SliderController');
 Route::resource('/home/about', 'Backend\AboutController');
 Route::resource('/home/gallery', 'Backend\GalleryController');
 Route::resource('/home/company', 'Backend\CompanyController');
-Route::resource('/home/product', 'Backend\ProductController');
 Route::resource('/home/team', 'Backend\TeamController');
-Route::resource('/home/productdetail', 'Backend\ProductDetailController');
-Route::resource('/home/contact', 'Backend\ContactController');
+Route::resource('/home/product', 'Backend\ProductController');
+Route::get('/home/product/{slug}/detail', 'Backend\ProductDetailController@index')->name('productDetail');
+Route::post('/home/product/detail/store', 'Backend\ProductDetailController@store');
+Route::resource('/home/setting', 'Backend\SettingController');
 
 
 

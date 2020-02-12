@@ -24,11 +24,11 @@ class ProductDetailController extends Controller
         $this->request = $request;
         $this->helper = $helper;
     }
-    public function index()
+    public function index($slug)
     {
-        $products=Product::get();
-        $productdetails = Product_has_detail::get();
-        return view('backend.product_detail.index',compact('products','productdetails'));
+        $product_id = Product::where('slug',$slug)->value('id'); 
+        $productdetails = Product_has_detail::where('product_id',$product_id)->get();
+        return view('backend.product_detail.index',compact('productdetails','product_id'));
     }
         
 
@@ -61,6 +61,8 @@ class ProductDetailController extends Controller
         ->withErrors($validator)
         ->withInput();
         }
+
+
         $main_store = new Product_has_detail;
         $main_store->product_id = Input::get('product_id');        
         $main_store->title = Input::get('title');
