@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\About;
 use App\Company;
 use App\Gallery;
-use App\product;
+use App\Team;
 
 class IndustryController extends Controller
 {
@@ -39,13 +39,15 @@ class IndustryController extends Controller
 
 	public function indexProduct()
 	{
-		
+
 		return view('product');
 	}
 
 	public function indexTeam()
 	{
-		return view('team');
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$page_title ='Team';
+		return view('team' ,compact(['team_details' ,'page_title']));
 	}
 
 	public function indexContact()
