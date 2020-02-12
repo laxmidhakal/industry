@@ -94,14 +94,14 @@
           </div>
           <form role="form" method="POST" action="{{route('contact.store')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div class="modal-body" >
+            <div class="modal-body modal-lg" >
               <div class="form-group">
                 <label for="title">Map</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
               </div>
               <div class="form-group">
                 <label for="decription">Address</label>
-                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description">
+                <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
               </div>
 
               <div class="form-group">

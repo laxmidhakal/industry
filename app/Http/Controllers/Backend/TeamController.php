@@ -49,7 +49,6 @@ class TeamController extends Controller
     {
         $rules = array(
             'title' => 'required|unique:teams',
-            'description' => 'required',
             'designation' => 'required',
             'image' => 'required|mimes:jpeg,jpg|max:1024',
         );

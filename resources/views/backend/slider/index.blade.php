@@ -87,7 +87,7 @@
       <!-- /.content -->
     </div>
     <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Slider </h4>
@@ -104,7 +104,7 @@
               </div>
               <div class="form-group">
                 <label for="decription">Description</label>
-                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description">
+                <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
               </div>
 
               <div class="form-group">

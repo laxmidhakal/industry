@@ -46,7 +46,7 @@
                   <tr>
                     <th>SN</th>
                     <th>Title</th>
-                    <th>Description</th>
+                    <th>Designation</th>
                     <th>Image</th>
                     <th>Label</th>
                     <th>Action</th>
@@ -56,7 +56,7 @@
                 <tr>
                   <td>{{$team->id}}</td>
                   <td>{{$team->title}}</td>
-                  <td>{{$team->description}}</td>
+                  <td>{{$team->designation}}</td>
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img">
@@ -87,7 +87,7 @@
       <!-- /.content -->
     </div>
     <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Team </h4>
@@ -102,10 +102,7 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
               </div>
-              <div class="form-group">
-                <label for="decription">Description</label>
-                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description" hidden="">
-              </div>
+              
               <div class="form-group">
                 <label for="designation">Designation</label>
                 <input type="text" class="form-control" id="designation" placeholder="Enter Designation" name="designation">
