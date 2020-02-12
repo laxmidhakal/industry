@@ -56,7 +56,7 @@
                 <tr>
                   <td>{{$slider->id}}</td>
                   <td>{{$slider->title}}</td>
-                  <td>{{$slider->description}}</td>
+                  <td>{!! $slider->description !!}</td>
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img">
@@ -77,7 +77,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $sliders->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>

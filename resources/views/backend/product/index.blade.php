@@ -71,7 +71,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $products->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>

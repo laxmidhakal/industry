@@ -25,7 +25,7 @@ class TeamController extends Controller
     }
     public function index()
     {
-        $teams=Team::get();
+        $teams=Team::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.team.index',compact('teams'));
     }
 
@@ -54,7 +54,7 @@ class TeamController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/team')
         ->withErrors($validator)
         ->withInput();
         }

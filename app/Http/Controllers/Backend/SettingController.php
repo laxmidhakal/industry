@@ -25,7 +25,7 @@ class SettingController extends Controller
     }
     public function index()
     {
-        $settings=Setting::get();
+        $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.setting.index',compact('settings'));
     }
 
@@ -51,12 +51,14 @@ class SettingController extends Controller
             'address' => 'required',
             'phone' => 'required|unique:settings',
             'email' => 'required|unique:settings',
+            'lat' => 'required',
+            'long' => 'required',
             'image' => 'required|mimes:png|max:1024',
 
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/setting')
         ->withErrors($validator)
         ->withInput();
         }
@@ -64,6 +66,8 @@ class SettingController extends Controller
         $main_store->address = Input::get('address');
         $main_store->phone = Input::get('phone');
         $main_store->email = Input::get('email');
+        $main_store->lat = Input::get('lat');
+        $main_store->long = Input::get('long');
         $image = Input::file('image');
         if($image != ""){
             $destinationPath = 'images/setting/'; // upload path

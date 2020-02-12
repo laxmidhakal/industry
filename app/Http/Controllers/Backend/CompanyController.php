@@ -25,7 +25,8 @@ class CompanyController extends Controller
     }
     public function index()
     {
-        $companies=Company::get();
+
+        $companies=Company::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.company.index',compact('companies'));
     }
 
@@ -54,7 +55,7 @@ class CompanyController extends Controller
        );
        $validator = Validator::make(Input::all(), $rules);
        if ($validator->fails()) {
-       return redirect('/home')
+       return redirect('/home/company')
        ->withErrors($validator)
        ->withInput();
        }

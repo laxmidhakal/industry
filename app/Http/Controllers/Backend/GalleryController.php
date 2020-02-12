@@ -25,7 +25,7 @@ class GalleryController extends Controller
     }
     public function index()
     {
-        $galleries=Gallery::get();
+        $galleries=Gallery::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.gallery.index',compact('galleries'));
     }
 
@@ -54,7 +54,7 @@ class GalleryController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/gallery')
         ->withErrors($validator)
         ->withInput();
         }

@@ -25,7 +25,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products=Product::get();
+        $products=Product::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.product.index',compact('products'));
     }
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/product')
         ->withErrors($validator)
         ->withInput();
         }

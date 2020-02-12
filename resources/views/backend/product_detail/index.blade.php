@@ -58,7 +58,7 @@
                   <td>{{$detail->id}}</td>
                   <td >{{$detail->product->title}}</td>
                   <td>{{$detail->title}}</td>
-                  <td>{{$detail->description}}</td>
+                  <td>{!! $detail->description !!}</td>
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$detail->image_enc}}" class="img-fluid back-img">

@@ -25,7 +25,7 @@ class ContactController extends Controller
     }
     public function index()
     {
-        $contacts=Contact::get();
+        $contacts=Contact::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.contact.index',compact('contacts'));
     }
 
@@ -56,7 +56,7 @@ class ContactController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/contact')
         ->withErrors($validator)
         ->withInput();
         }

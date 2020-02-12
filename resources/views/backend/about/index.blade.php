@@ -58,7 +58,7 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$about->title}}</td>
-                  <td>{{$about->description}}</td>
+                  <td>{!! $about->description !!} </td>
                   <td>
                     @if($about->image_enc != "")
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">

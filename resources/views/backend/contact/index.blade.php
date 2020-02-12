@@ -74,7 +74,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $contacts->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>

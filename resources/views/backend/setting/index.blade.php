@@ -48,6 +48,8 @@
                     <th>Address</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
                     <th>Image</th>
                     <th>Label</th>
                     <th>Action</th>
@@ -59,6 +61,8 @@
                   <td>{{$setting->address}}</td>
                   <td>{{$setting->phone}}</td>
                   <td>{{$setting->email}}</td>
+                  <td>{{$setting->lat}}</td>
+                  <td>{{$setting->long}}</td>
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
@@ -79,7 +83,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $settings->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>
@@ -89,7 +94,7 @@
       <!-- /.content -->
     </div>
     <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Setting </h4>
@@ -106,13 +111,20 @@
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="number" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
+                <input type="number" class="form-control" id="phone" placeholder="Enter phone" name="phone">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
               </div>
-
+              <div class="form-group">
+                <label for="lat">Latitude</label>
+                <input type="number" step="any" class="form-control" id="lat" placeholder="Enter latitude" name="lat">
+              </div>
+              <div class="form-group">
+                <label for="long">Longitude</label>
+                <input type="number" step="any" class="form-control" id="long" placeholder="Enter longitude" name="long">
+              </div>
               <div class="form-group">
                 <label for="image">File input</label>
                 <div class="input-group">

@@ -56,7 +56,7 @@
                 <tr>
                   <td>{{$company->id}}</td>
                   <td>{{$company->title}}</td>
-                  <td>{{$company->description}}</td>
+                  <td>{!! $company->description !!} </td>
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" class="img-fluid back-img">
@@ -77,7 +77,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $companies->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>

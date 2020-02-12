@@ -59,7 +59,7 @@ class AboutController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/item')
+        return redirect('/home/about')
         ->withErrors($validator)
         ->withInput();
         }

@@ -27,7 +27,7 @@ class ProductDetailController extends Controller
     public function index($slug)
     {
         $product_id = Product::where('slug',$slug)->value('id'); 
-        $productdetails = Product_has_detail::where('product_id',$product_id)->get();
+        $productdetails = Product_has_detail::where('product_id',$product_id)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.product_detail.index',compact('productdetails','product_id'));
     }
         
@@ -57,7 +57,7 @@ class ProductDetailController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/home/product')
         ->withErrors($validator)
         ->withInput();
         }

@@ -25,7 +25,7 @@ class SliderController extends Controller
     }
     public function index()
     {
-        $sliders=Slider::get();
+        $sliders=Slider::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.slider.index',compact('sliders'));
     }
 
@@ -54,7 +54,7 @@ class SliderController extends Controller
      );
      $validator = Validator::make(Input::all(), $rules);
      if ($validator->fails()) {
-     return redirect('/home')
+     return redirect('/home/slider')
      ->withErrors($validator)
      ->withInput();
      }
