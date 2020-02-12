@@ -64,10 +64,10 @@
       <div class="col-lg-8 order-1 order-lg-2">
       @foreach($companies_details as $main_data)
         <div class="blog-post">
-          <div class="blog-thumb set-bg" data-setbg="img/blog/1.jpg">
+          <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
           </div>
           <h2>{{$main_data->title}} </h2>
-          <p>This is for testing</p>
+          <p>{!! $main_data->description !!}</p>
         </div>
         
       @endforeach
