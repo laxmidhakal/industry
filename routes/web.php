@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', function () {    return view('welcome'); })->name('index');
 Route::get('/about', 'IndustryController@indexAbout')->name('about');
 Route::get('/companies', 'IndustryController@indexCompanies')->name('companies');
 Route::get('/gallery', 'IndustryController@indexGallery')->name('gallery');
