@@ -14,11 +14,13 @@
   <div class="container">
     <div class="map-info">
       <img src="img/logo-contact.png" alt="">
+
       <p>Lorem ipsum dolor sit amet, consec-tetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. </p>
     </div>
   </div>
   <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14376.077865872314!2d-73.879277264103!3d40.757667781624285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1546528920522" style="border:0" allowfullscreen></iframe>
+   
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.920389139927!2d85.35806101443399!3d27.688855332912627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a23ff53c6c1%3A0xbf154d5bf0abe0ba!2sPepsicola!5e0!3m2!1sen!2snp!4v1581431715262!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
   </div>
 </div>
 <section class="contact-section spad">
@@ -26,7 +28,7 @@
     <div class="row">
       
       <div class="col-lg-8">
-        <form class="contact-form" method="POST" action="{{route('contact.store')}}">
+        <form class="contact-form" method="POST" action="">
             {{ csrf_field() }}
           
           <div class="row">
@@ -43,6 +45,9 @@
               <input type="text"  id="subject" placeholder="Subject" name="subject">
 
               <textarea class="text-msg" placeholder="Message" id="message" name="message"></textarea>
+              <textarea id="description" class="form-control mb-20 editor" name="description" rows="10" cols="50">
+                this is my text
+              </textarea>
               <button class="site-btn" type="submit" name="submit">send message</button>
             </div>
           </div>

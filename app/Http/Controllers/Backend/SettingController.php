@@ -12,10 +12,10 @@ use Validator;
 use Session;
 use File;
 use Route;
-use App\Team;
+use App\Setting;
 use App\Helper\Helper;
 
-class TeamController extends Controller
+class SettingController extends Controller
 {
     public function __construct(Request $request, Helper $helper)
     {
@@ -25,8 +25,8 @@ class TeamController extends Controller
     }
     public function index()
     {
-        $teams=Team::get();
-        return view('backend.team.index',compact('teams'));
+        $settings=Setting::get();
+        return view('backend.setting.index',compact('settings'));
     }
 
     /**
@@ -48,10 +48,11 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'title' => 'required|unique:teams',
-            'description' => 'required',
-            'designation' => 'required',
-            'image' => 'required|mimes:jpeg,jpg|max:1024',
+            'address' => 'required',
+            'phone' => 'required|unique:settings',
+            'email' => 'required|unique:settings',
+            'image' => 'required|mimes:png|max:1024',
+
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -59,12 +60,13 @@ class TeamController extends Controller
         ->withErrors($validator)
         ->withInput();
         }
-        $main_store = new Team;
-        $main_store->title = Input::get('title');
-        $main_store->slug = $this->helper->slug_converter($main_store->title);
+        $main_store = new Setting;
+        $main_store->address = Input::get('address');
+        $main_store->phone = Input::get('phone');
+        $main_store->email = Input::get('email');
         $image = Input::file('image');
         if($image != ""){
-            $destinationPath = 'images/team/'; // upload path
+            $destinationPath = 'images/setting/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -72,8 +74,6 @@ class TeamController extends Controller
             $main_store->image_enc = $fileName;
             $main_store->image = $image->getClientOriginalName();
         }
-        $main_store->description = Input::get('description');
-        $main_store->designation = Input::get('designation');
         $main_store->created_by = Auth::user()->id;
         if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data save successfully!!');

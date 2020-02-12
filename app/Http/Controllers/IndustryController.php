@@ -50,6 +50,7 @@ class IndustryController extends Controller
 
 	public function indexContact()
 	{
+		
 		return view('contact');
 	}
 }

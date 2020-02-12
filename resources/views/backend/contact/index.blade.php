@@ -92,7 +92,30 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          
+          <form role="form" method="POST" action="{{route('contact.store')}}" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="modal-body" >
+              <div class="form-group">
+                <label for="title">Map</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+              </div>
+              <div class="form-group">
+                <label for="decription">Address</label>
+                <input type="text" class="form-control" id="decription" placeholder="Enter title" name="description">
+              </div>
+
+              <div class="form-group">
+                <label for="image">logo</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
         </div>
         <!-- /.modal-content -->
       </div>

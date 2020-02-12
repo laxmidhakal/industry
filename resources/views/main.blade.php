@@ -23,6 +23,7 @@
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="{{URL::to('/')}}/css/style.css"/>
   <link rel="stylesheet" href="{{URL::to('/')}}/css/style.main.css"/>
+
   @yield('style')
 
   <!-- <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet"> -->
@@ -55,6 +56,16 @@
   <script src="{{URL::to('/')}}/js/circle-progress.min.js"></script>
   <script src="{{URL::to('/')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{URL::to('/')}}/js/main.js"></script>
+  <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+   <script>
+     $(function () {
+       // Replace the <textarea id="editor1"> with a CKEditor
+       // instance, using default configuration.
+       // CKEDITOR.replace('editor1');
+       CKEDITOR.replace('description');
+       //bootstrap WYSIHTML5 - text editor
+     });
+   </script>
   @yield('javascript')
   <!-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> -->
 </body>

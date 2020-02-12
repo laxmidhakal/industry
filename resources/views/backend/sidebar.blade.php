@@ -51,22 +51,18 @@
             <p>Product</p>
           </a>
         </li>
+        
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/team" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Team</p>
           </a>
         </li>
+        
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/productdetail" class="nav-link">
+          <a href="{{URL::to('/')}}/home/setting" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
-            <p>ProductDetail</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/contact" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
-            <p>Contact</p>
+            <p>Setting</p>
           </a>
         </li>
       </ul>
