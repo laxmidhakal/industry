@@ -8,6 +8,7 @@ use App\About;
 use App\Company;
 use App\Gallery;
 use App\Team;
+use App\Product;
 
 class IndustryController extends Controller
 {
@@ -39,8 +40,9 @@ class IndustryController extends Controller
 
 	public function indexProduct()
 	{
-
-		return view('product');
+		$product_details = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+        $page_title = "Product";
+		return view('product' ,compact(['product_details' ,'page_title']));
 	}
 
 	public function indexTeam()

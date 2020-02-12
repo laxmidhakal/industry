@@ -83,12 +83,20 @@
                                 
                             </li>
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
+
                             <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="{{URL::to('/product')}}">Product</a>
-                                <ul class="sub-menu">
-                                    <li><a href="elements.html">Trading</a></li>
-                                    <li><a href="elements.html">Restaurant</a></li>
-                                    <li><a href="elements.html">Green trade</a></li>
-                                    <li><a href="elements.html">Green trade</a></li>
+                            <ul class="sub-menu">
+                            <li><a
+                            href="{{URL::to('/product')}}">Trading</a></li>
+
+                            <li><a
+                            href="{{URL::to('/product')}}">Restaurant</a></li>
+
+                            <li><a 
+                                href="{{URL::to('/product')}}">Green trade</a></li>
+
+                             <li><a 
+                              href="{{URL::to('/product')}}">Green trade</a></li>
                                 </ul>
                             </li>
                             <li class="{{Request::route()->getName() == 'team' ? 'active' : ''}}"><a href="{{URL::to('/team')}}">Team</a></li>

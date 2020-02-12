@@ -1,4 +1,5 @@
 @extends('main')
+@section('tab_title'){{$page_title}}@endsection
 @section('content')
 
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
@@ -24,14 +25,16 @@
           <!-- Accordions -->
           <div id="accordion" class="accordion-area">
             <div class="panel">
+              @foreach($product_details as $main_data)
               <div class="panel-header active" id="headingOne">
                 <button class="panel-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Trading</button>
               </div>
               <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="panel-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipisc-ing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. </p>
+                  <p>{!! $main_data->description !!} </p>
                 </div>
               </div>
+              @endforeach
             </div>
             <div class="panel">
               <div class="panel-header" id="headingTwo">
