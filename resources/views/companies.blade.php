@@ -7,7 +7,6 @@
     <div class="row">
       <div class="col-lg-7">
         <h2 class="display-4 text-white text-padding">Companies</h2>
-       
       </div>
     </div>
   </div>
@@ -16,8 +15,6 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6 sidebar order-2 order-lg-1">
-        
-        
         <div class="sb-widget">
           <h2 class="sb-title">Product</h2>
           <div class="recent-post">
@@ -64,10 +61,10 @@
       <div class="col-lg-8 order-1 order-lg-2">
       @foreach($companies_details as $main_data)
         <div class="blog-post">
-          <div class="blog-thumb set-bg" data-setbg="img/blog/1.jpg">
+          <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
           </div>
           <h2>{{$main_data->title}} </h2>
-          <p>This is for testing</p>
+          <p>{!! $main_data->description !!}</p>
         </div>
         
       @endforeach
