@@ -85,7 +85,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">gallery </h4>
+            <h4 class="modal-title">Product </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -94,8 +94,8 @@
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                <label for="title">Product</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter Product" name="title">
               </div>
               
 

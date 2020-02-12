@@ -53,13 +53,15 @@
         <div class="contact-text">
           <h2>Get in Touch</h2>
           <p>Innovation and simplicity makes us happy: our goal is to remove any technical or financial barriers that can prevent business owners from making their own website.</p>
+         @foreach($settings as $setting)
+
           <div class="header-info-box">
             <div class="hib-icon">
               <img src="img/icons/phone.png" alt="" class="">
             </div>
             <div class="hib-text">
-              <h6>(+977) 01-5901288</h6>
-              <p>contact@yourdomain.com</p>
+              <h6>(+977) {{$setting->phone}}</h6>
+              <p>{{$setting->email}}</p>
             </div>
           </div>
           <div class="header-info-box">
@@ -67,10 +69,12 @@
               <img src="img/icons/map-marker.png" alt="" class="">
             </div>
             <div class="hib-text">
-              <h6>K.M.C. 32, Pepsicola</h6>
-              <p>Kathmandu, Nepal </p>
+              <h6>{{$setting->address}}</h6>
+              <p>{{$setting->address}} </p>
             </div>
           </div>
+         @endforeach
+
         </div>
       </div>
     </div>
