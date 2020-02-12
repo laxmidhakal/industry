@@ -12,14 +12,14 @@
   </div>
 </section>
 
-<section class="blog-section spadpadding">
+<section class="blog-section my-5">
   <div class="container">
     <div class="row">
       @foreach($team_details as $main_data)
       <div class="col-md-4">
-        <div class="team-member">
+        <div class="team-member main-team-hover">
           <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="">
-          <div class="member-info">
+          <div class="member-info pb-2">
             <h3>{{$main_data->title}}</h3>
             <p>{!! $main_data->designation !!} </p>
           </div>
