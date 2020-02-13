@@ -44,19 +44,29 @@
 
 <section class="team-section spad">
 	<div class="container">
+
 		<div class="team-text">
 			<h2 >Our Amazing Team</h2>
-			<p>Visuals are such a big part of an About Us page, and Active Campaign does a great job showing off their employees and their office environment. They also have a small section describing what a normal day in the office is like. This helps entice prospective employees while also putting a face to the company and making it more relatable.</p>
+			@foreach($about_details as $main_data)
+
+			<p>{!! $main_data->description !!}</p>
+			@endforeach
+
 		</div>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="team-member">
-					<img src="img/team/1.jpg" alt="">
+			        @foreach($team_details as $main_data)
+
+					<img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="">
 					<div class="member-info">
-						<h3>Michael Smith</h3>
-						<p>Engeneer Chemist </p>
+						<h3>{{$main_data->title}}</h3>
+						<p>{{$main_data->designation}} </p>
 						<a href="#" class="site-btn">See C.V.</a>
 					</div>
+			        @endforeach
+
+
 				</div>
 			</div>
 			<div class="col-md-4">

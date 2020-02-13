@@ -19,7 +19,7 @@
     
     <!-- element -->
     <div class="element">
-      <h3 class="el-title">Product </h3>
+      <h3 class="el-title">ProductDetail </h3>
       <div class="row">
         <div class="col-xl-5">
           <!-- Accordions -->
@@ -27,7 +27,7 @@
             <div class="panel">
               @foreach($product_details as $main_data)
               <div class="panel-header active" id="headingOne">
-                <button class="panel-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Trading</button>
+                <button class="panel-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">{{$main_data->title}}</button>
               </div>
               <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="panel-body">
@@ -73,9 +73,11 @@
         </div>
         <div class="col-xl-7">
           <div class="tab-element">
+            @foreach($product_details as $main_data)
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Trade</a>
+                <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">{{$main_data->title}}</a>
+                
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Restaurant</a>
@@ -95,9 +97,9 @@
               </div>
               <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. </p>
-              </div>
-              
+              </div> 
             </div>
+            @endforeach
           </div>
         </div>
       </div>
