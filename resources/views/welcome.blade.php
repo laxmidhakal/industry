@@ -33,9 +33,10 @@
         <div class="text-center">
              @foreach($about_details as $about)
             <h2 class="mb-5">{{$about->title}}</h2>
-            <p>{!!  substr($about->description, 0,  20) !!}</p>
+            <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
             <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline">Read More</button>
+
         </div>
 
     </div>

@@ -19,7 +19,7 @@
 		<div class="row">
 			@foreach($about_details as $main_data)
 			<div class="col-lg-6">
-				<img src="{{URL::to('/')}}/images/about/{{$main_data->image_enc}}" alt="">
+				<img src="{{URL::to('/')}}/images/about/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
 			</div>
 			<div class="col-lg-6">
 				<div class="about-text">
@@ -69,26 +69,8 @@
 
 				</div>
 			</div>
-			<div class="col-md-4">
-				<div class="team-member">
-					<img src="img/team/2.jpg" alt="">
-					<div class="member-info">
-						<h3>Jessica Steing</h3>
-						<p>Engeneer Chemist </p>
-						<a href="#" class="site-btn">See C.V.</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="team-member">
-					<img src="img/team/3.jpg" alt="">
-					<div class="member-info">
-						<h3>Chris Williams</h3>
-						<p>Engeneer Chemist </p>
-						<a href="#" class="site-btn">See C.V.</a>
-					</div>
-				</div>
-			</div>
+			
+			
 		</div>
 	</div>
 </section>
