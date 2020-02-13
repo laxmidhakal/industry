@@ -1,34 +1,30 @@
 @extends('main')
 @section('content')@section('tab_title'){{$page_title}}@endsection
 <section class="hero-section">
-     @foreach($index_details as $main_data)
-
     <div class="hero-slider owl-carousel">
-        <div class="hero-item set-bg" data-setbg="{{URL::to('/')}}/images/slider/{{$main_data->image_enc}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <h2 class="main-slide-text"><span>Lorem </span><span>ipsum </span><span>dolor sit</span></h2>
-                        <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                        <a href="#" class="site-btn sb-dark">Our Company</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-item set-bg" data-setbg="img/hero-slider/2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <h2 class="main-slide-text"><span>Lorem </span><span>ipsum </span><span>dolor sit</span></h2>
-                        <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                        <a href="#" class="site-btn sb-dark">our Company</a>
-                    </div>
+       @foreach($index_details as $main_data)
+       <div class="hero-item set-bg" data-setbg="{{URL::to('/')}}/images/slider/{{$main_data->image_enc}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8">
+                    <h2 class="main-slide-text">
+                    <?php 
+                        $words = explode(' ', $main_data->title);
+                        $count = substr_count($main_data->title, ' ');
+
+                        for ($i = 0; $i <= $count && isset($words[$i]); $i++) {
+                        ?>
+                        <span>{{$words[$i]}} </span>
+                    <?php } ?>
+                    </h2>
+                    <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
+                    <a href="#" class="site-btn sb-dark">Our Company</a>
                 </div>
             </div>
         </div>
     </div>
-     @endforeach
-
+    @endforeach
+</div>
 </section>
 
 
@@ -37,7 +33,7 @@
         <div class="text-center">
              @foreach($about_details as $about)
             <h2 class="mb-5">{{$about->title}}</h2>
-            <p>{!! $about->description !!}</p>
+            <p>{!!  substr($about->description, 0,  20) !!}</p>
             @endforeach
             <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline">Read More</button>
         </div>

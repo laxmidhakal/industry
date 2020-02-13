@@ -1009,6 +1009,12 @@
    color: #718090;
    margin-bottom: 15px;
  }
+ .footer-widget ul li a:hover {
+   display: block;
+   font-size: 14px;
+   color: #ffc000b3;
+   margin-bottom: 15px;
+ }
  
  .footer-widget .footer-search {
    position: relative;

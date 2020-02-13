@@ -16,12 +16,12 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-widget">
                     <h2 class="fw-title ">Useful Resources</h2>
-                    <ul>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Gallery</a></li>
-                        <li><a href="">Team</a></li>
-                        <li><a href="">Product</a></li>
-                        <li><a href="">Companies</a></li>
+                    <ul >
+                        <li><a href="{{URL::to('/about')}}">About Us</a></li>
+                        <li><a href="{{URL::to('/product')}}">Gallery</a></li>
+                        <li><a href="{{URL::to('/team')}}">Team</a></li>
+                        <li><a href="{{URL::to('/product')}}">Product</a></li>
+                        <li><a href="{{URL::to('/companies')}}">Companies</a></li>
                     </ul>
                     
                 </div>
@@ -34,7 +34,7 @@
                     <h2 class="fw-title">Contact Us</h2>
                     <div class="footer-info-box">
                         <div class="fib-icon">
-                            <img src="img/icons/map-marker.png" alt="" class="">
+                            <img src="{{URL::to('/')}}/img/icons/map-marker.png" alt="" class="">
                         </div>
                         <div class="fib-text">
                             <p>{{$setting->address}}<br>{{$setting->address}}, Nepal </p>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="footer-info-box">
                         <div class="fib-icon">
-                            <img src="img/icons/phone.png" alt="" class="">
+                            <img src="{{URL::to('/')}}/img/icons/phone.png" alt="" class="">
                         </div>
                         <div class="fib-text">
                             <p>(+977) {{$setting->phone}}<br>{{$setting->email}}</p>
@@ -56,7 +56,12 @@
                 <div class="footer-widget about-widget">
                     <!-- <img src="img/sas.png" alt="" class="img-fluid"> -->
                     <h2 class="fw-title"><span class="main-logo-text">Global</span> SAS Trading Pvt. Ltd. </h2>
-                    <p>Visuals are such a big part of an About Us page, and Active Campaign does a great job showing off their employees and their office environment. </p>
+                    @foreach($about_details as $detail)
+
+                    <p>{!!$detail->description!!} </p>
+                    @endforeach
+
+
                     <div class="footer-social">
                         <a href="https://www.facebook.com/Global-SAS-trading-Pvt-Ltd-108457937385069/?modal=admin_todo_tour" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/intent/tweet?url=https://www.twilio.com/blog/add-facebook-twitter-github-login-laravel-socialite&amp;text=Add Facebook, Twitter, and GitHub Login To Laravel PHP Applications with Socialite&amp;via=twilio" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>

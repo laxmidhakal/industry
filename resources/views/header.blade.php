@@ -49,7 +49,12 @@
             <div class="row">
                 <div class="col-md-4">
                     <a href="index.html" class="site-logo mt-md-2 pl-md-0 ">
-                        <img src="{{URL::to('/')}}/img/sas.png" alt="" class="img-fluid main-logo" >
+                    @foreach($settings as $setting)
+
+
+                        <img src="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" alt="" class="img-fluid main-logo" >
+                    @endforeach
+
                     </a>
                 </div>
                 

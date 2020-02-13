@@ -17,11 +17,12 @@
       <div class="col-lg-4 col-md-6 sidebar order-2 order-lg-1">
         <div class="sb-widget">
           <h2 class="sb-title">Product</h2>
+            @foreach($product_details as $main_data)
           <div class="recent-post">
             <div class="rp-item">
-              <img src="img/blog/recent-post/1.jpg" alt="">
+              <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="" >
               <div class="rp-text">
-                <p>All you need to know about Product</p>
+                <p>{{$main_data->title}}</p>
                  <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
               </div>
             </div>
@@ -40,18 +41,30 @@
               </div>
             </div>
           </div>
+          @endforeach
+
+
         </div>
         <div class="sb-widget">
           <div class="info-box">
             <h3>Contact Us for Help</h3>
-            <p>Innovation and simplicity makes us happy: our goal is to remove any technical or financial barriers that can prevent business owners from making their own website. </p>
+              @foreach($about_details as $main_data)
+
+            <p>{!!$main_data->description!!} </p>
+              @endforeach
+
+
             <div class="footer-info-box">
               <div class="fib-icon">
                 <img src="img/icons/phone.png" alt="" class="">
               </div>
+              @foreach($settings as $setting)
+
               <div class="fib-text">
-                <p>(+977) 01-5901288<br>contact@yourdomain.com</p>
+                <p>(+977) {{$setting->phone}}<br>{{$setting->email}}</p>
               </div>
+              @endforeach
+
             </div>
             <a href="#">Send us a message</a>
           </div>

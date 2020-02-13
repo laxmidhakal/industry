@@ -61,7 +61,7 @@
                   <td>{!! $detail->description !!}</td>
                   <td>
                     <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$detail->image_enc}}" class="img-fluid back-img">
+                      <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" class="img-fluid back-img">
                       
                     </div>
                   </td>
@@ -79,7 +79,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+             {!! $productdetails->links("pagination::bootstrap-4") !!}
+            
           </div>
           <!-- /.card-footer-->
         </div>
