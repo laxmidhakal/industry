@@ -20,26 +20,14 @@
             @foreach($product_details as $main_data)
           <div class="recent-post">
             <div class="rp-item">
-              <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="" >
+              <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="" width="99px" height="99px" >
               <div class="rp-text">
                 <p>{{$main_data->title}}</p>
                  <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
               </div>
             </div>
-            <div class="rp-item">
-              <img src="img/blog/recent-post/2.jpg" alt="">
-              <div class="rp-text">
-                <p>All you need to know about Product</p>
-                 <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
-              </div>
-            </div>
-            <div class="rp-item">
-              <img src="img/blog/recent-post/3.jpg" alt="">
-              <div class="rp-text">
-                <p>All you need to know about Product</p>
-                 <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
-              </div>
-            </div>
+            
+            
           </div>
           @endforeach
 
@@ -49,8 +37,8 @@
           <div class="info-box">
             <h3>Contact Us for Help</h3>
               @foreach($about_details as $main_data)
+             <p> {!! Illuminate\Support\Str::limit($main_data->description, 256) !!}</p>
 
-            <p>{!!$main_data->description!!} </p>
               @endforeach
 
 
@@ -66,7 +54,7 @@
               @endforeach
 
             </div>
-            <a href="#">Send us a message</a>
+            <a href="{{URL::to('/contact')}}">Send us a message</a>
           </div>
           
         </div>

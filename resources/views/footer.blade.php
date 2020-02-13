@@ -5,7 +5,7 @@
                 <h2>We produce or supply Goods, Services, or Sources</h2>
             </div>
             <div class="col-lg-3 text-lg-right" >
-                <a href="#" class="site-btn sb-dark">contact us</a>
+                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
             </div>
         </div>
     </div>
@@ -57,11 +57,8 @@
                     <!-- <img src="img/sas.png" alt="" class="img-fluid"> -->
                     <h2 class="fw-title"><span class="main-logo-text">Global</span> SAS Trading Pvt. Ltd. </h2>
                     @foreach($about_details as $detail)
-
-                    <p>{!!$detail->description!!} </p>
+                    <p> {!! Illuminate\Support\Str::limit($detail->description, 256) !!}</p>
                     @endforeach
-
-
                     <div class="footer-social">
                         <a href="https://www.facebook.com/Global-SAS-trading-Pvt-Ltd-108457937385069/?modal=admin_todo_tour" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/intent/tweet?url=https://www.twilio.com/blog/add-facebook-twitter-github-login-laravel-socialite&amp;text=Add Facebook, Twitter, and GitHub Login To Laravel PHP Applications with Socialite&amp;via=twilio" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>

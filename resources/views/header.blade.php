@@ -92,7 +92,7 @@
                             </li>
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
 
-                            <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="{{URL::to('/product')}}">Product</a>
+                            <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="javascript:void(0);">Product</a>
                                 <ul class="sub-menu">
                                     @foreach($product_menu as $menu_pro)
                                     <li><a href="{{URL::to('/')}}/product/{{$menu_pro->slug}}">{{$menu_pro->title}}</a></li>

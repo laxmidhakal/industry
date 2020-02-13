@@ -14,8 +14,10 @@
   <div class="container">
     <div class="map-info">
       <img src="img/logo-contact.png" alt="">
+        @foreach($about_details as $main_data)
+       <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
+       @endforeach
 
-      <p>Lorem ipsum dolor sit amet, consec-tetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. </p>
     </div>
   </div>
   <div class="map">
@@ -52,7 +54,11 @@
       <div class="col-lg-4">
         <div class="contact-text">
           <h2>Get in Touch</h2>
-          <p>Innovation and simplicity makes us happy: our goal is to remove any technical or financial barriers that can prevent business owners from making their own website.</p>
+           @foreach($about_details as $main_data)
+          <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
+          @endforeach
+
+
          @foreach($settings as $setting)
 
           <div class="header-info-box">

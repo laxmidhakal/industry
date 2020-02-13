@@ -35,7 +35,7 @@
             <h2 class="mb-5">{{$about->title}}</h2>
             <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
-            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline">Read More</button>
+            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" >  <a href="{{ route('contact') }}" class="main-btn-outline">Read More</a></button>
 
         </div>
 
@@ -50,6 +50,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Category</a>
                     </li>
+                
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Category</a>
                     </li>
@@ -63,8 +64,6 @@
                         <a class="nav-link" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false">Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
-                    </li><li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
                     </li><li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>

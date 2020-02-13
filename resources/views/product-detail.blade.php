@@ -7,8 +7,6 @@
     <div class="row">
       <div class="col-lg-5">
         <h2 class="display-4 text-white text-padding">Product</h2>
-        
-        
       </div>
     </div>
   </div>
@@ -66,9 +64,6 @@
                 </div>
               </div>
             </div>
-            
-            
-
           </div>
         </div>
         <div class="col-xl-7">

@@ -47,11 +47,6 @@
 
 		<div class="team-text">
 			<h2 >Our Amazing Team</h2>
-			@foreach($about_details as $main_data)
-
-			<p>{!! $main_data->description !!}</p>
-			@endforeach
-
 		</div>
 		<div class="row">
 			<div class="col-md-4">
