@@ -13,6 +13,7 @@ use App\Product_has_detail;
 use App\Setting;
 
 
+
 class IndustryController extends Controller
 {
 	public function index()
