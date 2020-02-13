@@ -59,18 +59,8 @@ class IndustryController extends Controller
 		return view('gallery' ,compact(['gallery_details' ,'page_title','settings','product_menu','settings','about_details']));
 	}
 
+
 	public function indexProduct($slug)
-	{
-
-		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$product_details = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$page_title = "Product";
-		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		return view('product',compact('settings','page_title','product_menu','product_details','settings','about_details'));
-	}
-
-	public function indexProductDetail($slug)
 	{
 		$product_id = Product::where('slug',$slug)->value('id');
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
@@ -78,7 +68,20 @@ class IndustryController extends Controller
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		return view('product-detail',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details'));
+		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details'));
+	}
+
+	public function indexProductDetail($slug,$product)
+	{
+		$product_id = Product::where('slug',$slug)->value('id');
+		$product_desc = Product::where('product',$product)->value('id');
+		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_details = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_description = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$page_title = "ProductDetail";
+		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		return view('product',compact('settings','page_title','product_menu','product_details','settings','about_details','product_description','product_id'));
 	}
 
 	public function indexTeam()
