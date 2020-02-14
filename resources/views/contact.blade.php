@@ -1,7 +1,7 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
 @section('content')
-<section class="main-page-top set-bg" data-setbg="img/page-top-bg/4.jpg">
+<section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/4.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
@@ -54,7 +54,7 @@
          @foreach($settings as $setting)
           <div class="header-info-box">
             <div class="hib-icon">
-              <img src="img/icons/phone.png" alt="" class="">
+              <img src="{{URL::to('/')}}/img/icons/phone.png" alt="" class="">
             </div>
             <div class="hib-text">
               <h6>(+977) {{$setting->phone}}</h6>
@@ -63,7 +63,7 @@
           </div>
           <div class="header-info-box">
             <div class="hib-icon">
-              <img src="img/icons/map-marker.png" alt="" class="">
+              <img src="{{URL::to('/')}}/img/icons/map-marker.png" alt="" class="">
             </div>
             <div class="hib-text">
               <h6>{{$setting->address}}</h6>

@@ -11,7 +11,7 @@
     </div>
   </div>
 </section>
-<section class="features-section spad set-bg" data-setbg="img/features-bg.jpg" style="background-image: url(&quot;img/features-bg.jpg&quot;);">
+<section class="features-section spad set-bg" data-setbg="{{URL::to('/')}}img/features-bg.jpg" style="background-image: url(&quot;img/features-bg.jpg&quot;);">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">

@@ -1,11 +1,11 @@
 @extends('main')
 @section('tab_title') {{$page_title}} @endsection
 @section('style')
-  <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+  <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/css/lightgallery.css" />
 @endsection
 @section('content')
 
-<section class="main-page-top set-bg" data-setbg="img/page-top-bg/3.jpg">
+<section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/3.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
