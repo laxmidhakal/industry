@@ -2,31 +2,29 @@
 @section('content')@section('tab_title'){{$page_title}}@endsection
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
-       @foreach($index_details as $main_data)
-       <div class="hero-item set-bg" data-setbg="{{URL::to('/')}}/images/slider/{{$main_data->image_enc}}">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8">
-                    <h2 class="main-slide-text">
-                    <?php 
-                        $words = explode(' ', $main_data->title);
-                        $count = substr_count($main_data->title, ' ');
-
-                        for ($i = 0; $i <= $count && isset($words[$i]); $i++) {
-                        ?>
-                        <span>{{$words[$i]}} </span>
-                    <?php } ?>
-                    </h2>
-                    <a href="{{ route('about') }}" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                    <a href="{{ route('companies') }}" class="site-btn sb-dark">Our Company</a>
+        @foreach($index_details as $main_data)
+        <div class="hero-item set-bg" data-setbg="{{URL::to('/')}}/images/slider/{{$main_data->image_enc}}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <h2 class="main-slide-text">
+                            <?php 
+                            $words = explode(' ', $main_data->title);
+                            $count = substr_count($main_data->title, ' ');
+                            for ($i = 0; $i <= $count && isset($words[$i]); $i++) {
+                                ?>
+                                <span>{{$words[$i]}} </span>
+                            <?php } ?>
+                        </h2>
+                        <a href="{{ route('about') }}" class="site-btn sb-white mr-4 mb-3">Read More</a>
+                        <a href="{{ route('companies') }}" class="site-btn sb-dark">Our Company</a>
+                    </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
 </section>
-
 
 <section class="clients-section spad">
     <div class="container">
@@ -36,23 +34,18 @@
             <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
             <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" >  <a href="{{ route('about') }}" class="main-btn-outline">Read More</a></button>
-
         </div>
-
     </div>
-
 </section>
+
 <section class="reserch-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-
-                <ul class="nav nav-tabs reserch-tab-menu" role="tablist">
-                    
+                <ul class="nav nav-tabs reserch-tab-menu" role="tablist">                    
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Category</a>
                     </li>
-                
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Category</a>
                     </li>
@@ -71,7 +64,6 @@
                         <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
                     </li>
                 </ul>
-
             </div>
             <div class="col-lg-8">
                 <div class="tab-content reserch-tab">

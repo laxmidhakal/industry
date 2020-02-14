@@ -1,7 +1,6 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
 @section('content')
-
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/3.jpg">
   <div class="container">
     <div class="row">
@@ -25,38 +24,28 @@
                 <p>{{$main_data->title}}</p>
                  <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
               </div>
-            </div>
-            
-            
+            </div>    
           </div>
           @endforeach
-
-
         </div>
         <div class="sb-widget">
           <div class="info-box">
             <h3>Contact Us for Help</h3>
               @foreach($about_details as $main_data)
              <p> {!! Illuminate\Support\Str::limit($main_data->description, 256) !!}</p>
-
               @endforeach
-
-
             <div class="footer-info-box">
               <div class="fib-icon">
                 <img src="img/icons/phone.png" alt="" class="">
               </div>
               @foreach($settings as $setting)
-
               <div class="fib-text">
                 <p>(+977) {{$setting->phone}}<br>{{$setting->email}}</p>
               </div>
               @endforeach
-
             </div>
             <a href="{{URL::to('/contact')}}">Send us a message</a>
-          </div>
-          
+          </div> 
         </div>
       </div>
       <div class="col-lg-8 order-1 order-lg-2">
@@ -66,12 +55,10 @@
           </div>
           <h2>{{$main_data->title}} </h2>
           <p>{!! $main_data->description !!}</p>
-        </div>
-        
+        </div> 
       @endforeach
       </div>
     </div>
   </div>
 </section>
-
 @endsection
