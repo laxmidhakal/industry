@@ -14,8 +14,6 @@ use App\Setting;
 use App\Social;
 
 
-
-
 class IndustryController extends Controller
 {
 	public function index()

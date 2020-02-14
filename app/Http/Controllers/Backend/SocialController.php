@@ -48,24 +48,13 @@ class SocialController extends Controller
      */
     public function store(Request $request)
     {
-         $rules = array(
-            'facebook' => 'required',
-            'linkedin' => 'required',
-            'twitter' => 'required',
-            'google' => 'required',
-
-        );
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-        return redirect('/home/social')
-        ->withErrors($validator)
-        ->withInput();
-        }
+        
         $main_store = new Social;
         $main_store->facebook = Input::get('facebook');
         $main_store->linkedin = Input::get('linkedin');
         $main_store->twitter = Input::get('twitter');
         $main_store->google = Input::get('google');
+        $main_store->instagram = Input::get('instagram');
         $main_store->created_by = Auth::user()->id;
         if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data save successfully!!');

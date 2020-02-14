@@ -45,9 +45,11 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Facebook Link </th>
-                    <th>Linkedin Link</th>
+                    <th>Facebook</th>
+                    <th>Linkedin</th>
                     <th>Twitter</th>
+                    <th>Google</th>
+                    <th>Instagram</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
@@ -57,9 +59,9 @@
                   <td>#</td>
                   <td>{{$social->facebook}}</td>
                   <td>{{$social->linkedin}}</td>
-                  <td>
-                    {{$social->twitter}}
-                  </td>
+                  <td>{{$social->twitter}}</td>
+                  <td>{{$social->google}}</td>
+                  <td>{{$social->instagram}}</td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
@@ -112,8 +114,10 @@
                 <label for="google">Google</label>
                 <input type="text" class="form-control" id="google" placeholder="Enter google" name="google">
               </div>
-              
-
+              <div class="form-group">
+                <label for="instagram">instagram</label>
+                <input type="text" class="form-control" id="instagram" placeholder="Enter instagram" name="instagram">
+              </div>
               
             </div>
             <div class="modal-footer justify-content-between">
