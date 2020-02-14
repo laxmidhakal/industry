@@ -257,3 +257,14 @@ a.link.linkedin{
 	object-fit: cover;
 	object-position: center center;
 }
+
+.main-team-img{
+	height: 263px !important;
+	object-fit: contain;
+	object-position: center center;
+
+}
+.main-product-img{
+	height: 200px !important;
+	object-fit: contain;
+	object-position: center center;

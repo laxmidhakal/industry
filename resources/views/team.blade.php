@@ -17,7 +17,7 @@
       @foreach($team_details as $main_data)
       <div class="col-md-4">
         <div class="team-member main-team-hover">
-          <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
+          <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-team-img">
           <div class="member-info pb-2">
             <h3>{{$main_data->title}}</h3>
             <p>{!! $main_data->designation !!} </p>

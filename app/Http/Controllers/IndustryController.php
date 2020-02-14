@@ -72,7 +72,7 @@ class IndustryController extends Controller
 		$page_title = "Product";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
 		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials'));
 	}
