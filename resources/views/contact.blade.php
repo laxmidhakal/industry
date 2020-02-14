@@ -1,4 +1,5 @@
 @extends('main')
+@section('tab_title'){{$page_title}}@endsection
 @section('content')
 <section class="main-page-top set-bg" data-setbg="img/page-top-bg/4.jpg">
   <div class="container">
@@ -13,7 +14,7 @@
 <div class="map-section">
   <div class="container">
     <div class="map-info">
-       <h2 class="fw-title"><span class="text-white">Welcome to</span> Global SAS Trading  </h2>
+       <h2 class="fw-title"><span class="text-white">Global</span>  SAS Trading  </h2>
         @foreach($about_details as $main_data)
        <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
        @endforeach
@@ -22,7 +23,7 @@
   </div>
   <div class="map">
    
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.920389139927!2d85.35806101443399!3d27.688855332912627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a23ff53c6c1%3A0xbf154d5bf0abe0ba!2sPepsicola!5e0!3m2!1sen!2snp!4v1581431715262!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.7045332455314!2d85.35806101467352!3d27.68885058279959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a23ff53c6c1%3A0xbf154d5bf0abe0ba!2sPepsicola!5e1!3m2!1sen!2snp!4v1581663076469!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
   </div>
 </div>
 <section class="contact-section spad">
