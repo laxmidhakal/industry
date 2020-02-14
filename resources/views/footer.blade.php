@@ -21,7 +21,6 @@
                         <li><a href="{{URL::to('/about')}}">About Us</a></li>
                         <li><a href="{{URL::to('/gallery')}}">Gallery</a></li>
                         <li><a href="{{URL::to('/team')}}">Team</a></li>
-                        <li><a href="{{URL::to('/product')}}">Product</a></li>
                         <li><a href="{{URL::to('/companies')}}">Companies</a></li>
                     </ul>
                 </div>
