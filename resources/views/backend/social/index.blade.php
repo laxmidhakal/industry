@@ -115,7 +115,7 @@
                 <input type="text" class="form-control" id="google" placeholder="Enter google" name="google">
               </div>
               <div class="form-group">
-                <label for="instagram">instagram</label>
+                <label for="instagram">Instagram</label>
                 <input type="text" class="form-control" id="instagram" placeholder="Enter instagram" name="instagram">
               </div>
               
