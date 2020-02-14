@@ -56,14 +56,25 @@
                     @foreach($about_details as $detail)
                     <p> {!! Illuminate\Support\Str::limit($detail->description, 170) !!}</p>
                     @endforeach
-                    <div class="footer-social">
+
+                    @if(count($socials))
                     @foreach($socials as $social)
-                        <a href="" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>
-                        <a href="" target="_blank" title="Share on Google"><i class="fa fa-google-plus"></i></a>
-                        <a href="" target="_blank" title="Share on Instagram"><i class="fa fa-instagram"></i></a>
-                    @endforeach
+                    <div class="footer-social">
+                        @if($social->facebook != '')
+                        <a href="{{$social->facebook}}" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+                        @endif
+                        @if($social->twitter != '')
+                        <a href="{{$social->twitter}}" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>
+                        @endif
+                        @if($social->google != '')
+                        <a href="{{$social->google}}" target="_blank" title="Share on Google"><i class="fa fa-google-plus"></i></a>
+                        @endif
+                        @if($social->instagram != '')
+                        <a href="{{$social->instagram}}" target="_blank" title="Share on Instagram"><i class="fa fa-instagram"></i></a>
+                        @endif
                     </div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>

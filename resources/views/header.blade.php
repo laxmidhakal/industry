@@ -20,27 +20,32 @@
                             {{$setting->email}}
                         </li>
                     @endforeach
+                    @if(count($socials))
                     @foreach($socials as $social)
-                   @if($social->facebook !='')
+                        @if($social->facebook !='')
                         <li class="list-inline-item my-auto">
-                            <a href=" {{$social->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
+                            <a href="{{$social->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
                                 <i class="fa fa-facebook main-spin"></i>
                             </a>
                         </li>
-                     @endif
-
+                        @endif
+                        @if($social->twitter!='')
                         <li class="list-inline-item">
                             <a href="{{$social->twitter}}" target="_blank" title="Share on Twitter" class="link twitter text-center">
                                 <i class="fa fa-twitter main-spin" ></i>
                             </a>
                         </li>
-                        
+                        @endif
+                        @if($social->linkedin!='')
                         <li class="list-inline-item">
                             <a href="{{$social->linkedin}}" target="_blank" class="link linkedin text-center">
                                 <i class="fa fa-linkedin main-spin"></i>
                             </a>
                         </li>
+                        @endif
+
                     @endforeach
+                    @endif
                     </ul>
                 </div>
             </div>
