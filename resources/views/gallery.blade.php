@@ -22,7 +22,7 @@
         @foreach($gallery_details as $main_data)
         <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-sub-html="{{$main_data->title}} <p>{!! strip_tags($main_data->description) !!}</p>" >
           <a href="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}">
-            <img src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
+          <img src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
           </a>
         </li>
         @endforeach

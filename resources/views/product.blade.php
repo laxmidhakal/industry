@@ -21,10 +21,7 @@
             <div class="fb-text">
               <h5>{{$main_data->title}}</h5>
               <p>{!!$main_data->description!!} </p>
-
               <a href="{{URL::to('/')}}/product/{product}/{slug}" class="fb-more-btn">Read More</a>
-
-
             </div>
             @endforeach
           </div>

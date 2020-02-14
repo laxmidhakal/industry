@@ -10,6 +10,7 @@
         </div>
     </div>
 </section>
+
 <footer class="footer-section spad">
     <div class="container">
         <div class="row">
@@ -23,14 +24,11 @@
                         <li><a href="{{URL::to('/product')}}">Product</a></li>
                         <li><a href="{{URL::to('/companies')}}">Companies</a></li>
                     </ul>
-                    
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="footer-widget">
                     @foreach($settings as $setting)
-
                     <h2 class="fw-title">Contact Us</h2>
                     <div class="footer-info-box">
                         <div class="fib-icon">
@@ -49,7 +47,6 @@
                         </div>
                     </div>
                     @endforeach
-
                 </div>
             </div>
             <div class="col-lg-5 col-md-6">
@@ -61,14 +58,11 @@
                     @endforeach
                     <div class="footer-social">
                     @foreach($socials as $social)
-
                         <a href="" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
                         <a href="" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>
                         <a href="" target="_blank" title="Share on Google"><i class="fa fa-google-plus"></i></a>
                         <a href="" target="_blank" title="Share on Instagram"><i class="fa fa-instagram"></i></a>
                     @endforeach
-                        
-
                     </div>
                 </div>
             </div>

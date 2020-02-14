@@ -1,10 +1,7 @@
 @extends('backend.app')
-
 @section('content')
 <div class="content-wrapper">
-
   @include('backend.flash.alertmsg')
-
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -21,16 +18,12 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <!-- Main content -->
   <section class="content">
-
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -51,10 +44,8 @@
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
-                </thead>
-              
-                @foreach($abouts as $key=>$about)
-              
+                </thead>              
+                @foreach($abouts as $key=>$about)              
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$about->title}}</td>
@@ -75,7 +66,6 @@
                   </td>
                 </tr>
                 @endforeach
-
               </table>
             </div>
           </div>

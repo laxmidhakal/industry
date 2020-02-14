@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="site-navbar">
         <!-- Logo -->
         <div class="container">

@@ -37,7 +37,8 @@ class ContactController extends Controller
         $about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
         $product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
         $socials = Social::orderBy('created_at','DESC')->get()->take(1);
-        return view('contact',compact('settings','product_menu','socials','about_details','contacts'));
+        $page_title = "Contact ";
+        return view('contact',compact('settings','product_menu','socials','about_details','contacts','page_title'));
     }
 
     /**
