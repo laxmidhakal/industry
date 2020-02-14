@@ -23,7 +23,7 @@ class IndustryController extends Controller
 		$index_details = Slider::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$page_title = "Welcome";
+		$page_title = "Gobal SAS Trading";
         $productdetails = Product_has_detail::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
