@@ -18,7 +18,7 @@
                     <h2 class="fw-title ">Useful Resources</h2>
                     <ul >
                         <li><a href="{{URL::to('/about')}}">About Us</a></li>
-                        <li><a href="{{URL::to('/product')}}">Gallery</a></li>
+                        <li><a href="{{URL::to('/gallery')}}">Gallery</a></li>
                         <li><a href="{{URL::to('/team')}}">Team</a></li>
                         <li><a href="{{URL::to('/product')}}">Product</a></li>
                         <li><a href="{{URL::to('/companies')}}">Companies</a></li>
@@ -60,10 +60,15 @@
                     <p> {!! Illuminate\Support\Str::limit($detail->description, 170) !!}</p>
                     @endforeach
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/Global-SAS-trading-Pvt-Ltd-108457937385069/?modal=admin_todo_tour" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/intent/tweet?url=https://www.twilio.com/blog/add-facebook-twitter-github-login-laravel-socialite&amp;text=Add Facebook, Twitter, and GitHub Login To Laravel PHP Applications with Socialite&amp;via=twilio" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>
-                        <a href=""><i class="fa fa-google-plus"></i></a>
-                        <a href=""><i class="fa fa-instagram"></i></a>
+                    @foreach($socials as $social)
+
+                        <a href="" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="" target="_blank" title="Share on Twitter" ><i class="fa fa-twitter"></i></a>
+                        <a href="" target="_blank" title="Share on Google"><i class="fa fa-google-plus"></i></a>
+                        <a href="" target="_blank" title="Share on Instagram"><i class="fa fa-instagram"></i></a>
+                    @endforeach
+                        
+
                     </div>
                 </div>
             </div>
