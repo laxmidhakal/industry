@@ -243,3 +243,11 @@ a.link.linkedin{
 	padding-top: 103px;
     padding-bottom: 15px;
 }
+
+
+/*about page*/
+.main-about-img{
+	height: 338px;
+	object-fit: cover;
+	object-position: center center;
+}

@@ -1,12 +1,11 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
 @section('content')
-
-<section class="main-page-top set-bg" data-setbg="img/page-top-bg/1.jpg">
+<section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/1.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
-        <h2 class="display-4 text-white text-padding"> Team</h2>
+        <h2 class="display-4 text-white text-padding">Team</h2>
       </div>
     </div>
   </div>
@@ -18,7 +17,7 @@
       @foreach($team_details as $main_data)
       <div class="col-md-4">
         <div class="team-member main-team-hover">
-          <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="">
+          <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
           <div class="member-info pb-2">
             <h3>{{$main_data->title}}</h3>
             <p>{!! $main_data->designation !!} </p>
