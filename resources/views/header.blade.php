@@ -3,9 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <ul >
-                        
-                        <li class="list-inline-item"><p  class="text-light "> Welcome to Global SAS Trading Pvt. Ltd.</p></li>
+                    <ul>
+                        <li class="list-inline-item"><p class="text-light"> Welcome to Global SAS Trading Pvt. Ltd.</p></li>
                     </ul>
                 </div>
                 
@@ -23,14 +22,11 @@
                     @endforeach
 
                     @foreach($socials as $social)
-
                         <li class="list-inline-item my-auto">
                             <a href=" {{$social->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
                                 <i class="fa fa-facebook main-spin"></i>
                             </a>
                         </li>
-                        
-
                         <li class="list-inline-item">
                             <a href="{{$social->twitter}}" target="_blank" title="Share on Twitter" class="link twitter text-center">
                                 <i class="fa fa-twitter main-spin" ></i>
@@ -42,12 +38,12 @@
                             </a>
                         </li>
                     @endforeach
-
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="site-navbar">
         <!-- Logo -->
         <div class="container">
@@ -55,48 +51,20 @@
                 <div class="col-md-4">
                     <a href="" class="site-logo mt-md-2 pl-md-0 ">
                     @foreach($settings as $setting)
-
-
                         <img src="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" alt="" class="img-fluid main-logo" >
                     @endforeach
-
                     </a>
                 </div>
                 
-                <!-- <div class="header-right">
-                    <div class="header-info-box">
-                        <div class="hib-icon">
-                            <img src="img/icons/phone.png" alt="" class="">
-                        </div>
-                        <div class="hib-text">
-                            <h6>+546 990221 123</h6>
-                            <p>contact@industryalinc.com</p>
-                        </div>
-                    </div>
-                    <div class="header-info-box">
-                        <div class="hib-icon">
-                            <img src="img/icons/map-marker.png" alt="" class="">
-                        </div>
-                        <div class="hib-text">
-                            <h6>Main Str, no 23</h6>
-                            <p>NY, New York PK 23589</p>
-                        </div>
-                    </div>
-                    <button class="search-switch"><i class="fa fa-search"></i></button>
-                </div> -->
                 <!-- Menu -->
                 <div class="col-md-8 pr-md-0">
-                 
-                    <nav class="site-nav-menu header-right pr-md-0 " >
-                        <ul >
+                    <nav class="site-nav-menu header-right pr-md-0">
+                        <ul>
                             <li class="{{Request::route()->getName() == 'index' ? 'active' : ''}}"><a href="{{URL::to('/')}}">Home</a></li>
-
                             <li class="{{Request::route()->getName() == 'about' ? 'active' : ''}}"><a href="{{URL::to('/about')}}">About</a></li>
-                            <li class="{{Request::route()->getName() == 'companies' ? 'active' : ''}}"><a  href="{{URL::to('/companies')}}">Companies </a>
-                                
+                            <li class="{{Request::route()->getName() == 'companies' ? 'active' : ''}}"><a  href="{{URL::to('/companies')}}">Companies</a>
                             </li>
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
-
                             <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="javascript:void(0);">Product</a>
                                 @if(count($product_menu))
                                 <ul class="sub-menu">
@@ -111,10 +79,7 @@
                         </ul>
                     </nav>
                 </div>
-
-               
             </div>
         </div>
-
     </div>
 </header>
