@@ -19,7 +19,9 @@ Route::get('/gallery', 'IndustryController@indexGallery')->name('gallery');
 Route::get('/product/{slug}', 'IndustryController@indexProduct')->name('product');
 Route::get('/product/{product}/{slug}', 'IndustryController@indexProductDetail')->name('productDescription');
 Route::get('/team', 'IndustryController@indexTeam')->name('team');
-Route::get('/contact', 'IndustryController@indexContact')->name('contact');
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::post('/contact/store', 'ContactController@store')->name('store');
+
 
 Auth::routes();
 
@@ -34,6 +36,10 @@ Route::resource('/home/product', 'Backend\ProductController');
 Route::get('/home/product/{slug}/detail', 'Backend\ProductDetailController@index')->name('productDetail');
 Route::post('/home/product/detail/store', 'Backend\ProductDetailController@store');
 Route::resource('/home/setting', 'Backend\SettingController');
+Route::get('/home/contact', 'ContactController@create');
+Route::resource('/home/social', 'Backend\SocialController');
+
+
 
 
 

@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="feature-box">
-              @foreach($product_details as $main_data)
+              @foreach($product_description as $main_data)
             <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="">
             <div class="fb-text">
               <h5>{{$main_data->title}}</h5>

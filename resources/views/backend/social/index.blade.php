@@ -45,21 +45,21 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Subject</th>
-                    <th>Message</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Image</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($contacts as $contact)
+                @foreach($socials as $slider)
                 <tr>
-                  <td>#</td>
-                  <td>{{$contact->name}}</td>
-                  <td>{{$contact->email}}</td>
-                  <td>{{$contact->subject}}</td>
-                  <td>{{$contact->message}}</td>
+                  <td>{{$slider->id}}</td>
+                  <td>{{$slider->facebook}}</td>
+                  <td>{{$slider->linkedin}}</td>
+                  <td>
+                    {{$slider->twitter}}
+                  </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
@@ -74,6 +74,7 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
+             {!! $socials->links("pagination::bootstrap-4") !!}
             
           </div>
           <!-- /.card-footer-->
@@ -83,5 +84,46 @@
       </section>
       <!-- /.content -->
     </div>
-    
+    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Slider </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form role="form" method="POST" action="{{route('social.store')}}" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="modal-body" >
+              <div class="form-group">
+                <label for="facebook">facebook</label>
+                <input type="text" class="form-control" id="facebook" placeholder="Enter facebook" name="facebook">
+              </div>
+              <div class="form-group">
+                <label for="linkedin">linkedin</label>
+                <input type="text" class="form-control" id="linkedin" placeholder="Enter linkedin" name="linkedin">
+              </div>
+              <div class="form-group">
+                <label for="twitter">twitter</label>
+                <input type="text" class="form-control" id="twitter" placeholder="Enter twitter" name="twitter">
+              </div>
+              <div class="form-group">
+                <label for="google">google</label>
+                <input type="text" class="form-control" id="google" placeholder="Enter google" name="google">
+              </div>
+              
+
+              
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
     @endsection

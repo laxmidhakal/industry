@@ -1,30 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-use Auth;
+use Validator;
 use Redirect;
 use Response;
-use Validator;
 use Session;
 use File;
 use Route;
+use App\Slider;
+use App\About;
+use App\Company;
+use App\Gallery;
+use App\Team;
+use App\Product;
+use App\Product_has_detail;
+use App\Setting;
 use App\Contact;
+use App\Social;
+
+
 
 class ContactController extends Controller
 {
-    public function __construct(Request $request, Helper $helper)
+   public function __construct(Request $request)
     {
         $this->middleware('auth');
         $this->request = $request;
     }
     public function index()
     {
-        $contacts=Contact::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
-        return view('backend.contact.index',compact('contacts'));
+        $contacts=Contact::orderBy('created_at','DESC')->get();
+        $settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+        $about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+        $product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+        $socials = Social::orderBy('created_at','DESC')->get()->take(1);
+        return view('contact',compact('settings','product_menu','socials','about_details','contacts'));
     }
 
     /**
@@ -34,7 +47,10 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        $contacts=Contact::orderBy('created_at','DESC')->get();
+        return view('backend.contact.index',compact('contacts'));
+
+        
     }
 
     /**
@@ -54,7 +70,7 @@ class ContactController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/contact')
+        return redirect('/contact')
         ->withErrors($validator)
         ->withInput();
         }
@@ -63,13 +79,9 @@ class ContactController extends Controller
         $main_store->email = Input::get('email');
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
-        if($main_store->save()){
-            $this->request->session()->flash('alert-success', 'Data save successfully!!');
-        }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
-        }
-        //var_dump($name); die();
-
+        $main_store->save();
+        return redirect()->route('contact');
+        
     }
 
     /**

@@ -65,6 +65,18 @@
             <p>Setting</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/contact" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Contact Details</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/home/social" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p> Details</p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

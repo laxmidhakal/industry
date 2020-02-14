@@ -13,7 +13,7 @@
 <div class="map-section">
   <div class="container">
     <div class="map-info">
-      <img src="img/logo-contact.png" alt="">
+       <h2 class="fw-title"><span class="text-white">Welcome to</span> Global SAS Trading  </h2>
         @foreach($about_details as $main_data)
        <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
        @endforeach
@@ -30,7 +30,7 @@
     <div class="row">
       
       <div class="col-lg-8">
-        <form class="contact-form" method="POST" action="">
+        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store">
             {{ csrf_field() }}
           
           <div class="row">

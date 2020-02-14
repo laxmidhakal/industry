@@ -17,8 +17,8 @@
                         <span>{{$words[$i]}} </span>
                     <?php } ?>
                     </h2>
-                    <a href="#" class="site-btn sb-white mr-4 mb-3">Read More</a>
-                    <a href="#" class="site-btn sb-dark">Our Company</a>
+                    <a href="{{ route('about') }}" class="site-btn sb-white mr-4 mb-3">Read More</a>
+                    <a href="{{ route('companies') }}" class="site-btn sb-dark">Our Company</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <h2 class="mb-5">{{$about->title}}</h2>
             <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
-            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" >  <a href="{{ route('contact') }}" class="main-btn-outline">Read More</a></button>
+            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" >  <a href="{{ route('about') }}" class="main-btn-outline">Read More</a></button>
 
         </div>
 
@@ -46,7 +46,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
+
                 <ul class="nav nav-tabs reserch-tab-menu" role="tablist">
+                    
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Category</a>
                     </li>
@@ -69,6 +71,7 @@
                         <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
                     </li>
                 </ul>
+
             </div>
             <div class="col-lg-8">
                 <div class="tab-content reserch-tab">

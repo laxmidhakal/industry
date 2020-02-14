@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-use App\Helper\Helper;
 use Auth;
 use Redirect;
 use Response;
@@ -13,10 +12,11 @@ use Validator;
 use Session;
 use File;
 use Route;
-use App\About;
+use App\Social;
+use App\Helper\Helper;
 
 
-class AboutController extends Controller
+class SocialController extends Controller
 {
     public function __construct(Request $request, Helper $helper)
     {
@@ -24,15 +24,10 @@ class AboutController extends Controller
         $this->request = $request;
         $this->helper = $helper;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
-        return view('backend.about.index',compact('abouts'));
+        $socials=Social::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
+        return view('backend.social.index',compact('socials'));
     }
 
     /**
@@ -53,31 +48,24 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'title' => 'required|unique:abouts',
-            'description' => 'required',
-            'image' => 'required|mimes:jpeg,jpg|max:1024',
+         $rules = array(
+            'facebook' => 'required',
+            'linkedin' => 'required',
+            'twitter' => 'required',
+            'google' => 'required',
+
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/about')
+        return redirect('/home/social')
         ->withErrors($validator)
         ->withInput();
         }
-        $main_store = new About;
-        $main_store->title = Input::get('title');
-        $main_store->slug = $this->helper->slug_converter($main_store->title);
-        $image = Input::file('image');
-        if($image != ""){
-            $destinationPath = 'images/about/'; // upload path
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-            $image->move($destinationPath, $fileName); /*move file on destination*/
-            $file_path = $destinationPath.'/'.$fileName;
-            $main_store->image_enc = $fileName;
-            $main_store->image = $image->getClientOriginalName();
-        }
-        $main_store->description = Input::get('description');
+        $main_store = new Social;
+        $main_store->facebook = Input::get('facebook');
+        $main_store->linkedin = Input::get('linkedin');
+        $main_store->twitter = Input::get('twitter');
+        $main_store->google = Input::get('google');
         $main_store->created_by = Auth::user()->id;
         if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data save successfully!!');
