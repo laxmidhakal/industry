@@ -245,9 +245,15 @@ a.link.linkedin{
 }
 
 
-/*about page*/
+/*image page*/
 .main-about-img{
 	height: 338px;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.main-gallery-img{
+	height: 200px !important;
 	object-fit: cover;
 	object-position: center center;
 }
