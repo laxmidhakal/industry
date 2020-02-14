@@ -37,7 +37,7 @@
                             <img src="{{URL::to('/')}}/img/icons/map-marker.png" alt="" class="">
                         </div>
                         <div class="fib-text">
-                            <p>{{$setting->address}}<br>{{$setting->address}}, Nepal </p>
+                            <p>{{$setting->address}} </p>
                         </div>
                     </div>
                     <div class="footer-info-box">
@@ -57,7 +57,7 @@
                     <!-- <img src="img/sas.png" alt="" class="img-fluid"> -->
                     <h2 class="fw-title"><span class="main-logo-text">Global</span> SAS Trading Pvt. Ltd. </h2>
                     @foreach($about_details as $detail)
-                    <p> {!! Illuminate\Support\Str::limit($detail->description, 256) !!}</p>
+                    <p> {!! Illuminate\Support\Str::limit($detail->description, 170) !!}</p>
                     @endforeach
                     <div class="footer-social">
                         <a href="https://www.facebook.com/Global-SAS-trading-Pvt-Ltd-108457937385069/?modal=admin_todo_tour" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-lg-12 ">
                     <div class="copyright my-3">
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved Developed by <a href="https://techware.com.np" target="_blank">Techware Pvt. Ltd.</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved Developed by <a href="https://techware.com.np" target="_blank" class="text-decoration-none">Techware Pvt. Ltd.</a>
                     </div>
                 </div>
             </div>
