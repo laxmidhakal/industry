@@ -45,20 +45,20 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
+                    <th>Facebook Link </th>
+                    <th>Linkedin Link</th>
+                    <th>Twitter</th>
                     <th>Label</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($socials as $slider)
+                @foreach($socials as $social)
                 <tr>
-                  <td>{{$slider->id}}</td>
-                  <td>{{$slider->facebook}}</td>
-                  <td>{{$slider->linkedin}}</td>
+                  <td>#</td>
+                  <td>{{$social->facebook}}</td>
+                  <td>{{$social->linkedin}}</td>
                   <td>
-                    {{$slider->twitter}}
+                    {{$social->twitter}}
                   </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
@@ -88,7 +88,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Slider </h4>
+            <h4 class="modal-title">Social Link </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -97,19 +97,19 @@
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
-                <label for="facebook">facebook</label>
+                <label for="facebook">Facebook</label>
                 <input type="text" class="form-control" id="facebook" placeholder="Enter facebook" name="facebook">
               </div>
               <div class="form-group">
-                <label for="linkedin">linkedin</label>
+                <label for="linkedin">Linkedin</label>
                 <input type="text" class="form-control" id="linkedin" placeholder="Enter linkedin" name="linkedin">
               </div>
               <div class="form-group">
-                <label for="twitter">twitter</label>
+                <label for="twitter">Twitter</label>
                 <input type="text" class="form-control" id="twitter" placeholder="Enter twitter" name="twitter">
               </div>
               <div class="form-group">
-                <label for="google">google</label>
+                <label for="google">Google</label>
                 <input type="text" class="form-control" id="google" placeholder="Enter google" name="google">
               </div>
               
