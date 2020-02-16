@@ -271,8 +271,8 @@ a.link.linkedin{
 
 }
 .main-product-img{
-	height: 200px !important;
-	object-fit: contain;
+	height: 284px !important;
+	object-fit: cover;
 	object-position: center center;
 }
 
