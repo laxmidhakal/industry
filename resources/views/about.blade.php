@@ -15,17 +15,18 @@
 <section class="main-about">
 	<div class="container">
 		<div class="row">
-			@foreach($about_details as $main_data)
+			@foreach($about_details as $about_data)
 			<div class="col-lg-6">
-				<img src="{{URL::to('/')}}/images/about/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-about-img">
+				<img src="{{URL::to('/')}}/images/about/{{$about_data->image_enc}}" alt="{{$about_data->title}}" class="img-fluid w-100 main-about-img">
 			</div>
 			<div class="col-lg-6">
 				<div class="about-text">
-					<h2>{{$main_data->title}}</h2>
-					<p>{!! $main_data->description !!} </p>
+					<h2>{{$about_data->title}}</h2>
+					<p>{!! $about_data->description !!} </p>
 				</div>
 			</div>
 			@endforeach
+			
 		</div>
 	</div>
 </section>
@@ -41,14 +42,20 @@
 			@foreach($team_details as $main_data)
 			<div class="col-md-4">
 				<div class="team-member">
-					<img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-about-img">
+					<img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-team-img">
 					<div class="member-info">
 						<h3>{{$main_data->title}}</h3>
 						<p>{{$main_data->designation}} </p>
 					</div>
 				</div>
+				
 			</div>
 			@endforeach
+			
+
+		</div>
+		<div class="mt-4  d-flex justify-content-center">
+		  {!! $about_details->links("pagination::bootstrap-4") !!}
 		</div>
 		
 	</div>

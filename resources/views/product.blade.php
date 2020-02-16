@@ -24,6 +24,9 @@
               <a href="{{URL::to('/')}}/product/{{$main_data->getProduct->slug}}/{{$main_data->slug}}" class="fb-more-btn">Read More</a>
             </div>
           </div>
+          <div class="mt-4">
+            {!! $product_details->links("pagination::bootstrap-4") !!}
+          </div>
         </div>
         @endforeach
       </div>

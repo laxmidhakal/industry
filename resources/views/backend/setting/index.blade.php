@@ -126,7 +126,7 @@
                 <input type="number" step="any" class="form-control" id="long" placeholder="Enter longitude" name="long">
               </div>
               <div class="form-group">
-                <label for="image">Choose Image</label>
+                <label for="image">Choose Logo(Logo must be in png)</label>
                 <div class="input-group">
                     <input type="file" class="form-control" id="image" name="image">
                 </div>

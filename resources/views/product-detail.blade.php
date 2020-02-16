@@ -11,33 +11,26 @@
     </div>
   </div>
 </section>
-<section class="testimonial-section features-section spad set-bg">
-  <div class="container-fluid">
+<section class="main-about">
+  <div class="container">
     <div class="row">
-     @foreach($product_details as $main_data)
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-bg set-bg" data-setbg="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}"></div>
+      @foreach($product_details as $about_data)
+      <div class="col-lg-6">
+        <img src="{{URL::to('/')}}/images/productdetail/{{$about_data->image_enc}}" alt="{{$about_data->title}}" class="img-fluid w-100 main-productdetail-img pb-5 ">
       </div>
-      <div class="col-lg-6 p-0">
-        <div class="testimonial-box">
-          <div class="testi-box-warp">
-            <h2>{{$main_data->title}}</h2>
-            <div class="testimonial-slider owl-carousel">
-              <div class="testimonial">
-                <p>{!!$main_data->description!!}</p>
-                <img src="{{URL::to('/')}}" alt="">
-                <div class="testi-info">
-                  <h5></h5>
-                  <span>CEO Industrial INC</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="col-lg-6">
+        <div class="about-text">
+          <h2>{{$about_data->title}}</h2>
+          <p>{!! $about_data->description !!} </p>
         </div>
       </div>
+      @endforeach
+      
     </div>
-   @endforeach
   </div>
 </section>
+
+
+
 
 @endsection
