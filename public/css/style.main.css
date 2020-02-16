@@ -281,6 +281,12 @@ a.link.linkedin{
 	object-fit: contain;
 	object-position: center center;
 }
+.main-productdetail-img{
+	height: 200px !important;
+	object-fit: contain;
+	object-position: center center;
+}
+
 
 /*paginate*/
 .page-item.active .page-link {

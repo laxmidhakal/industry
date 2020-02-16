@@ -33,7 +33,6 @@ class IndustryController extends Controller
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
 		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->get();
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title = "About";
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
@@ -76,7 +75,7 @@ class IndustryController extends Controller
 		$page_title = "Product";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
 		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials'));
 	}
@@ -95,7 +94,7 @@ class IndustryController extends Controller
 
 	public function indexTeam()
 	{
-		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(1);
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
