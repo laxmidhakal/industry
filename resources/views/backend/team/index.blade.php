@@ -52,16 +52,17 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($teams as $team)
+                @foreach($teams as $key=>$team)
                 <tr>
-                  <td>{{$team->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$team->title}}</td>
                   <td>{{$team->designation}}</td>
                   <td>
-                    <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img">
-                      
-                    </div>
+                    @if($team->image_enc != "")
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img center-block">
+                    @else
+                      <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    @endif
                   </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
@@ -110,7 +111,7 @@
               </div>
 
               <div class="form-group">
-                <label for="image">File input</label>
+                <label for="image">Choose Image</label>
                 <div class="input-group">
                     <input type="file" class="form-control" id="image" name="image">
                 </div>

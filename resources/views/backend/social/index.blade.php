@@ -54,9 +54,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($socials as $social)
+                @foreach($socials as $key=>$social)
                 <tr>
-                  <td>#</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$social->facebook}}</td>
                   <td>{{$social->linkedin}}</td>
                   <td>{{$social->twitter}}</td>
@@ -90,7 +90,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Social Link </h4>
+            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

@@ -53,9 +53,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($contacts as $contact)
+                @foreach($contacts as $key=>$contact)
                 <tr>
-                  <td>#</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$contact->name}}</td>
                   <td>{{$contact->email}}</td>
                   <td>{{$contact->subject}}</td>
