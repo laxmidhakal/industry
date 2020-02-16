@@ -50,9 +50,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($products as $product)
+                @foreach($products as $key=>$product)
                 <tr>
-                  <td>{{$product->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>
                   <a href="{{URL::to('/')}}/home/product/{{$product->slug}}/detail">
                     {{$product->title}}</td>

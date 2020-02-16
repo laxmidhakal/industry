@@ -35,7 +35,7 @@
               <input type="text"  id="name" placeholder="Enter Your Name" name="name">
             </div>
             <div class="col-lg-6">
-              <input type="text" placeholder="Your Email" name="email" id="email">
+              <input type="email" placeholder="Your Email" name="email" id="email">
             </div>  
             <div class="col-lg-12">
               <input type="text"  id="subject" placeholder="Subject" name="subject">

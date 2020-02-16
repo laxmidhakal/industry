@@ -25,7 +25,6 @@ class IndustryController extends Controller
         $productdetails = Product_has_detail::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
-
 		return view('welcome',compact(['index_details','page_title','settings','about_details','product_menu','settings','productdetails','socials']));
 	}
 
@@ -77,17 +76,16 @@ class IndustryController extends Controller
 		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials'));
 	}
 
-	public function indexProductDetail($slug,$product)
+	public function indexProductDetail($product,$slug)
 	{
-		$product_id = Product::where('slug',$slug)->where('product',$product)->value('id');
+		$product_id = Product::where('slug',$product)->value('id');
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$product_details = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-		$product_description = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$page_title = "ProductDetail";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$product_details = Product_has_detail::where('slug',$slug)->where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
-		return view('product',compact('settings','page_title','product_menu','product_details','settings','about_details','product_description','product_id','socials'));
+		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials'));
 	}
 
 	public function indexTeam()

@@ -55,9 +55,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($settings as $setting)
+                @foreach($settings as $key=>$setting)
                 <tr>
-                  <td>{{$setting->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$setting->address}}</td>
                   <td>{{$setting->phone}}</td>
                   <td>{{$setting->email}}</td>
@@ -97,7 +97,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Setting </h4>
+            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -126,7 +126,7 @@
                 <input type="number" step="any" class="form-control" id="long" placeholder="Enter longitude" name="long">
               </div>
               <div class="form-group">
-                <label for="image">File input</label>
+                <label for="image">Choose Image</label>
                 <div class="input-group">
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
