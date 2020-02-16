@@ -44,107 +44,34 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <ul class="nav nav-tabs reserch-tab-menu" role="tablist">                    
+                <ul class="nav nav-tabs reserch-tab-menu" role="tablist">
+                    @foreach($product_menu as $key=>$product_list)                    
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Category</a>
+                        <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab" href="#tab-{{$product_list->id}}" role="tab" aria-controls="tab-{{$product_list->id}}" aria-selected="true">{{$product_list->title}}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Category</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
-                    </li><li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Category</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-lg-8">
                 <div class="tab-content reserch-tab">
                     <!-- single tab content -->
-                    <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+                    @foreach($product_menu as $key=>$product_main)                    
+                    <div class="tab-pane fade  {{ $key == 0 ? 'show active' : '' }}" id="tab-{{$product_main->id}}" role="tabpanel" aria-labelledby="tab-{{$product_main->id}}">
                         <div id="client-carousel" class="client-slider owl-carousel">
+                            @foreach($product_main->getProductDetail()->get() as $product_detail)
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="img/product.jpg" alt="">
+                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-img">
                                     <div class="member-info">
-                                        <h3 class="text-light">Product Name</h3>
-                                        <p>Some Text </p>
+                                        <h3 class="text-light">{{$product_detail->title}}</h3>
+                                        <p>{{$product_detail->title}} </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-brand">
-                                <div class="team-member">
-                                    <img src="img/product.jpg" alt="">
-                                    <div class="member-info">
-                                        <h3 class="text-light">Product Name</h3>
-                                        <p>Some Text </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-brand">
-                                <div class="team-member">
-                                    <img src="img/product.jpg" alt="">
-                                    <div class="member-info">
-                                        <h3 class="text-light">Product Name</h3>
-                                        <p>Some Text </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-brand">
-                                <div class="team-member">
-                                    <img src="img/product.jpg" alt="">
-                                    <div class="member-info">
-                                        <h3 class="text-light">Product Name</h3>
-                                        <p>Some Text </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-brand">
-                                <div class="team-member">
-                                    <img src="img/product.jpg" alt="">
-                                    <div class="member-info">
-                                        <h3 class="text-light">Product Name</h3>
-                                        <p>Some Text </p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
-                        <h2>We produce or supply Goods, & Services, Oils & Lubricants</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor.</p>
-                        <p>Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
-                        <h2>We produce or supply Goods, & Services, Oils & Lubricants</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor.</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab-4">
-                        <h2>We produce or supply Goods, & Services, Oils & Lubricants</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor.</p>
-                        <p>Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est.</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="tab-5">
-                        <h2>We produce or supply Goods, & Services, Oils & Lubricants</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor.</p>
-                        <p>Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab-6" role="tabpanel" aria-labelledby="tab-6">
-                        <h2>We produce or supply Goods, & Services, Oils & Lubricants</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor.</p>
-                        <p>Quisque orci purus, sodales in est quis, blandit sollicitudin est. Nam ornare ipsum ac accumsan auctor. Donec consequat arcu et commodo interdum. Vivamus posuere lorem lacus.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis commodo.</p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
