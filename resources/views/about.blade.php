@@ -5,12 +5,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-5">
-				<h2 class="display-4 text-white text-padding">About us</h2>
+				<h2 class="display-4 text-white pt-5">About us</h2>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- About section -->
+@if(count($about_details))
 <section class="main-about">
 	<div class="container">
 		<div class="row">
@@ -28,6 +29,7 @@
 		</div>
 	</div>
 </section>
+@endif
 
 <section class="team-section spad">
 	@if(count($team_details))

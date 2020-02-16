@@ -32,6 +32,12 @@
     color: white !important;
     border-color: #0e2b43 !important;
 }
+.main-btn-outline>a{
+	color:#0e2b43;
+}
+.main-btn-outline>a:hover{
+    color: white !important;
+}
 .main-btn-out{
     color: #ffc000 !important;
     border-color: #ffc000 !important;
@@ -225,7 +231,7 @@ a.link.linkedin{
 	
 }
 .text-padding{
-	margin-bottom: -50px !important;
+	/*margin-bottom: -50px !important;*/
 
 }
 .footerlink{
@@ -268,3 +274,10 @@ a.link.linkedin{
 	height: 200px !important;
 	object-fit: contain;
 	object-position: center center;
+}
+
+.main-side-product-img{
+	height: 100px !important;
+	object-fit: contain;
+	object-position: center center;
+}

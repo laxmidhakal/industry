@@ -1,5 +1,6 @@
 @extends('main')
-@section('content')@section('tab_title'){{$page_title}}@endsection
+@section('tab_title'){{$page_title}}@endsection
+@section('content')
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
         @foreach($index_details as $main_data)
@@ -25,7 +26,7 @@
         @endforeach
     </div>
 </section>
-
+@if(count($about_details))
 <section class="clients-section spad">
     <div class="container">
         <div class="text-center">
@@ -33,10 +34,11 @@
             <h2 class="mb-5">{{$about->title}}</h2>
             <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
-            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" >  <a href="{{ route('about') }}" class="main-btn-outline">Read More</a></button>
+            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" ><a href="{{ route('about') }}">Read More</a></button>
         </div>
     </div>
 </section>
+@endif
 
 <section class="reserch-section spad">
     <div class="container">
