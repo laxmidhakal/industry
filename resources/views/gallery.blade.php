@@ -27,7 +27,11 @@
         </li>
         @endforeach
       </ul>
+    <div class="mt-4 d-flex justify-content-center">
+      {!! $gallery_details->links("pagination::bootstrap-4") !!}
     </div>
+    </div>
+
   </div>
 </section>
 @endsection

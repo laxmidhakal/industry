@@ -52,6 +52,7 @@
                     <th>Action</th>
                   </tr>
                 </thead>
+
                 @foreach($companies as  $key=>$company)
                 <tr>
                   <td>{{$key+1}}</td>

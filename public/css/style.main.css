@@ -281,3 +281,26 @@ a.link.linkedin{
 	object-fit: contain;
 	object-position: center center;
 }
+
+/*paginate*/
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #ffc000;
+    border-color: #ffc000;
+}
+.page-item{
+	margin-right: 20px;
+
+
+}
+.page-link {
+    color: #ffc000;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 25px;
+}
+.page-link:hover {
+    color: #ffc000;
+    background-color: #ffc0002b;
+    border-color: #dee2e6;
+}
