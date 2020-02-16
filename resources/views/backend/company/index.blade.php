@@ -52,9 +52,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($companies as $company)
+                @foreach($companies as $key=>$company)
                 <tr>
-                  <td>{{$company->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$company->title}}</td>
                   <td>{!! $company->description !!} </td>
                   <td>
