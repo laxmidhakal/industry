@@ -38,7 +38,7 @@
 			<h2 >Our Amazing Team</h2>
 		</div>
 		<div class="row">
-			@foreach($team_details as $main_data)
+			@foreach($team_details->take(3) as $main_data)
 			<div class="col-md-4">
 				<div class="team-member">
 					<img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-about-img">

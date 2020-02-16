@@ -17,13 +17,15 @@
         @if(count($product_details))
         <div class="sb-widget">
           <h2 class="sb-title">Product</h2>
-          @foreach($product_details->random(1) as $main_data)
+          @foreach($product_details->random(1) as $main_product)
           <div class="recent-post">
             <div class="rp-item">
-              <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluids main-side-product-img">
-              <div class="rp-text">
-                <p>{{$main_data->title}}</p>
-                 <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-out">Read More</button>
+              <a href="{{URL::to('/')}}/product/{{$main_product->getProduct->slug}}/{{$main_product->slug}}">
+                <img src="{{URL::to('/')}}/images/productdetail/{{$main_product->image_enc}}" alt="{{$main_product->title}}" class="img-fluids main-side-product-img">
+                <div class="rp-text">
+                  <h5>{{$main_product->title}}</h5>
+                  <p>{{$main_product->getProduct->title}}</p>
+              </a>
               </div>
             </div>    
           </div>
@@ -33,8 +35,8 @@
         <div class="sb-widget">
           <div class="info-box">
             <h3>Contact Us for Help</h3>
-              @foreach($about_details as $main_data)
-             <p> {!! Illuminate\Support\Str::limit($main_data->description, 200) !!}</p>
+              @foreach($about_details as $main_about)
+             <p> {!! Illuminate\Support\Str::limit($main_about->description, 200) !!}</p>
               @endforeach
             <div class="footer-info-box">
               <div class="fib-icon">
