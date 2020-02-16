@@ -52,16 +52,17 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                @foreach($companies as $company)
+                @foreach($companies as  $key=>$company)
                 <tr>
-                  <td>{{$company->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$company->title}}</td>
                   <td>{!! $company->description !!} </td>
                   <td>
-                    <div class="">
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" class="img-fluid back-img">
-                      
-                    </div>
+                     @if($company->image_enc != "")
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" class="img-fluid back-img center-block">
+                    @else
+                      <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    @endif
                   </td>
                   <td>
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
@@ -91,7 +92,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Slider </h4>
+            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -109,9 +110,9 @@
               </div>
 
               <div class="form-group">
-                <label for="image">File input</label>
+                <label for="image">Choose Image</label>
                 <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image">
+                  <input type="file" class="form-control" id="image" name="image">
                 </div>
               </div>
             </div>

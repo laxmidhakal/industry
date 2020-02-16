@@ -42,6 +42,8 @@
                     <th>Description</th>
                     <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>              
@@ -60,10 +62,13 @@
                   <td class="text-center">
                     <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
+                  <td>{{$about->user->name}}</td>
+                  <td>{{date('D, j M Y', strtotime($about->created_at))}}</td>
                   <td class="text-center">
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
+                 
                 </tr>
                 @endforeach
               </table>
@@ -87,7 +92,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">{{$page}} Add </h4>
+            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -105,7 +110,7 @@
               </div>
 
               <div class="form-group">
-                <label for="image">File input</label>
+                <label for="image">Choose Image</label>
                 <div class="input-group">
                     <input type="file" class="form-control" id="image" name="image">
                 </div>

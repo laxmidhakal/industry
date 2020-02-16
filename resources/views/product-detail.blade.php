@@ -11,22 +11,33 @@
     </div>
   </div>
 </section>
-<section class="features-section spad set-bg" data-setbg="{{URL::to('/')}}img/features-bg.jpg" style="background-image: url(&quot;img/features-bg.jpg&quot;);">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-box">
-              @foreach($product_description as $main_data)
-            <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="">
-            <div class="fb-text">
-              <h5>{{$main_data->title}}</h5>
-              <p>{!!$main_data->description!!} </p>
-              <a href="{{ route('productDescription') }}" class="fb-more-btn"> Hello Read More</a>
+<section class="testimonial-section features-section spad set-bg">
+  <div class="container-fluid">
+    <div class="row">
+     @foreach($product_details as $main_data)
+      <div class="col-lg-6 p-0">
+        <div class="testimonial-bg set-bg" data-setbg="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}"></div>
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="testimonial-box">
+          <div class="testi-box-warp">
+            <h2>{{$main_data->title}}</h2>
+            <div class="testimonial-slider owl-carousel">
+              <div class="testimonial">
+                <p>{!!$main_data->description!!}</p>
+                <img src="{{URL::to('/')}}" alt="">
+                <div class="testi-info">
+                  <h5></h5>
+                  <span>CEO Industrial INC</span>
+                </div>
+              </div>
             </div>
-            @endforeach
           </div>
         </div>
       </div>
     </div>
-  </section>
+   @endforeach
+  </div>
+</section>
+
 @endsection

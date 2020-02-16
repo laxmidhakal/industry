@@ -80,9 +80,13 @@ class ContactController extends Controller
         $main_store->email = Input::get('email');
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
-        $main_store->save();
-        return redirect()->route('contact');
-        
+          if($main_store->save()){
+            $this->request->session()->flash('alert-success', 'Data save successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
+        }
+        return back()->withInput();
+       
     }
 
     /**
