@@ -87,8 +87,14 @@ class IndustryController extends Controller
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_details = Product_has_detail::where('slug',$slug)->where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_main = Product_has_detail::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		if (count($product_main) < 3) {
+			$products = $product_main;
+		}else{
+			$products = $product_main->random(3);
+		}
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
-		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials'));
+		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials','products'));
 	}
 
 	public function indexTeam()
