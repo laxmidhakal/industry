@@ -50,8 +50,11 @@
 			</div>
 			@endforeach
 		</div>
+		
 	</div>
 	@endif
+
 </section>
 @endsection
+
 
