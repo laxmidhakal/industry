@@ -58,6 +58,9 @@
         <p>{!! $main_data->description !!}</p>
       </div> 
       @endforeach
+      <div class="mt-4">
+        {!! $companies_details->links("pagination::bootstrap-4") !!}
+      </div>
       </div>
     </div>
   </div>
