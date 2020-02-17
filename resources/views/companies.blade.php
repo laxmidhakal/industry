@@ -40,7 +40,7 @@
               @endforeach
             <div class="footer-info-box">
               <div class="fib-icon">
-                <img src="{{URL::to('/')}}/img/icons/phone.png" alt="SAS">
+                <img src="{{URL::to('/')}}/img/icons/phone.png" alt="GLOBAL SAS">
               </div>
               @foreach($settings as $setting)
               <div class="fib-text">
