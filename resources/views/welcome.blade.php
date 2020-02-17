@@ -61,7 +61,7 @@
                             @foreach($product_main->getProductDetail()->get() as $product_detail)
                             <div class="single-brand">
                                 <div class="team-member">
-                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-img">
+                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-home-product-img">
                                     <div class="member-info">
                                         <h3 class="text-light">{{$product_detail->title}}</h3>
                                         <p>{{$product_detail->title}} </p>

@@ -54,6 +54,17 @@ class IndustryController extends Controller
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
 		return view('companies',compact(['companies_details' ,'page_title','settings','product_menu','settings','about_details','product_details','socials']));
 	}
+	public function indexCompaniesDetail($slug)
+	{
+		$company_id = Company::where('slug',$slug)->value('id');
+		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$page_title = "Product";
+		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$companies_details = Company::where('id',$company_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
+		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
+		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details'));
+	}
 
 	public function indexGallery()
 	{

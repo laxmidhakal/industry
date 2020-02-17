@@ -55,9 +55,11 @@
       <div class="col-lg-8 order-1 order-lg-2">
       @foreach($companies_details as $main_data)
       <div class="blog-post">
-        <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}" alt="{{$main_data->title}}"></div>
+        <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}" alt="{{$main_data->title}}"  >
+        </div>
         <h2>{{$main_data->title}} </h2>
         <p>{!! $main_data->description !!}</p>
+        <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline " ><a href=" {{URL::to('/')}}/companies/{{$main_data->slug}}">Read More</a></button>
       </div> 
       @endforeach
       <div class="mt-4">

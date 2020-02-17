@@ -15,6 +15,7 @@ Route::get('/', 'IndustryController@index')->name('index');
 
 Route::get('/about', 'IndustryController@indexAbout')->name('about');
 Route::get('/companies', 'IndustryController@indexCompanies')->name('companies');
+Route::get('/companies/{slug}', 'IndustryController@indexCompaniesDetail')->name('companiesdetail');
 Route::get('/gallery', 'IndustryController@indexGallery')->name('gallery');
 Route::get('/product/{slug}', 'IndustryController@indexProduct')->name('product');
 Route::get('/product/{product}/{slug}', 'IndustryController@indexProductDetail')->name('productDescription');

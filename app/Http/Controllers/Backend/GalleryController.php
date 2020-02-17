@@ -48,7 +48,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'title' => 'required|unique:galleries',
+            'title' => 'required',
             'description' => 'required',
             'image' => 'required|mimes:jpeg,jpg|max:1024',
         );
