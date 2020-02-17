@@ -32,14 +32,14 @@
             {{ csrf_field() }}  
           <div class="row">
             <div class="col-lg-6">
-              <input type="text"  id="name" placeholder="Enter Your Name" name="name">
+              <input type="text"  id="name" placeholder="Enter Your Name" name="name" required="true">
             </div>
             <div class="col-lg-6">
-              <input type="email" placeholder="Your Email" name="email" id="email">
+              <input type="email" placeholder="Your Email" name="email" id="email" required="true">
             </div>  
             <div class="col-lg-12">
-              <input type="text"  id="subject" placeholder="Subject" name="subject">
-              <textarea class="text-msg" placeholder="Message" id="message" name="message"></textarea>
+              <input type="text"  id="subject" placeholder="Subject" name="subject" required="true">
+              <textarea class="text-msg" placeholder="Message" id="message" name="message" required="true"></textarea>
               <button class="site-btn" type="submit" name="submit">send message</button>
             </div>
           </div>

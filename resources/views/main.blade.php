@@ -56,6 +56,7 @@
   <script src="{{URL::to('/')}}/js/circle-progress.min.js"></script>
   <script src="{{URL::to('/')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{URL::to('/')}}/js/main.js"></script>
+
   @yield('javascript')
   <!-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> -->
 </body>

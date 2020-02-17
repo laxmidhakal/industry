@@ -57,18 +57,22 @@
                     <!-- single tab content -->
                     @foreach($product_menu as $key=>$product_main)                    
                     <div class="tab-pane fade  {{ $key ? '' : 'show active' }}" id="tab-{{$product_main->id}}" role="tabpanel" aria-labelledby="tab-{{$product_main->id}}">
-                        <div id="client-carousel" class="client-slider owl-carousel">
+                        <div class="row">
                             @foreach($product_main->getProductDetail()->take(4)->get() as $product_detail)
-                            <div class="single-brand">
-                                <a href="{{URL::to('/')}}/product/{{$product_detail->getProduct->slug}}/{{$product_detail->slug}}">
-                                    <div class="team-member main-product-hover">
-                                        <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-img">
-                                        <div class="member-info">
-                                            <h3 class="text-light">{{$product_detail->title}}</h3>
-                                            <p>{{$product_detail->title}} </p>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="col-lg-4 col-md-6" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                                <div class="feature-box">
+                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-index-img" id="productpopover-{{$key+1}}" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{!! $product_detail->description !!}" data-original-title="{{$product_detail->title}}">
+                                     <a href="{{URL::to('/')}}/product/{{$product_detail->getProduct->slug}}/{{$product_detail->slug}}">
+                                         <div class="team-member main-product-hover">
+                                             
+                                             <div class="member-info">
+                                                 <h3 class="text-light">{{$product_detail->title}}</h3>
+                                                 <p>{{$product_detail->title}} </p>
+                                             </div>
+                                         </div>
+                                     </a>
+                                    
+                                </div>
                             </div>
                             @endforeach
                         </div>
@@ -83,4 +87,14 @@
     </div>
 </section>
 @endif
+@endsection
+@section('javascript')
+<script src="{{URL::to('/')}}/js/popper.min.js"></script>
+<script src="{{URL::to('/')}}/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover();
+  })
+</script>
 @endsection

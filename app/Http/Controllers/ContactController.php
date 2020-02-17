@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Helper\Helper;
 use Validator;
 use Redirect;
 use Response;
@@ -25,10 +26,12 @@ use App\Social;
 
 class ContactController extends Controller
 {
-   public function __construct(Request $request)
+   public function __construct(Request $request, Helper $helper)
     {
         $this->middleware('auth');
         $this->request = $request;
+        $this->helper = $helper;
+        
     }
     public function index()
     {
@@ -76,7 +79,8 @@ class ContactController extends Controller
         ->withInput();
         }
         $main_store = new Contact;
-        $main_store->name = Input::get('name');
+        $name = Input::get('name');
+        $main_store->name = Str::ucfirst($name);
         $main_store->email = Input::get('email');
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
