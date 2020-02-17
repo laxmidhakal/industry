@@ -26,20 +26,20 @@
         @endforeach
     </div>
 </section>
-@if(count($about_details))
 <section class="clients-section spad">
+@if(count($about_details))
     <div class="container">
         <div class="text-center">
              @foreach($about_details as $about)
             <h2 class="mb-5">{{$about->title}}</h2>
             <p>{!! Illuminate\Support\Str::limit($about->description, 506) !!}</p>
             @endforeach
-            <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" ><a href="{{ route('about') }}">Read More</a></button>
+            <a class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" href="{{ route('about') }}">Read More</a>
         </div>
     </div>
-</section>
 @endif
-
+</section>
+@if(count($product_menu))
 <section class="reserch-section spad">
     <div class="container">
         <div class="row">
@@ -47,7 +47,7 @@
                 <ul class="nav nav-tabs reserch-tab-menu" role="tablist">
                     @foreach($product_menu as $key=>$product_list)                    
                     <li class="nav-item">
-                        <a class="nav-link {{ $key == 0 ? 'active' : '' }}" data-toggle="tab" href="#tab-{{$product_list->id}}" role="tab" aria-controls="tab-{{$product_list->id}}" aria-selected="true">{{$product_list->title}}</a>
+                        <a class="nav-link {{ $key ? '' : 'active' }}" data-toggle="tab" href="#tab-{{$product_list->id}}" role="tab" aria-controls="tab-{{$product_list->id}}" aria-selected="true">{{$product_list->title}}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -56,19 +56,24 @@
                 <div class="tab-content reserch-tab">
                     <!-- single tab content -->
                     @foreach($product_menu as $key=>$product_main)                    
-                    <div class="tab-pane fade  {{ $key == 0 ? 'show active' : '' }}" id="tab-{{$product_main->id}}" role="tabpanel" aria-labelledby="tab-{{$product_main->id}}">
+                    <div class="tab-pane fade  {{ $key ? '' : 'show active' }}" id="tab-{{$product_main->id}}" role="tabpanel" aria-labelledby="tab-{{$product_main->id}}">
                         <div id="client-carousel" class="client-slider owl-carousel">
-                            @foreach($product_main->getProductDetail()->get() as $product_detail)
+                            @foreach($product_main->getProductDetail()->take(4)->get() as $product_detail)
                             <div class="single-brand">
-                                <div class="team-member">
-                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-home-product-img">
-                                    <div class="member-info">
-                                        <h3 class="text-light">{{$product_detail->title}}</h3>
-                                        <p>{{$product_detail->title}} </p>
+                                <a href="{{URL::to('/')}}/product/{{$product_detail->getProduct->slug}}/{{$product_detail->slug}}">
+                                    <div class="team-member main-product-hover">
+                                        <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-img">
+                                        <div class="member-info">
+                                            <h3 class="text-light">{{$product_detail->title}}</h3>
+                                            <p>{{$product_detail->title}} </p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             @endforeach
+                        </div>
+                        <div class="mt-md-5 d-flex justify-content-center">
+                            <a class="btn btn-outline-primary rounded-0 main-product-btn-outline" href="{{ route('about') }}">Read More</a>
                         </div>
                     </div>
                     @endforeach
@@ -77,4 +82,5 @@
         </div>
     </div>
 </section>
+@endif
 @endsection

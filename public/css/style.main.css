@@ -32,11 +32,17 @@
     color: white !important;
     border-color: #0e2b43 !important;
 }
-.main-btn-outline>a{
-	color:#0e2b43;
-}
-.main-btn-outline>a:hover{
+
+.main-product-btn-outline{
     color: white !important;
+    border-color: white !important;
+    font-weight: bold !important;
+}
+
+.main-product-btn-outline:hover{
+    background-color: transparent !important;
+    color: #ffc000 !important;
+    border-color: #ffc000 !important;
 }
 .main-btn-out{
     color: #ffc000 !important;
@@ -319,4 +325,9 @@ a.link.linkedin{
     color: #ffc000;
     background-color: #ffc0002b;
     border-color: #dee2e6;
+}
+
+/*main page*/
+.main-product-hover:hover {
+	background-color: #163d5d;
 }
