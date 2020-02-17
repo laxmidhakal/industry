@@ -25,7 +25,6 @@
         </div>
       </div>
       @endforeach
-      
     </div>
   </div>
 </section>
@@ -37,22 +36,16 @@
           @foreach($products->random(2) as $product)
         <div class="col-lg-4 col-md-6">
           <div class="feature-box">
-            <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="" class="img-fluid w-100 main-productdetail-img">
+            <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
             <div class="fb-text">
               <h5>{{$product->title}}</h5>
               <p>{!!$product->description!!} </p>
             </div>
           </div>
-          
         </div>
         @endforeach
       </div>
         @endif
-
     </div>
   </section>
-
-
-
-
 @endsection
