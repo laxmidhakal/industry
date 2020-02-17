@@ -59,7 +59,7 @@
         </div>
         <h2>{{$main_data->title}} </h2>
         <p>{!! $main_data->description !!}</p>
-        <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline " ><a href=" {{URL::to('/')}}/companies/{{$main_data->slug}}">Read More</a></button>
+        <button class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" ><a href=" {{URL::to('/')}}/companies/{{$main_data->slug}}">Read More</a></button>
       </div> 
       @endforeach
       <div class="mt-4">

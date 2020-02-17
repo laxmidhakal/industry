@@ -10,7 +10,6 @@
     </div>
   </div>
 </section>
-
 <section class="blog-section my-5">
   <div class="container">
     <div class="row">
