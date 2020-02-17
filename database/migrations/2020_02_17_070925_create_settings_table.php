@@ -20,8 +20,8 @@ class CreateSettingsTable extends Migration
             $table->string('email');
             $table->string('image')->nullable();
             $table->string('image_enc')->nullable();
-            $table->decimal('long', 10, 7);
-            $table->decimal('lat', 10, 7);
+            $table->string('long');
+            $table->string('lat');
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->integer('created_by')->unsigned(); // fk to users

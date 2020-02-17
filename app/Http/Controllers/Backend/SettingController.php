@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 use Auth;
 use Redirect;
 use Response;
@@ -63,7 +64,8 @@ class SettingController extends Controller
         ->withInput();
         }
         $main_store = new Setting;
-        $main_store->address = Input::get('address');
+        $mainaddress = Input::get('address');
+        $main_store->address = Str::ucfirst($mainaddress);
         $main_store->phone = Input::get('phone');
         $main_store->email = Input::get('email');
         $main_store->lat = Input::get('lat');
