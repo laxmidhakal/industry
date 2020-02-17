@@ -119,11 +119,11 @@
               </div>
               <div class="form-group">
                 <label for="lat">Latitude</label>
-                <input type="text" step="any" class="form-control" id="lat" placeholder="Enter latitude" name="lat">
+                <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat">
               </div>
               <div class="form-group">
                 <label for="long">Longitude</label>
-                <input type="text" step="any" class="form-control" id="long" placeholder="Enter longitude" name="long">
+                <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long">
               </div>
               <div class="form-group">
                 <label for="image">Choose Logo(Logo must be in png)</label>
