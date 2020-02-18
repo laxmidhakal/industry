@@ -13,7 +13,7 @@
 <section class="blog-section spadpadding">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 order-1 order-lg-2">
+      <div class="col-lg-12 order-1 order-lg-2">
       @foreach($companies_details as $main_data)
       <div class="blog-post">
         <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}" alt="{{$main_data->title}}">

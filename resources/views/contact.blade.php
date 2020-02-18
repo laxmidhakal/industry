@@ -35,12 +35,13 @@
               <input type="text"  id="name" placeholder="Enter Your Name" name="name" required="true">
             </div>
             <div class="col-lg-6">
-              <input type="email" placeholder="Your Email" name="email" id="email" required="true">
+              <input type="email" placeholder="Your Email" name="email" id="email" required="true" autocomplete="off">
             </div>  
             <div class="col-lg-12">
               <input type="text"  id="subject" placeholder="Subject" name="subject" required="true">
               <textarea class="text-msg" placeholder="Message" id="message" name="message" required="true"></textarea>
-              <button class="site-btn" type="submit" name="submit">send message</button>
+              <button class="site-btn toastsDefaultDanger" type="submit" name="submit">send message</button>
+              
             </div>
           </div>
         </form>
@@ -76,4 +77,17 @@
     </div>
   </div>
 </section>
+@endsection
+@section('javascript')
+<script>
+  $('.toastsDefaultDanger').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+  
+</script>
 @endsection

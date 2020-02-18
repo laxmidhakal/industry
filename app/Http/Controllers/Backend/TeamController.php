@@ -48,7 +48,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'title' => 'required|unique:teams',
+            'title' => 'required',
             'designation' => 'required',
             'image' => 'required|mimes:jpeg,jpg|max:1024',
         );

@@ -45,7 +45,7 @@
                 <thead class="bg-secondary">
                   <tr>
                     <th>SN</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Designation</th>
                     <th>Image</th>
                     <th>Label</th>
@@ -101,7 +101,7 @@
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Name</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
               </div>
               

@@ -48,19 +48,15 @@
 						<p>{{$main_data->designation}} </p>
 					</div>
 				</div>
-				
 			</div>
 			@endforeach
-			
-
 		</div>
+		 <a class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" href="{{ route('team') }}">Read More</a>
 		<div class="mt-4  d-flex justify-content-center">
 		  {!! $about_details->links("pagination::bootstrap-4") !!}
 		</div>
-		
 	</div>
 	@endif
-
 </section>
 @endsection
 

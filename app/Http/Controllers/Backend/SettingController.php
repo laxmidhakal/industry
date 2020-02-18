@@ -51,7 +51,7 @@ class SettingController extends Controller
         $rules = array(
             'address' => 'required',
             'phone' => 'required|unique:settings',
-            'email' => 'required|unique:settings',
+            'email' => 'required|email|unique:settings',
             'lat' => 'required',
             'long' => 'required',
             'image' => 'required|mimes:png|max:1024',

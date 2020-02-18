@@ -27,13 +27,7 @@ use App\Social;
 
 class ContactController extends Controller
 {
-   public function __construct(Request $request, Helper $helper)
-    {
-        $this->middleware('auth');
-        $this->request = $request;
-        $this->helper = $helper;
-        
-    }
+  
     public function index()
     {
         $contacts=Contact::orderBy('created_at','DESC')->get();
@@ -67,8 +61,8 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'name' => 'required|unique:contacts',
-            'email' => 'required|unique:contacts',
+            'name' => 'required',
+            'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
 
@@ -86,9 +80,9 @@ class ContactController extends Controller
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
           if($main_store->save()){
-            $this->request->session()->flash('alert-success', 'Data save successfully!!');
+            $this->request->flash('alert-success', 'Data save successfully!!');
         }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
+            $this->request->flash('alert-waring', 'Data could not be add!!');
         }
         return back()->withInput();
        
