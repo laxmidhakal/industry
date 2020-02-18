@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Global sas </title>
+    <title>GLOBAL SAS PVT</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -26,21 +26,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
-
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Navbar -->
          @include('layouts.navbar')
         <!-- /.navbar -->
         @include('layouts.sidebar')
-
-
         <!-- Main Sidebar Container -->
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -87,10 +80,8 @@
             </section>
         <!-- /.content-wrapper -->
         @include('layouts.footer')
-
     </div>
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="{{url('/')}}/backend/js/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -172,7 +163,6 @@
             event.preventDefault();
     }
 </script>
-
 <script type="text/javascript">
     $(document).on('change', '#item_id', function(event) {
 // console.log('abc');
@@ -188,21 +178,12 @@ data: {
  beforeSend: function() {
         $("#loaderDiv").show();
     },
-
-
 success:function(data){
     $("#item_p").val(data[0].sale_price);
      $("#loaderDiv").hide();
 }
-
-
 });
 });
-
 </script>
-
-
-
-
 </body>
 </html>

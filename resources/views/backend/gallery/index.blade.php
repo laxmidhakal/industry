@@ -1,10 +1,7 @@
 @extends('backend.app')
-
 @section('content')
 <div class="content-wrapper">
-
   @include('backend.flash.alertmsg')
-
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -21,16 +18,12 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <!-- Main content -->
   <section class="content">
-
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -78,13 +71,11 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-             {!! $galleries->links("pagination::bootstrap-4") !!}
-            
+             {!! $galleries->links("pagination::bootstrap-4") !!}            
           </div>
           <!-- /.card-footer-->
         </div>
         <!-- /.card -->
-
       </section>
       <!-- /.content -->
     </div>
@@ -108,7 +99,6 @@
                 <label for="decription">Description</label>
                 <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
               </div>
-
               <div class="form-group">
                 <label for="image">Choose Image</label>
                 <div class="input-group">

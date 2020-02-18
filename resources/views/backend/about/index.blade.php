@@ -67,15 +67,13 @@
                   <td class="text-center">
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                  </td>
-                 
+                  </td> 
                 </tr>
                 @endforeach
               </table>
             </div>
           </div>
           <style type="text/css">
-
           </style>
           <!-- /.card-body -->
           <div class="card-footer">
@@ -84,7 +82,6 @@
           <!-- /.card-footer-->
         </div>
         <!-- /.card -->
-
       </section>
       <!-- /.content -->
     </div>
@@ -108,7 +105,6 @@
                 <label for="decription">Description</label>
                 <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
               </div>
-
               <div class="form-group">
                 <label for="image">Choose Image</label>
                 <div class="input-group">

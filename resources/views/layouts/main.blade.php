@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Inventory</title>
+    <title>Global SAS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -28,20 +28,14 @@
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
-
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Navbar -->
          @include('backend.header')
         <!-- /.navbar -->
         @include('backend.sidebar')
-
-
         <!-- Main Sidebar Container -->
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -88,10 +82,8 @@
             </section>
         <!-- /.content-wrapper -->
         @include('backend.footer')
-
     </div>
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="{{url('/')}}/backend/js/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -195,16 +187,9 @@ success:function(data){
     $("#item_p").val(data[0].sale_price);
      $("#loaderDiv").hide();
 }
-
-
 });
 });
-
 </script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script> 
-
-
-
-
 </body>
 </html>
