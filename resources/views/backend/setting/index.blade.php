@@ -119,16 +119,16 @@
               </div>
               <div class="form-group">
                 <label for="lat">Latitude</label>
-                <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" required="true">
+                <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" >
               </div>
               <div class="form-group">
                 <label for="long">Longitude</label>
-                <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" required="true">
+                <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" >
               </div>
               <div class="form-group">
                 <label for="image">Choose Logo(Logo must be in png)</label>
                 <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image">
+                    <input type="file" class="form-control" id="image" name="image" required="true">
                 </div>
               </div>
             </div>

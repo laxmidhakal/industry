@@ -103,7 +103,7 @@
             <div class="modal-body" >
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
               </div>
               <div class="form-group">
                 <label for="decription">Description</label>
@@ -113,7 +113,7 @@
               <div class="form-group">
                 <label for="image">Choose Image</label>
                 <div class="input-group">
-                  <input type="file" class="form-control" id="image" name="image">
+                  <input type="file" class="form-control" id="image" name="image" required="true">
                 </div>
               </div>
             </div>

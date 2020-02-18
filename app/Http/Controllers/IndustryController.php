@@ -110,7 +110,7 @@ class IndustryController extends Controller
 
 	public function indexTeam()
 	{
-		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(1);
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(9);
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
