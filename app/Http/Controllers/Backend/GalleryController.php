@@ -28,7 +28,6 @@ class GalleryController extends Controller
         $galleries=Gallery::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.gallery.index',compact('galleries'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +37,6 @@ class GalleryController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -79,10 +77,8 @@ class GalleryController extends Controller
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
         //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -93,7 +89,6 @@ class GalleryController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,7 +99,6 @@ class GalleryController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -116,7 +110,6 @@ class GalleryController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -28,7 +28,6 @@ class TeamController extends Controller
         $teams=Team::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.team.index',compact('teams'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +37,6 @@ class TeamController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -79,11 +77,8 @@ class TeamController extends Controller
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
-        //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -94,7 +89,6 @@ class TeamController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,7 +99,6 @@ class TeamController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -117,7 +110,6 @@ class TeamController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

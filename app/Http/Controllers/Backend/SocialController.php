@@ -29,7 +29,6 @@ class SocialController extends Controller
         $socials=Social::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.social.index',compact('socials'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +38,6 @@ class SocialController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -61,11 +59,8 @@ class SocialController extends Controller
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
-        //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -76,7 +71,6 @@ class SocialController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +81,6 @@ class SocialController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -99,7 +92,6 @@ class SocialController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

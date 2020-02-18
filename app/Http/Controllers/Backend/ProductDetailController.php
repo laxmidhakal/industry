@@ -30,8 +30,6 @@ class ProductDetailController extends Controller
         $productdetails = Product_has_detail::where('product_id',$product_id)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.product_detail.index',compact('productdetails','product_id'));
     }
-        
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +39,6 @@ class ProductDetailController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -61,8 +58,6 @@ class ProductDetailController extends Controller
         ->withErrors($validator)
         ->withInput();
         }
-
-
         $main_store = new Product_has_detail;
         $main_store->product_id = Input::get('product_id');        
         $main_store->title = Input::get('title');
@@ -84,11 +79,8 @@ class ProductDetailController extends Controller
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
-        //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -99,7 +91,6 @@ class ProductDetailController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,7 +101,6 @@ class ProductDetailController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -122,7 +112,6 @@ class ProductDetailController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

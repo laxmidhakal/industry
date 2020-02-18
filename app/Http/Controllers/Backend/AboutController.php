@@ -15,7 +15,6 @@ use File;
 use Route;
 use App\About;
 
-
 class AboutController extends Controller
 {
     public function __construct(Request $request, Helper $helper)
@@ -88,7 +87,6 @@ class AboutController extends Controller
 
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -99,7 +97,6 @@ class AboutController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,7 +107,6 @@ class AboutController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -122,7 +118,6 @@ class AboutController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

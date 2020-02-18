@@ -28,7 +28,6 @@ class ProductController extends Controller
         $products=Product::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.product.index',compact('products'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +37,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,8 +46,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'title' => 'required|unique:products',
-           
+            'title' => 'required|unique:products',           
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -67,10 +64,8 @@ class ProductController extends Controller
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
         //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -81,7 +76,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,7 +86,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -104,7 +97,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

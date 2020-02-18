@@ -26,7 +26,6 @@ class ContactController extends Controller
         $contacts=Contact::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
         return view('backend.contact.index',compact('contacts'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +35,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +48,6 @@ class ContactController extends Controller
             'email' => 'required|unique:contacts',
             'subject' => 'required',
             'message' => 'required',
-
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -69,9 +66,7 @@ class ContactController extends Controller
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
         //var_dump($name); die();
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -82,7 +77,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,7 +87,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -105,7 +98,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -23,11 +23,8 @@ use App\Setting;
 use App\Contact;
 use App\Social;
 
-
-
 class ContactController extends Controller
-{
-  
+{ 
     public function index()
     {
         $contacts=Contact::orderBy('created_at','DESC')->get();
@@ -38,7 +35,6 @@ class ContactController extends Controller
         $page_title = "Contact ";
         return view('contact',compact('settings','product_menu','socials','about_details','contacts','page_title'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -47,11 +43,8 @@ class ContactController extends Controller
     public function create()
     {
         $contacts=Contact::orderBy('created_at','DESC')->get();
-        return view('backend.contact.index',compact('contacts'));
-
-        
+        return view('backend.contact.index',compact('contacts'));        
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +58,6 @@ class ContactController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
-
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -84,10 +76,8 @@ class ContactController extends Controller
         }else{
             $this->request->flash('alert-waring', 'Data could not be add!!');
         }
-        return back()->withInput();
-       
+        return back()->withInput();       
     }
-
     /**
      * Display the specified resource.
      *
@@ -98,7 +88,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -109,7 +98,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -121,7 +109,6 @@ class ContactController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

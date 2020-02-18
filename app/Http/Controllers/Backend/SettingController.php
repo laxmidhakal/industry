@@ -55,7 +55,6 @@ class SettingController extends Controller
             'lat' => 'required',
             'long' => 'required',
             'image' => 'required|mimes:png|max:1024',
-
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -86,11 +85,8 @@ class SettingController extends Controller
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
-        //var_dump($name); die();
-
         return back()->withInput();
     }
-
     /**
      * Display the specified resource.
      *
@@ -101,7 +97,6 @@ class SettingController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -112,7 +107,6 @@ class SettingController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -124,7 +118,6 @@ class SettingController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
