@@ -1,7 +1,4 @@
 @extends('backend.app')
-@section('style')
-  <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/backend/css/toastr.min.css" />
-@endsection
 @section('content')
 <div class="content-wrapper">
   @include('backend.flash.alertmsg')
@@ -65,9 +62,6 @@
                   </td>
                 </tr>
                 @endforeach
-                <button type="button" class="btn btn-danger toastsDefaultDanger">
-                  Launch Danger Toast
-                </button>
               </table>
             </div>
           </div>
@@ -80,19 +74,5 @@
       </section>
       <!-- /.content -->
     </div>
-    
-    @endsection
-    @section('javascript')
-    <script>
-      $('.toastsDefaultDanger').click(function() {
-          $(document).Toasts('create', {
-            class: 'bg-danger', 
-            title: 'Toast Title',
-            subtitle: 'Subtitle',
-            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-          })
-        });
-    </script>
-    <script src="{{URL::to('/')}}/backend/js/toastr.min.js"></script>
-    </div>    
-    @endsection
+@endsection
+   

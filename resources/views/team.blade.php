@@ -22,11 +22,11 @@
             <p>{!! $main_data->designation !!} </p>
           </div>
         </div>
-        <div class="mt-4">
-          {!! $team_details->links("pagination::bootstrap-4") !!}
-        </div>
       </div>
       @endforeach
+      <div class="mt-4">
+        {!! $team_details->links("pagination::bootstrap-4") !!}
+      </div>
     </div>
   </div>
 </section>

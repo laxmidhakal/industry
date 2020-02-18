@@ -1,7 +1,6 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
 @section('content')
-
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/1.jpg">
   <div class="container">
     <div class="row">
@@ -24,11 +23,11 @@
               <a href="{{URL::to('/')}}/product/{{$main_data->getProduct->slug}}/{{$main_data->slug}}" class="fb-more-btn">Read More</a>
             </div>
           </div>
-          <div class="mt-4">
-            {!! $product_details->links("pagination::bootstrap-4") !!}
-          </div>
         </div>
         @endforeach
+        <div class="mt-4">
+          {!! $product_details->links("pagination::bootstrap-4") !!}
+        </div>
       </div>
     </div>
   </section>

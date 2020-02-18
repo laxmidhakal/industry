@@ -1,5 +1,8 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
+@section('style')
+  <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/css/toastr.min.css" />
+@endsection
 @section('content')
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/4.jpg">
   <div class="container">
@@ -13,7 +16,7 @@
 <div class="map-section">
   <div class="container">
     <div class="map-info">
-       <h2 class="fw-title"><span class="text-white">Global</span>  SAS Trading  </h2>
+       <h2 class="fw-title"><span class="text-white">Global</span>SAS Trading</h2>
         @foreach($about_details as $main_data)
        <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
        @endforeach
@@ -40,11 +43,13 @@
             <div class="col-lg-12">
               <input type="text"  id="subject" placeholder="Subject" name="subject" required="true">
               <textarea class="text-msg" placeholder="Message" id="message" name="message" required="true"></textarea>
-              <button class="site-btn toastsDefaultDanger" type="submit" name="submit">send message</button>
-              
+              <button class="site-btn " type="submit" name="submit">send message</button>
             </div>
           </div>
         </form>
+        <button type="button" class="btn btn-danger toastsDefaultDanger">
+          Launch Danger Toast
+        </button>
       </div>
       <div class="col-lg-4">
         <div class="contact-text">
@@ -68,7 +73,6 @@
             </div>
             <div class="hib-text">
               <h6>{{$setting->address}}</h6>
-              <p>{{$setting->address}} </p>
             </div>
           </div>
          @endforeach
@@ -79,15 +83,16 @@
 </section>
 @endsection
 @section('javascript')
+<script src="{{URL::to('/')}}/js/toastr.min.js"></script>
 <script>
   $('.toastsDefaultDanger').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-danger', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
-        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-      })
-    });
-  
+    $(document).Toasts('create', {
+      class: 'bg-danger', 
+      title: 'Toast Title',
+      subtitle: 'Subtitle',
+      body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+    })
+  });
 </script>
+</div>    
 @endsection
