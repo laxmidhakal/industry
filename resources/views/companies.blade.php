@@ -36,7 +36,7 @@
           <div class="info-box">
             <h3>Contact Us for Help</h3>
               @foreach($about_details as $main_about)
-             <p> {!! Illuminate\Support\Str::limit($main_about->description, 200) !!}</p>
+             <p> {!! str_limit($main_about->description, 200)!!} </p>
               @endforeach
             <div class="footer-info-box">
               <div class="fib-icon">

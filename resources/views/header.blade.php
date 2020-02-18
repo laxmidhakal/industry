@@ -7,7 +7,6 @@
                         <li class="list-inline-item"><p class="text-light"> Welcome to Global SAS Trading Pvt. Ltd.</p></li>
                     </ul>
                 </div>
-                
                 <div class="col-md-6 text-md-right">
                     <ul class="list-inline">
                     @foreach($settings as $setting)
@@ -43,7 +42,6 @@
                             </a>
                         </li>
                         @endif
-
                     @endforeach
                     @endif
                     </ul>
@@ -51,7 +49,6 @@
             </div>
         </div>
     </div>
-
     <div class="site-navbar">
         <!-- Logo -->
         <div class="container">
@@ -63,7 +60,6 @@
                     @endforeach
                     </a>
                 </div>
-                
                 <!-- Menu -->
                 <div class="col-md-8 pr-md-0">
                     <nav class="site-nav-menu header-right pr-md-0">

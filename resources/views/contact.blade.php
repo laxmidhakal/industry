@@ -14,8 +14,8 @@
   <div class="container">
     <div class="map-info">
        <h2 class="fw-title"><span class="text-white">Global</span>SAS Trading</h2>
-        @foreach($about_details as $main_data)
-       <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
+        @foreach($about_details as $main_data) 
+       <p>{!! str_limit($main_data->description, 156)!!}</p>
        @endforeach
     </div>
   </div>
@@ -52,7 +52,7 @@
         <div class="contact-text">
           <h2>Get in Touch</h2>
            @foreach($about_details as $main_data)
-          <p>{!! Illuminate\Support\Str::limit($main_data->description, 156) !!}</p>
+          <p>{!! str_limit($main_data->description, 156)!!}</p>
           @endforeach
          @foreach($settings as $setting)
           <div class="header-info-box">
@@ -90,8 +90,6 @@
      body: 'hello.'
    })
  });
-
 </script>
-
 </div>    
 @endsection

@@ -14,7 +14,6 @@
     </div>
   </div>
 </section>
-
 <section class="elements-section spad">
   <div class="container">
     <div class="demo-gallery">
@@ -31,17 +30,13 @@
       {!! $gallery_details->links("pagination::bootstrap-4") !!}
     </div>
     </div>
-
   </div>
 </section>
 @endsection
-
 @section('javascript')
 <script src="{{URL::to('/')}}/js/lightgallery.min.js"></script>
-
 <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-
 <!-- lightgallery plugins -->
 <script src="{{URL::to('/')}}/js/lg-thumbnail.min.js"></script>
 <script src="{{URL::to('/')}}/js/lg-fullscreen.min.js"></script>
