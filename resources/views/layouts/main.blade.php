@@ -114,58 +114,6 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{url('/')}}/backend/js/dashboard.js"></script>
     <script src="{{url('/')}}/backend/pace-progress/pace.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $('form').submit(function(event) {
-            $(this).find("button[type='submit']").prop('disabled',true);
-        });
-    </script>
-    <script>
-        $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#date').daterangepicker({
-                singleDatePicker: true,
-                autoUpdateInput: false,
-                // showDropdowns : true,
-                startDate : true,
-            locale:{
-                format: 'YYYY/MM/DD',
-                cancleLabel: 'clear',
-            },
-        }).on("apply.daterangepicker", function (e, picker) {
-        picker.element.val(picker.startDate.format(picker.locale.format));
-    });
-        $('#date1').daterangepicker({
-                singleDatePicker: true,
-                autoUpdateInput: false,
-                // showDropdowns : true,
-                startDate : true,
-            locale:{
-                format: 'YYYY/MM/DD',
-                cancleLabel: 'clear',
-            },
-        }).on("apply.daterangepicker", function (e, picker) {
-        picker.element.val(picker.startDate.format(picker.locale.format));
-    });
-    $('.modal').modal({
-        show:false,
-        keyboard: true,
-        backdrop: 'static'
-    });
-});
-</script>
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-<script>
-    function myFunction() {
-        if(!confirm(" Danger!!!! Are You Sure to delete this??"))
-            event.preventDefault();
-    }
-</script>
-
 <script type="text/javascript">
     $(document).on('change', '#item_id', function(event) {
 // console.log('abc');
