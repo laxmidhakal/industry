@@ -1,8 +1,5 @@
 @extends('main')
 @section('tab_title'){{$page_title}}@endsection
-@section('style')
-  <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/css/toastr.min.css" />
-@endsection
 @section('content')
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/4.jpg">
   <div class="container">
@@ -83,16 +80,18 @@
 </section>
 @endsection
 @section('javascript')
-<script src="{{URL::to('/')}}/js/toastr.min.js"></script>
-<script>
-  $('.toastsDefaultDanger').click(function() {
-    $(document).Toasts('create', {
-      class: 'bg-danger', 
-      title: 'Toast Title',
-      subtitle: 'Subtitle',
-      body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-    })
-  });
+<script src="{{URL::to('/')}}/js/adminlte.min.js"></script>
+<script type="text/javascript">
+ $('.toastsDefaultDanger').click(function() {
+   $(document).Toasts('create', {
+     class: 'bg-danger', 
+     title: 'laxmi',
+     subtitle: 'Subtitle',
+     body: 'hello.'
+   })
+ });
+
 </script>
+
 </div>    
 @endsection
