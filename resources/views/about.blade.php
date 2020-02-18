@@ -25,13 +25,11 @@
 					<p>{!! $about_data->description !!} </p>
 				</div>
 			</div>
-			@endforeach
-			
+			@endforeach	
 		</div>
 	</div>
 </section>
 @endif
-
 <section class="team-section spad">
 	@if(count($team_details))
 	<div class="container">
@@ -47,20 +45,15 @@
 						<h3>{{$main_data->title}}</h3>
 						<p>{{$main_data->designation}} </p>
 					</div>
-				</div>
-				
+				</div>				
 			</div>
 			@endforeach
-			
-
 		</div>
 		<div class="mt-4  d-flex justify-content-center">
 		  {!! $about_details->links("pagination::bootstrap-4") !!}
-		</div>
-		
+		</div>		
 	</div>
 	@endif
-
 </section>
 @endsection
 

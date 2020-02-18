@@ -1,10 +1,7 @@
 @extends('backend.app')
-
 @section('content')
 <div class="content-wrapper">
-
   @include('backend.flash.alertmsg')
-
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -21,7 +18,6 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->

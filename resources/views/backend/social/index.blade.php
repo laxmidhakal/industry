@@ -1,10 +1,7 @@
 @extends('backend.app')
-
 @section('content')
 <div class="content-wrapper">
-
   @include('backend.flash.alertmsg')
-
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -21,16 +18,12 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
   <!-- Main content -->
   <section class="content">
-
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -77,12 +70,10 @@
           <!-- /.card-body -->
           <div class="card-footer">
              {!! $socials->links("pagination::bootstrap-4") !!}
-            
           </div>
           <!-- /.card-footer-->
         </div>
         <!-- /.card -->
-
       </section>
       <!-- /.content -->
     </div>
@@ -118,7 +109,6 @@
                 <label for="instagram">Instagram</label>
                 <input type="text" class="form-control" id="instagram" placeholder="Enter instagram" name="instagram">
               </div>
-              
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
