@@ -4,7 +4,6 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 @section('content')
-@include('backend.flash.alertmsg')
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/4.jpg">
   <div class="container">
     <div class="row">
@@ -29,6 +28,7 @@
 </div>
 
 <section class="contact-section spad">
+@include('backend.flash.alertmsg')
   <div class="container">
     <div class="row">      
       <div class="col-lg-8">
@@ -48,9 +48,7 @@
             </div>
           </div>
         </form>
-        <button type="button" class="btn btn-danger toastsDefaultDanger">
-          Launch Danger Toast
-        </button>
+        
       </div>
       <div class="col-lg-4">
         <div class="contact-text">

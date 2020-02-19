@@ -50,11 +50,7 @@ class ContactController extends Controller
             'subject' => 'required',
             'message' => 'required',
         );
-        $notification = array(
-            'message' => 'I am a danger!', 
-            'alert-type' => 'success'
-        );
-        $validator = Validator::make(Input::all(), $rules,$notification);
+        $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
         return redirect('/contact')
         ->withErrors($validator)

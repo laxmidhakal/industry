@@ -30,6 +30,7 @@
 	</div>
 </section>
 @endif
+
 <section class="team-section spad">
 	@if(count($team_details))
 	<div class="container">
@@ -49,10 +50,13 @@
 			</div>				
 			@endforeach
 		</div>
-		<a class="mt-md-3 btn btn-outline-primary rounded-0 main-btn-outline" href="{{ route('team') }}">Read More</a>
+		<div class="text-center pt-4">
+			<a class="mt-md-3  btn btn-outline-primary rounded-0 main-btn-outline" href="{{ route('team') }}">Read More</a>
+		</div>
 	</div>
 	@endif
 </section>
+        
 @endsection
 
 
