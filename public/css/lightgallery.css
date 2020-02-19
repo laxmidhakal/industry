@@ -19,6 +19,7 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 .lg-actions .lg-next, .lg-actions .lg-prev {
@@ -181,6 +182,7 @@
   -o-transition: color 0.2s linear;
   transition: color 0.2s linear;
 }
+
 .lg-toolbar .lg-icon:hover {
   color: #FFF;
 }

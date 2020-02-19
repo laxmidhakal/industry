@@ -36,7 +36,6 @@
 @section('javascript')
 <script src="{{URL::to('/')}}/js/lightgallery.min.js"></script>
 <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 <!-- lightgallery plugins -->
 <script src="{{URL::to('/')}}/js/lg-thumbnail.min.js"></script>
 <script src="{{URL::to('/')}}/js/lg-fullscreen.min.js"></script>
@@ -47,4 +46,6 @@
 </script>
 <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
 <script src="{{URL::to('/')}}/js/lightgallery-all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
 @endsection

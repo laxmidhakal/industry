@@ -4,21 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Helper\Helper;
 use Illuminate\Support\Str;
 use Validator;
 use Redirect;
 use Response;
-use Session;
-use File;
-use Route;
-use App\Slider;
 use App\About;
-use App\Company;
-use App\Gallery;
-use App\Team;
 use App\Product;
-use App\Product_has_detail;
 use App\Setting;
 use App\Contact;
 use App\Social;
@@ -59,24 +50,36 @@ class ContactController extends Controller
             'subject' => 'required',
             'message' => 'required',
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $notification = array(
+            'message' => 'I am a danger!', 
+            'alert-type' => 'success'
+        );
+        $validator = Validator::make(Input::all(), $rules,$notification);
         if ($validator->fails()) {
         return redirect('/contact')
         ->withErrors($validator)
         ->withInput();
         }
         $main_store = new Contact;
-        $name = Input::get('name');
-        $main_store->name = Str::ucfirst($name);
+        $names = Input::get('name');
+        $main_store->name = Str::ucfirst($names);
         $main_store->email = Input::get('email');
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
-          if($main_store->save()){
-            $this->request->flash('alert-success', 'Data save successfully!!');
+        if ($names=='bini') {
+            echo "success";
+             $notification = array(
+            'message' => 'Please enter correct format of email!', 
+            'alert-type' => 'error'
+        );
         }else{
-            $this->request->flash('alert-waring', 'Data could not be add!!');
+             echo "error";
+           
         }
-        return back()->withInput();       
+       $main_store->save();
+       
+        return back()->with( $notification);      
+
     }
     /**
      * Display the specified resource.
