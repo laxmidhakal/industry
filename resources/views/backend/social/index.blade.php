@@ -60,7 +60,8 @@
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    <a href="{{route('social.destroy',$social->id)}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+
                   </td>
                 </tr>
                 @endforeach
@@ -69,7 +70,10 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-             {!! $socials->links("pagination::bootstrap-4") !!}
+            @if($counts==1)
+            Total:{{$counts}}
+            @endif
+            {!! $socials->links("pagination::bootstrap-4") !!}
           </div>
           <!-- /.card-footer-->
         </div>
@@ -91,23 +95,23 @@
             <div class="modal-body" >
               <div class="form-group">
                 <label for="facebook">Facebook</label>
-                <input type="text" class="form-control" id="facebook" placeholder="Enter facebook" name="facebook">
+                <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
               </div>
               <div class="form-group">
                 <label for="linkedin">Linkedin</label>
-                <input type="text" class="form-control" id="linkedin" placeholder="Enter linkedin" name="linkedin">
+                <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
               </div>
               <div class="form-group">
                 <label for="twitter">Twitter</label>
-                <input type="text" class="form-control" id="twitter" placeholder="Enter twitter" name="twitter">
+                <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
               </div>
               <div class="form-group">
-                <label for="google">Google</label>
-                <input type="text" class="form-control" id="google" placeholder="Enter google" name="google">
+                <label for="google">GooglePlus</label>
+                <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" name="google">
               </div>
               <div class="form-group">
                 <label for="instagram">Instagram</label>
-                <input type="text" class="form-control" id="instagram" placeholder="Enter instagram" name="instagram">
+                <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" name="instagram">
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -120,4 +124,8 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
+    @endsection
+    @section('javascript')
+   
+
     @endsection

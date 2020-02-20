@@ -27,7 +27,8 @@ class SocialController extends Controller
     public function index()
     {
         $socials=Social::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
-        return view('backend.social.index',compact('socials'));
+        $counts=Social::count();
+        return view('backend.social.index',compact('socials','counts'));
     }
     /**
      * Show the form for creating a new resource.
@@ -100,6 +101,11 @@ class SocialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $social=Social::find($id);
+        $social->delete();
+        return redirect('/home/social');
+        // redirect
+        Session::flash('message', 'Successfully deleted the nerd!');
+        return Redirect::to('nerds');
     }
 }

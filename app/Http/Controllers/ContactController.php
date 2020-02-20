@@ -62,19 +62,11 @@ class ContactController extends Controller
         $main_store->email = Input::get('email');
         $main_store->subject = Input::get('subject');
         $main_store->message = Input::get('message');
-        if ($names=='bini') {
-            echo "success";
-             $notification = array(
-            'message' => 'Please enter correct format of email!', 
-            'alert-type' => 'error'
-        );
-        }else{
-             echo "error";
-           
-        }
+       
        $main_store->save();
        
-        return back()->with( $notification);      
+        return back(); 
+
 
     }
     /**

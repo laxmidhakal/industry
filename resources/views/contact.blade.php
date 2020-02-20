@@ -28,27 +28,37 @@
 </div>
 
 <section class="contact-section spad">
-@include('backend.flash.alertmsg')
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>{{ $message }}</strong>
+  </div>
+  <br>
+  @endif
   <div class="container">
     <div class="row">      
       <div class="col-lg-8">
-        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store">
+        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="form">
             {{ csrf_field() }}  
           <div class="row">
+            @include('backend.frontflash.alertmsg')
             <div class="col-lg-6">
               <input type="text"  id="name" placeholder="Enter Your Name" name="name" required="true">
+              <span class="text-danger">{{ $errors->first('name') }}</span>
             </div>
             <div class="col-lg-6">
               <input type="email" placeholder="Your Email" name="email" id="email" required="true" autocomplete="off">
+              <span class="text-danger">{{ $errors->first('email') }}</span>
             </div>  
             <div class="col-lg-12">
               <input type="text"  id="subject" placeholder="Subject" name="subject" required="true">
+              <span class="text-danger">{{ $errors->first('subject') }}</span>
               <textarea class="text-msg" placeholder="Message" id="message" name="message" required="true"></textarea>
+              <span class="text-danger">{{ $errors->first('message') }}</span>
               <button class="site-btn " type="submit" name="submit">send message</button>
             </div>
           </div>
         </form>
-        
       </div>
       <div class="col-lg-4">
         <div class="contact-text">
@@ -82,39 +92,31 @@
 </section>
 @endsection
 @section('javascript')
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="{{URL::to('/')}}/js/adminlte.min.js"></script>
-<script type="text/javascript">
- $('.toastsDefaultDanger').click(function() {
-   $(document).Toasts('create', {
-     class: 'bg-danger', 
-     title: 'laxmi',
-     subtitle: 'Subtitle',
-     body: 'hello.'
-   })
- });
-</script>
-<script>
-  @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch(type){
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
-  @endif
+ <script>
+    $(document).ready(function () {
+    $('#form').validate({ // initialize the plugin
+        rules: {
+            name: {
+                required: true
+            },
+            email: {
+               required: true,
+               maxlength: 50,
+               email: true,
+            },
+             subject: {
+                required: true
+            },
+             message: {
+                required: true
+            },
+        }
+    });
+});
 </script>
 </div>    
 @endsection
