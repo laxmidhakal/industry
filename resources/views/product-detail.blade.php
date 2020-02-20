@@ -33,7 +33,7 @@
       <h1 class="display-4 text-center pb-4 text-capitalize">Other related products</h1>
         @if(count($products))
       <div class="row">
-          @foreach($products->random(2) as $product)
+          @foreach($products as $product)
         <div class="col-lg-4 col-md-6">
           <div class="feature-box">
             <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
