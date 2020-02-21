@@ -42,7 +42,7 @@
                     <th>Description</th>
                     <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
-                    <th>Created By</th>
+                    <th >Created By</th>
                     <th>Created At</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
@@ -60,7 +60,7 @@
                     @endif
                   </td>
                   <td class="text-center">
-                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="{{URL::to('/')}}/isactive/{{$about->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                   </td>
                   <td>{{$about->user->name}}</td>
                   <td>{{date('D, j M Y', strtotime($about->created_at))}}</td>

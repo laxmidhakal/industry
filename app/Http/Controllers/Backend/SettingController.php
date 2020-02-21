@@ -26,9 +26,8 @@ class SettingController extends Controller
     }
     public function index()
     {
-        $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC');
-        $count = Setting::get()->count();
-        return view('backend.setting.index',compact('settings','count'));
+        $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+        return view('backend.setting.index',compact('settings'));
     }
 
     /**
@@ -64,7 +63,6 @@ class SettingController extends Controller
         ->withInput();
         }
         $main_store = new Setting;
-
         $mainaddress = Input::get('address');
         $main_store->address = Str::ucfirst($mainaddress);
         $main_store->phone = Input::get('phone');

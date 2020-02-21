@@ -23,7 +23,10 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
+        @if(count($settings)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        @elseif(count($settings)<='1')
+        @endif
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -37,15 +40,15 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead class="bg-secondary">
                   <tr>
-                    <th>SN</th>
+                    <th style="width: 10px">SN</th>
                     <th>Address</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Image</th>
-                    <th>Label</th>
-                    <th>Action</th>
+                    <th style="width: 10px" class="text-center">Label</th>
+                    <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>
                 @foreach($settings as $key=>$setting)
@@ -59,7 +62,6 @@
                   <td>
                     <div class="">
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
-                      
                     </div>
                   </td>
                   <td>
@@ -76,9 +78,6 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-                   
-
-
           </div>
           <!-- /.card-footer-->
         </div>

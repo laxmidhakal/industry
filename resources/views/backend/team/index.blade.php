@@ -37,12 +37,12 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead class="bg-secondary">
                   <tr>
-                    <th>SN</th>
+                    <th style="width: 10px" >SN</th>
                     <th>Name</th>
                     <th>Designation</th>
                     <th>Image</th>
-                    <th>Label</th>
-                    <th>Action</th>
+                    <th style="width: 10px" class="text-center">Label</th>
+                    <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>
                 @foreach($teams as $key=>$team)

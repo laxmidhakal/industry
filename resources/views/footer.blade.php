@@ -53,7 +53,7 @@
                     <!-- <img src="img/sas.png" alt="" class="img-fluid"> -->
                     <h2 class="fw-title"><span class="main-logo-text">Global</span> SAS Trading Pvt. Ltd. </h2>
                     @foreach($about_details as $detail)
-                    <p> {!! Illuminate\Support\Str::limit($detail->description, 170) !!}</p>
+                    <p>{!! str_limit($detail->description, 170)!!}</p>
                     @endforeach
 
                     @if(count($socials))

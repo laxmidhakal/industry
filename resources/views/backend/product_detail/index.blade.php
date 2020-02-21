@@ -37,13 +37,13 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead class="bg-secondary">
                   <tr>
-                    <th>SN</th>
+                    <th style="width: 10px" >SN</th>
                     <th>Product</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Label</th>
-                    <th>Action</th>
+                    <th style="width: 10px" class="text-center">Label</th>
+                    <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>
                 @foreach($productdetails as $key=>$detail)

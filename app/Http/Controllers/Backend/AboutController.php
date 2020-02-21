@@ -128,4 +128,19 @@ class AboutController extends Controller
     {
         //
     }
+     public function isactive($id)
+    {
+        
+        $active = About::find($id);
+        $active->is_active = Input::get('is_active');
+        if ( $active->is_active=='1' ? '0') {
+           echo "Changed"; 
+        }
+        elseif ($active->is_active== '0' ? '1') {
+           echo "changes"; 
+            
+        }
+        $active->update();
+        return redirect()->route('isactive'); 
+    }
 }

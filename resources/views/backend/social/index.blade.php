@@ -23,7 +23,10 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
+        @if(count($socials)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        @elseif(count($socials)<='1')
+        @endif
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -37,14 +40,14 @@
               <table class="table table-striped table-bordered table-hover">
                 <thead class="bg-secondary">
                   <tr>
-                    <th>SN</th>
+                    <th style="width: 10px">SN</th>
                     <th>Facebook</th>
                     <th>Linkedin</th>
                     <th>Twitter</th>
                     <th>Google</th>
                     <th>Instagram</th>
-                    <th>Label</th>
-                    <th>Action</th>
+                    <th style="width: 10px" class="text-center">Label</th>
+                    <th style="width: 90px" class="text-center">Action</th>
                   </tr>
                 </thead>
                 @foreach($socials as $key=>$social)
@@ -60,8 +63,7 @@
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="{{route('social.destroy',$social->id)}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-
+                    <a href="{{route('social.destroy',$social->id)}}"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
                 @endforeach
@@ -73,7 +75,7 @@
             @if($counts==1)
             Total:{{$counts}}
             @endif
-            {!! $socials->links("pagination::bootstrap-4") !!}
+           
           </div>
           <!-- /.card-footer-->
         </div>
@@ -126,6 +128,4 @@
     </div>
     @endsection
     @section('javascript')
-   
-
     @endsection

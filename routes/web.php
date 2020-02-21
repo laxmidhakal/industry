@@ -30,6 +30,7 @@ Route::get('/home', 'Backend\HomeController@index')->name('home');
 
 Route::resource('/home/slider', 'Backend\SliderController');
 Route::resource('/home/about', 'Backend\AboutController');
+Route::get('/isactive/{id}', 'Backend\AboutController@isactive')->name('isactive');
 Route::resource('/home/gallery', 'Backend\GalleryController');
 Route::resource('/home/company', 'Backend\CompanyController');
 Route::resource('/home/team', 'Backend\TeamController');

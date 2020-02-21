@@ -98,7 +98,7 @@ class IndustryController extends Controller
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_details = Product_has_detail::where('slug',$slug)->where('product_id',$product_id)->where('is_active', true)->get();
-		$product_main = Product_has_detail::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+		$product_main = Product_has_detail::where('is_active', true)->where('slug','!=',$slug)->where('product_id',$product_id)->get();
 		if (count($product_main) < 3) {
 			$products = $product_main;
 		}else{

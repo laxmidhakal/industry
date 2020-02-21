@@ -29,23 +29,23 @@
   </div>
 </section>
 <section class="features-section spad set-bg" data-setbg="{{URL::to('/')}}img/features-bg.jpg" style="background-image: url(&quot;img/features-bg.jpg&quot;);">
-    <div class="container">
-      <h1 class="display-4 text-center pb-4 text-capitalize">Other related products</h1>
-        @if(count($products))
-      <div class="row">
-          @foreach($products as $product)
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-box">
-            <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
-            <div class="fb-text">
-              <h5>{{$product->title}}</h5>
-              <p>{!!$product->description!!} </p>
-            </div>
+  <div class="container">
+    <h1 class="display-4 text-center pb-4 text-capitalize">Other related products</h1>
+    @if(count($products))
+    <div class="row">
+      @foreach($products as $product)
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-box">
+          <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
+          <div class="fb-text">
+            <h5>{{$product->title}}</h5>
+            <p>{!!$product->description!!}</p>
           </div>
         </div>
-        @endforeach
       </div>
-        @endif
+      @endforeach
     </div>
-  </section>
+    @endif
+  </div>
+</section>
 @endsection
