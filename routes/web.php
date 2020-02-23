@@ -30,16 +30,23 @@ Route::get('/home', 'Backend\HomeController@index')->name('home');
 
 Route::resource('/home/slider', 'Backend\SliderController');
 Route::resource('/home/about', 'Backend\AboutController');
-Route::get('/isactive/{id}', 'Backend\AboutController@isactive')->name('isactive');
+Route::get('/home/about/isactive/{id}', 'Backend\AboutController@isactive')->name('isactiveabout');
 Route::resource('/home/gallery', 'Backend\GalleryController');
+Route::get('/home/gallery/isactive/{id}', 'Backend\GalleryController@isactive')->name('isactivegallery');
 Route::resource('/home/company', 'Backend\CompanyController');
+Route::get('/home/company/isactive/{id}', 'Backend\CompanyController@isactive')->name('isactivecompany');
 Route::resource('/home/team', 'Backend\TeamController');
+Route::get('/home/team/isactive/{id}', 'Backend\TeamController@isactive')->name('isactiveteam');
 Route::resource('/home/product', 'Backend\ProductController');
+Route::get('/home/product/isactive/{id}', 'Backend\ProductController@isactive')->name('isactiveproduct');
 Route::get('/home/product/{slug}/detail', 'Backend\ProductDetailController@index')->name('productDetail');
 Route::post('/home/product/detail/store', 'Backend\ProductDetailController@store');
 Route::resource('/home/setting', 'Backend\SettingController');
+Route::get('/home/setting/isactive/{id}', 'Backend\SettingController@isactive')->name('isactivesetting');
 Route::get('/home/contact', 'ContactController@create');
 Route::resource('/home/social', 'Backend\SocialController');
+Route::get('/home/social/isactive/{id}', 'Backend\SocialController@isactive')->name('isactivesocial');
+
 
 
 

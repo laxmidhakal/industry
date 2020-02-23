@@ -101,11 +101,26 @@ class SocialController extends Controller
      */
     public function destroy($id)
     {
-        $social=Social::find($id);
-        $social->delete();
-        return redirect('/home/social');
-        // redirect
-        Session::flash('message', 'Successfully deleted the nerd!');
-        return Redirect::to('nerds');
+       $social=Social::find($id);
+       if($social->delete()){
+         $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+       }else{
+         $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+       }
+       return back()->withInput();
+        
+    }
+    public function isactive(Request $request,$id)
+    {
+        $get_is_active = Social::where('id',$id)->value('is_active');
+        $isactive = Social::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+        }
+        else {
+            $isactive->is_active = 0;
+        }
+        $isactive->update();
+        return back()->withInput();
     }
 }

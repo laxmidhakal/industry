@@ -118,6 +118,25 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team=Team::find($id);
+        if($team->delete()){
+            $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+        }
+        return back()->withInput();
+    }
+    public function isactive(Request $request,$id)
+    {
+        $get_is_active = Team::where('id',$id)->value('is_active');
+        $isactive = Team::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+        }
+        else {
+            $isactive->is_active = 0;
+        }
+        $isactive->update();
+        return back()->withInput();
     }
 }

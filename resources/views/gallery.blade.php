@@ -21,14 +21,14 @@
         @foreach($gallery_details as $main_data)
         <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" data-sub-html="{{$main_data->title}} <p>{!! strip_tags($main_data->description) !!}</p>" >
           <a href="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}">
-          <img src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-gallery-img">
+            <img src="{{URL::to('/')}}/images/gallery/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-gallery-img">
           </a>
         </li>
         @endforeach
       </ul>
-    <div class="mt-4 d-flex justify-content-center">
-      {!! $gallery_details->links("pagination::bootstrap-4") !!}
-    </div>
+      <div class="mt-4 d-flex justify-content-center">
+        {!! $gallery_details->links("pagination::bootstrap-4") !!}
+      </div>
     </div>
   </div>
 </section>

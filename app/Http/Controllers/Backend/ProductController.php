@@ -105,6 +105,25 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=Product::find($id);
+        if($product->delete()){
+          $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+        }else{
+          $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+        }
+        return back()->withInput();
+    }
+    public function isactive(Request $request,$id)
+    {
+        $get_is_active = Product::where('id',$id)->value('is_active');
+        $isactive = Product::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+        }
+        else {
+            $isactive->is_active = 0;
+        }
+        $isactive->update();
+        return back()->withInput();
     }
 }

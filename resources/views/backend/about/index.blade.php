@@ -59,14 +59,28 @@
                       <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                     @endif
                   </td>
-                  <td class="text-center">
-                    <a href="{{URL::to('/')}}/isactive/{{$about->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                  <td>
+                    @if ($about->is_active == '1')
+                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    <?php
+                    echo "Published";
+                     ?>
+                    @else
+                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
+                    <?php
+                    echo "NotPublished";
+                     ?>
+                    @endif
                   </td>
                   <td>{{$about->user->name}}</td>
                   <td>{{date('D, j M Y', strtotime($about->created_at))}}</td>
                   <td class="text-center">
-                    <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    <a href="{{ route('about.destroy',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('about.destroy',$about->id)}}" method="post">
+                      {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                    </form>
                   </td> 
                 </tr>
                 @endforeach

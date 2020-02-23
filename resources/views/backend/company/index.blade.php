@@ -40,7 +40,7 @@
                     <th style="width: 10px">SN</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Image</th>
+                    <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
@@ -58,11 +58,16 @@
                     @endif
                   </td>
                   <td>
-                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    {{ $company->is_active == '1' ? '<a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>':' <a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>'}}
+                   
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    <form action="{{ route('company.destroy',$company->id)}}" method="post">
+                      {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

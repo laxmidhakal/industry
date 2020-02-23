@@ -105,7 +105,8 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $abouts = About::where('id', $id)->get();
+        return view('backend.edit', compact('abouts','id'));
     }
     /**
      * Update the specified resource in storage.
@@ -116,7 +117,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
     /**
      * Remove the specified resource from storage.
@@ -126,21 +127,28 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $about=About::find($id);
+        if($about->delete()){
+            $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+        }
+        return back()->withInput();
     }
-     public function isactive($id)
+    public function isactive(Request $request,$id)
     {
-        
-        $active = About::find($id);
-        $active->is_active = Input::get('is_active');
-        if ( $active->is_active=='1' ? '0') {
-           echo "Changed"; 
+        $get_is_active = About::where('id',$id)->value('is_active');
+        $isactive = About::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+            $this->request->session()->flash('alert-success', 'Data  published!!');
         }
-        elseif ($active->is_active== '0' ? '1') {
-           echo "changes"; 
-            
+        else {
+            $isactive->is_active = 0;
+            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
+
         }
-        $active->update();
-        return redirect()->route('isactive'); 
+        $isactive->update();
+        return back()->withInput();
     }
 }

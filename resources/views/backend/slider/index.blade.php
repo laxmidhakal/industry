@@ -58,11 +58,26 @@
                     @endif
                   </td>
                   <td>
-                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    @if ($slider->is_active == '1')
+                    <a href="{{URL::to('/')}}/home/slider/isactive/{{$slider->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    <?php
+                    echo "Published";
+                     ?>
+                    @else
+                    <a href="{{URL::to('/')}}/home/slider/isactive/{{$slider->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
+                    <?php
+                    echo "NotPublished";
+                     ?>
+                    @endif
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    <form action="{{ route('slider.destroy',$slider->id)}}" method="post">
+                      {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                    </form>
+                    
                   </td>
                 </tr>
                 @endforeach
