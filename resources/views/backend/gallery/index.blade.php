@@ -58,17 +58,9 @@
                     @endif
                   </td>
                   <td>
-                    @if ($gallery->is_active == '1')
-                    <a href="{{URL::to('/')}}/home/gallery/isactive/{{$gallery->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                    <?php
-                    echo "Published";
-                     ?>
-                    @else
-                    <a href="{{URL::to('/')}}/home/gallery/isactive/{{$gallery->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
-                    <?php
-                    echo "NotPublished";
-                     ?>
-                    @endif
+                    <a href="{{URL::to('/')}}/home/gallery/isactive/{{$gallery->id}}" class="btn {{ $gallery->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $gallery->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>

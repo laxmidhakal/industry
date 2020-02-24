@@ -59,13 +59,14 @@
                       <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                     @endif
                   </td>
-                  
                   <td>
-                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="{{URL::to('/')}}/home/productdetail/isactive/{{$detail->id}}" class="btn {{ $detail->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $detail->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    <a href="{{URL::to('/')}}/home/product/detail/{{$detail->id}}/delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
                 @endforeach

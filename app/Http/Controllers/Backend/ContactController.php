@@ -51,7 +51,7 @@ class ContactController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/contact')
+        return redirect('/contact')
         ->withErrors($validator)
         ->withInput();
         }
@@ -107,7 +107,11 @@ class ContactController extends Controller
     public function destroy($id)
     {
         $contact=Contact::find($id);
-        $contact->delete();
-        return redirect('/home/contact');
+        if($contact->delete()){
+            $this->request->session()->flash('alert-success', 'Data deleted successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+        }
+        return back()->withInput();
     }
 }

@@ -48,20 +48,13 @@
                   <td>{{$key+1}}</td>
                   <td>
                   <a href="{{URL::to('/')}}/home/product/{{$product->slug}}/detail">
-                    {{$product->title}}</td>
+                    {{$product->title}}
+                  </td>
                   </a>
                   <td>
-                    @if ($product->is_active == '1')
-                    <a href="{{URL::to('/')}}/home/product/isactive/{{$product->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                    <?php
-                    echo "Published";
-                     ?>
-                    @else
-                    <a href="{{URL::to('/')}}/home/product/isactive/{{$product->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
-                    <?php
-                    echo "NotPublished";
-                     ?>
-                    @endif
+                    <a href="{{URL::to('/')}}/home/product/isactive/{{$product->id}}" class="btn {{ $product->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $product->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>

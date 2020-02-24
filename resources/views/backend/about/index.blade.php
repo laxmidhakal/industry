@@ -60,22 +60,14 @@
                     @endif
                   </td>
                   <td>
-                    @if ($about->is_active == '1')
-                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                    <?php
-                    echo "Published";
-                     ?>
-                    @else
-                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
-                    <?php
-                    echo "NotPublished";
-                     ?>
-                    @endif
+                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn {{ $about->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $about->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>{{$about->user->name}}</td>
                   <td>{{date('D, j M Y', strtotime($about->created_at))}}</td>
                   <td class="text-center">
-                    <a href="{{ route('about.destroy',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <form action="{{ route('about.destroy',$about->id)}}" method="post">
                       {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">

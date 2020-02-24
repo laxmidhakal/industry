@@ -132,11 +132,12 @@ class GalleryController extends Controller
         $isactive = Gallery::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
+            $this->request->session()->flash('alert-success', 'Data  published!!');
         }
         else {
             $isactive->is_active = 0;
-        $this->request->session()->flash('alert-danger', 'Data could not be published!!');
-            
+            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
+
         }
         $isactive->update();
         return back()->withInput();

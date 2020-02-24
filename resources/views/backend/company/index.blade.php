@@ -58,12 +58,13 @@
                     @endif
                   </td>
                   <td>
-                    {{ $company->is_active == '1' ? '<a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>':' <a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>'}}
-                   
+                    <a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn {{ $company->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $company->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('company.destroy',$company->id)}}" method="post">
+                    <form action="{{ route('company.destroy',$company->id)}}" method="post" class="form-inline">
                       {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>

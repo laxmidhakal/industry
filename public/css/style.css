@@ -2100,4 +2100,7 @@
      padding: 13px 10px;
    }
  }
- 
+  .forminline{
+   display: inline ;
+  }
+

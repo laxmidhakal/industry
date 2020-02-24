@@ -58,13 +58,9 @@
                     @endif
                   </td>
                   <td>
-                    @if ($team->is_active == '1')
-                    <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                    
-                    @else
-                    <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
-                   
-                    @endif
+                    <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn {{ $team->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                      <i class="fa {{ $team->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                    </a>
                   </td>
                   <td>
                     <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>

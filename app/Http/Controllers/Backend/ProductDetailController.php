@@ -120,6 +120,28 @@ class ProductDetailController extends Controller
      */
     public function destroy($id)
     {
+        $productdetail=Product_has_detail::find($id);
+        if($productdetail->delete()){
+            $this->request->session()->flash('alert-success', 'Data deleted successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+        }
+        return back()->withInput();
         
+    }
+    public function isactive(Request $request,$id)
+    {
+        $get_is_active = Product_has_detail::where('id',$id)->value('is_active');
+        $isactive = Product_has_detail::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+            $this->request->session()->flash('alert-success', 'Data  published!!');
+        }
+        else {
+            $isactive->is_active = 0;
+            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
+        }
+        $isactive->update();
+        return back()->withInput();
     }
 }
