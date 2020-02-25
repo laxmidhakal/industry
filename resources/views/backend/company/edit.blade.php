@@ -23,6 +23,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
+        
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -33,25 +34,25 @@
           <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
           <div class="card-body">
             <div class="table-responsive">
-              @foreach($abouts as $about)
-              <form role="form" method="POST" action="{{ route('about.update',$about->id)}}" enctype="multipart/form-data">
+              @foreach($companies as $company)
+              <form role="form" method="POST" action="{{ route('company.update',$company->id)}}" enctype="multipart/form-data">
                  {{csrf_field()}}
                  <input name="_method" type="hidden" value="PATCH">
                 <div class="modal-body" >
                   <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $about->title }}">
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $company->title }}">
                   </div>
                   <div class="form-group">
                     <label for="decription">Description</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $about->description}} </textarea>
+                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $company->description}} </textarea>
                   </div>
                   <div class="form-group">
                     <label for="image">Choose Image</label>
-                    <input type="hidden" value="{{$about->image}}">
+                    <input type="hidden" value="{{$company->image}}">
                     <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image"  value="{{$about->image}}" >
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid editback-img center-block">
+                        <input type="file" class="form-control" id="image" name="image"  value="{{$company->image}}" >
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" class="img-fluid editback-img center-block">
                     </div>
                   </div>
                 </div>
@@ -74,5 +75,4 @@
       </section>
       <!-- /.content -->
     </div>
-    
     @endsection

@@ -65,6 +65,7 @@ class AboutController extends Controller
         }
         $main_store = new About;
         $main_store->title = Input::get('title');
+            
         $main_store->slug = $this->helper->slug_converter($main_store->title);
         $image = Input::file('image');
         if($image != ""){
@@ -117,8 +118,8 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $rules = array(
-            'title' => 'required|unique:abouts',
+        $rules = array(
+            'title' => 'required',
             'description' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
@@ -142,26 +143,25 @@ class AboutController extends Controller
             ->withInput();
             }
             $destinationPath = 'images/about/'; // upload path
+            $oldFilename=$destinationPath.$main_store->image_enc;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+            $destinationPath = 'images/about/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
             $file_path = $destinationPath.'/'.$fileName;
             $main_store->image_enc = $fileName;
             $main_store->image = $image->getClientOriginalName();
-            $image_path = $destinationPath;  // the value is : localhost/project/image/filename.format
-                if(File::exists($destinationPath)) {
-                    File::delete($destinationPath);
-                }
         }
         $main_store->description = Input::get('description');
         if($main_store->update()){
             $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
         }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
         }
-        // var_dump($image);die();
-            
-        
+        return redirect('/home/about');
     }
     /**
      * Remove the specified resource from storage.

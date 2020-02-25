@@ -20,7 +20,6 @@
   </section>
   <!-- Main content -->
   <section class="content">
-    <!-- Default box -->
     <div class="card">
       <div class="card-header">
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
@@ -42,9 +41,9 @@
                     <th>Description</th>
                     <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
-                    <th >Created By</th>
-                    <th>Created At</th>
-                    <th style="width: 90px" class="text-center">Action</th>
+                    <th style="width: 150px" class="text-center" >Created By</th>
+                    <th style="width: 150px" class="text-center">Created At</th>
+                    <th style="width: 95px" class="text-center">Action</th>
                   </tr>
                 </thead>              
                 @foreach($abouts as $key=>$about)              
@@ -54,9 +53,9 @@
                   <td>{!! $about->description !!} </td>
                   <td>
                     @if($about->image_enc != "")
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
+                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
                     @else
-                      <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                     @endif
                   </td>
                   <td>
@@ -64,14 +63,14 @@
                       <i class="fa {{ $about->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
                     </a>
                   </td>
-                  <td>{{$about->user->name}}</td>
-                  <td>{{date('D, j M Y', strtotime($about->created_at))}}</td>
-                  <td class="text-center">
+                  <td class="text-center">{{$about->user->name}}</td>
+                  <td class="text-center">{{date('D, j M Y', strtotime($about->created_at))}}</td>
+                  <td class="text-center" >
                     <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('about.destroy',$about->id)}}" method="post">
+                    <form action="{{ route('about.destroy',$about->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                   </td> 
                 </tr>
@@ -81,51 +80,62 @@
           </div>
           <style type="text/css">
           </style>
-          <!-- /.card-body -->
           <div class="card-footer">
-             {!! $abouts->links("pagination::bootstrap-4") !!}
-          </div>
-          <!-- /.card-footer-->
+           {!! $abouts->links("pagination::bootstrap-4") !!}
+         </div>
+       </div>
+     </section>
+     <!-- /.content -->
+   </div>
+   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form role="form" method="POST" action="{{route('about.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
-              </div>
-              <div class="form-group">
-                <label for="decription">Description</label>
-                <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
-              </div>
-              <div class="form-group">
-                <label for="image">Choose Image</label>
-                <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image" required="true">
-                </div>
+        <form role="form" method="POST" action="{{route('about.store')}}" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="modal-body" >
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text"  class="form-control max" id="title" placeholder="Enter title" name="title" required="true" maxlength="30">
+            </div>
+            <div class="form-group">
+              <label for="decription">Description</label>
+              <textarea name="description"  id="description" class="form-control" placeholder="Enter description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="image">Choose Image</label>
+              <div class="input-group">
+                <input type="file" class="form-control" id="image" name="image" required="true">
               </div>
             </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    @endsection
+  </div>
+  @endsection
+  @section('javascript')
+  <script type="text/javascript" src="{{URL::to('/')}}/backend/js/bootstrap-maxlength.min.js"></script>
+  <script type="text/javascript">
+    $('input#title').maxlength({
+      alwaysShow: true,
+      threshold: 10,
+      warningClass: "label label-success",
+      limitReachedClass: "label label-danger",
+      separator: ' out of ',
+      preText: 'Remaininig word ',
+      postText: ' chars.',
+      validate: true,
+      appendToParent:true,
+    });
+  </script>
+  @endsection

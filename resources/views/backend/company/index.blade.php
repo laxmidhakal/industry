@@ -20,7 +20,6 @@
   </section>
   <!-- Main content -->
   <section class="content">
-    <!-- Default box -->
     <div class="card">
       <div class="card-header">
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
@@ -63,8 +62,8 @@
                     </a>
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('company.destroy',$company->id)}}" method="post" class="form-inline">
+                    <a href="{{ route('company.edit',$company->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('company.destroy',$company->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>

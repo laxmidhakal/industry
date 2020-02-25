@@ -23,6 +23,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
+        
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -52,6 +53,7 @@
                     <div class="input-group">
                         <input type="file" class="form-control" id="image" name="image"  value="{{$about->image}}" >
                       <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid editback-img center-block">
+
                     </div>
                   </div>
                 </div>

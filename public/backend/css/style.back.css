@@ -10,3 +10,9 @@
 .pagination{
   margin: 0
 }
+.editback-img{
+	/*width: 60px;*/
+    height: 38px;
+    object-fit: contain;
+    object-position: center center;
+}
