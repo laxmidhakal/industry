@@ -22,7 +22,7 @@
 
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/slider" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-angle-double-right"></i>
             <p>Slider</p>
           </a>
         </li>
@@ -34,46 +34,46 @@
         </li>
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/gallery" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="nav-icon far fa-image"></i>
             <p>Gallery</p>
           </a>
         </li>
         
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/company" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-building"></i>
             <p>Company</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/product" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fab fa-product-hunt"></i>
             <p>Product</p>
           </a>
         </li>
         
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/team" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-users"></i>
             <p>Team</p>
           </a>
         </li>
         
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/setting" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-cog"></i>
             <p>Setting</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/contact" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-address-book"></i>
             <p>Contact Details</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{URL::to('/')}}/home/social" class="nav-link">
-            <i class="nav-icon fas fa-file"></i>
+            <i class="fas fa-share"></i>
             <p> Social Links</p>
           </a>
         </li>

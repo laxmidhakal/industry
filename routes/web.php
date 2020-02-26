@@ -41,6 +41,8 @@ Route::resource('/home/product', 'Backend\ProductController');
 Route::get('/home/product/isactive/{id}', 'Backend\ProductController@isactive')->name('isactiveproduct');
 Route::get('/home/product/{slug}/detail', 'Backend\ProductDetailController@index')->name('productDetail');
 Route::post('/home/product/detail/store', 'Backend\ProductDetailController@store');
+Route::get('/home/product/detail/{id}/edit', 'Backend\ProductDetailController@edit')->name('productDetail-edit');
+Route::post('/home/product/detail/{id}/update', 'Backend\ProductDetailController@update')->name('productDetail-update');
 Route::get('/home/productdetail/isactive/{id}', 'Backend\ProductDetailController@isactive')->name('isactiveproductDetail');
 Route::get('/home/product/detail/{id}/delete', 'Backend\ProductDetailController@destroy')->name('product-delete');
 Route::resource('/home/setting', 'Backend\SettingController');

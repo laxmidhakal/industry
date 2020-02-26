@@ -53,7 +53,7 @@
                 @foreach($socials as $key=>$social)
                 <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$social->facebook}}</td>
+                  <td contenteditable="true">{{$social->facebook}}</td>
                   <td>{{$social->linkedin}}</td>
                   <td>{{$social->twitter}}</td>
                   <td>{{$social->google}}</td>
@@ -64,8 +64,8 @@
                     </a>
                   </td>
                   <td >
-                    <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('social.destroy',$social->id)}}" method="post" class="forminline">
+                    <a href="{{ route('social.edit',$social->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('social.destroy',$social->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>

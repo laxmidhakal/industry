@@ -34,26 +34,37 @@
           <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
           <div class="card-body">
             <div class="table-responsive">
-              @foreach($abouts as $about)
-              <form role="form" method="POST" action="{{ route('about.update',$about->id)}}" enctype="multipart/form-data">
+              @foreach($settings as $setting)
+              <form role="form" method="POST" action="{{ route('setting.update',$setting->id)}}" enctype="multipart/form-data">
                  {{csrf_field()}}
                  <input name="_method" type="hidden" value="PATCH">
                 <div class="modal-body" >
                   <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $about->title }}">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" value="{{ $setting->address }}">
                   </div>
                   <div class="form-group">
-                    <label for="decription">Description</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $about->description}} </textarea>
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $setting->phone }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true" value="{{ $setting->email }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="lat">Latitude</label>
+                    <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" value="{{ $setting->lat }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="long">Longitude</label>
+                    <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" value="{{ $setting->long }}">
                   </div>
                   <div class="form-group">
                     <label for="image">Choose Image</label>
-                    <input type="hidden" value="{{$about->image}}">
+                    <input type="hidden" value="{{$setting->image}}">
                     <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image"  value="{{$about->image}}" >
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid editback-img center-block">
-
+                      <input type="file" class="form-control" id="image" name="image"  value="{{$setting->image}}" >
+                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid editback-img">
                     </div>
                   </div>
                 </div>
@@ -76,5 +87,4 @@
       </section>
       <!-- /.content -->
     </div>
-    
     @endsection

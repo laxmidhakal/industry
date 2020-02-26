@@ -65,7 +65,7 @@
                     </a>
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="{{URL::to('/')}}/home/product/detail/{{$detail->id}}/edit" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="{{URL::to('/')}}/home/product/detail/{{$detail->id}}/delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>

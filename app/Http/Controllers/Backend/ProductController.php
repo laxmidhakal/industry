@@ -84,7 +84,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Product::where('id', $id)->get();
+        return view('backend.product.edit', compact('products','id'));
     }
     /**
      * Update the specified resource in storage.
@@ -95,7 +96,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'title' => 'required',
+            
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+        return redirect('/home/product')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $main_store=Product::find($id);
+        $main_store->title = Input::get('title');
+        $main_store->slug = $this->helper->slug_converter($main_store->title);
+        if($main_store->update()){
+            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+        }
+        return redirect('/home/product');
     }
     /**
      * Remove the specified resource from storage.

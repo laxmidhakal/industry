@@ -34,26 +34,25 @@
           <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
           <div class="card-body">
             <div class="table-responsive">
-              @foreach($abouts as $about)
-              <form role="form" method="POST" action="{{ route('about.update',$about->id)}}" enctype="multipart/form-data">
+              @foreach($productdetails as $detail)
+              <form role="form" method="POST" action="{{URL::to('/')}}/home/product/detail/{{$detail->id}}/update" enctype="multipart/form-data">
                  {{csrf_field()}}
-                 <input name="_method" type="hidden" value="PATCH">
                 <div class="modal-body" >
                   <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $about->title }}">
+                    <input type="hidden" value="{{ $detail->product_id }}">
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $detail->title }}">
                   </div>
                   <div class="form-group">
                     <label for="decription">Description</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $about->description}} </textarea>
+                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $detail->description}} </textarea>
                   </div>
                   <div class="form-group">
                     <label for="image">Choose Image</label>
-                    <input type="hidden" value="{{$about->image}}">
+                    <input type="hidden" value="{{$detail->image}}">
                     <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image"  value="{{$about->image}}" >
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid editback-img center-block">
-
+                        <input type="file" class="form-control" id="image" name="image"  value="{{$detail->image}}" >
+                      <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" class="img-fluid editback-img center-block">
                     </div>
                   </div>
                 </div>

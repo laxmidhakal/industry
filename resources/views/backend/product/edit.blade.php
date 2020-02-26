@@ -34,27 +34,14 @@
           <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
           <div class="card-body">
             <div class="table-responsive">
-              @foreach($abouts as $about)
-              <form role="form" method="POST" action="{{ route('about.update',$about->id)}}" enctype="multipart/form-data">
+              @foreach($products as $product)
+              <form role="form" method="POST" action="{{ route('product.update',$product->id)}}" enctype="multipart/form-data">
                  {{csrf_field()}}
                  <input name="_method" type="hidden" value="PATCH">
                 <div class="modal-body" >
                   <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $about->title }}">
-                  </div>
-                  <div class="form-group">
-                    <label for="decription">Description</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $about->description}} </textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="image">Choose Image</label>
-                    <input type="hidden" value="{{$about->image}}">
-                    <div class="input-group">
-                        <input type="file" class="form-control" id="image" name="image"  value="{{$about->image}}" >
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid editback-img center-block">
-
-                    </div>
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $product->title }}">
                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">

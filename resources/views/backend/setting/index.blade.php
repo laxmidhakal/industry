@@ -70,13 +70,12 @@
                     </a>
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('setting.destroy',$setting->id)}}" method="post">
+                    <a href="{{ route('setting.edit',$setting->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                    <form action="{{ route('setting.destroy',$setting->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
-                    
                   </td>
                 </tr>
                 @endforeach

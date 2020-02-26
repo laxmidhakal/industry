@@ -97,7 +97,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teams = Team::where('id', $id)->get();
+        return view('backend.team.edit', compact('teams','id'));
     }
     /**
      * Update the specified resource in storage.
@@ -108,7 +109,50 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'title' => 'required',
+            'designation' => 'required',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+        return redirect('/home/team')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $main_store=Team::find($id);
+        $main_store->title = Input::get('title');
+        $main_store->slug = $this->helper->slug_converter($main_store->title);
+        $image = Input::file('image');
+        if($image != ""){
+             $rules = array(
+                'image' => 'required|mimes:jpeg,jpg|max:1024',
+            );
+            $validator = Validator::make(Input::all(), $rules);
+            if ($validator->fails()) {
+            return redirect('/home/team')
+            ->withErrors($validator)
+            ->withInput();
+            }
+            $destinationPath = 'images/team/'; // upload path
+            $oldFilename=$destinationPath.$main_store->image_enc;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+            $destinationPath = 'images/team/'; // upload path
+            $extension = $image->getClientOriginalExtension(); // getting image extension
+            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+            $image->move($destinationPath, $fileName); /*move file on destination*/
+            $file_path = $destinationPath.'/'.$fileName;
+            $main_store->image_enc = $fileName;
+            $main_store->image = $image->getClientOriginalName();
+        }
+        $main_store->designation = Input::get('designation');
+        if($main_store->update()){
+            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+        }
+        return redirect('/home/team');
     }
     /**
      * Remove the specified resource from storage.

@@ -99,7 +99,9 @@ class ProductDetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productdetails = Product_has_detail::where('id', $id)->get();
+        $products = Product::where('id', $id)->get();
+        return view('backend.product_detail.edit', compact('productdetails','products'));
     }
     /**
      * Update the specified resource in storage.
@@ -110,7 +112,51 @@ class ProductDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'title' => 'required',
+            'description' => 'required',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+        return redirect('/home/product')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $main_store=Product_has_detail::find($id);
+        $main_store->product_id = Product_has_detail::value('product_id');
+        $main_store->title = Input::get('title');
+        $main_store->slug = $this->helper->slug_converter($main_store->title);
+        $image = Input::file('image');
+        if($image != ""){
+             $rules = array(
+                'image' => 'required|mimes:jpeg,jpg|max:1024',
+            );
+            $validator = Validator::make(Input::all(), $rules);
+            if ($validator->fails()) {
+            return redirect('/home/product')
+            ->withErrors($validator)
+            ->withInput();
+            }
+            $destinationPath = 'images/productdetail/'; // upload path
+            $oldFilename=$destinationPath.$main_store->image_enc;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+            $destinationPath = 'images/productdetail/'; // upload path
+            $extension = $image->getClientOriginalExtension(); // getting image extension
+            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+            $image->move($destinationPath, $fileName); /*move file on destination*/
+            $file_path = $destinationPath.'/'.$fileName;
+            $main_store->image_enc = $fileName;
+            $main_store->image = $image->getClientOriginalName();
+        }
+        $main_store->description = Input::get('description');
+        if($main_store->update()){
+            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+        }
+        return back()->withInput();
     }
     /**
      * Remove the specified resource from storage.

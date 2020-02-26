@@ -80,7 +80,8 @@ class SocialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $socials = Social::where('id', $id)->get();
+        return view('backend.social.edit', compact('socials'));
     }
     /**
      * Update the specified resource in storage.
@@ -91,7 +92,19 @@ class SocialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $main_store=Social::find($id);
+        $main_store->facebook = Input::get('facebook');
+        $main_store->linkedin = Input::get('linkedin');
+        $main_store->twitter = Input::get('twitter');
+        $main_store->google = Input::get('google');
+        $main_store->instagram = Input::get('instagram');
+        if($main_store->update()){
+            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+        }
+        return redirect('/home/social');
     }
     /**
      * Remove the specified resource from storage.
