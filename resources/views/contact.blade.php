@@ -37,24 +37,20 @@
   @endif
   <div class="container">
     <div class="row">      
-      <div class="col-lg-8">
-        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="form">
+      <div class="col-lg-8 box">
+        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="form" >
             {{ csrf_field() }}  
           <div class="row">
             @include('backend.frontflash.alertmsg')
             <div class="col-lg-6">
-              <input type="text"  id="name" placeholder="Enter Your Name" name="name" required="true">
-              <span class="text-danger">{{ $errors->first('name') }}</span>
+              <input type="text"  id="name" placeholder="Enter Your Name" name="name"   data-parsley-trigger="keyup">
             </div>
             <div class="col-lg-6">
-              <input type="email" placeholder="Your Email" name="email" id="email" required="true" autocomplete="off">
-              <span class="text-danger">{{ $errors->first('email') }}</span>
+              <input type="email" placeholder="Your Email" name="email" id="email"  autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup">
             </div>  
             <div class="col-lg-12">
-              <input type="text"  id="subject" placeholder="Subject" name="subject" required="true">
-              <span class="text-danger">{{ $errors->first('subject') }}</span>
-              <textarea class="text-msg" placeholder="Message" id="message" name="message" required="true"></textarea>
-              <span class="text-danger">{{ $errors->first('message') }}</span>
+              <input type="text"  id="subject" placeholder="Subject" name="subject"   data-parsley-trigger="keyup">
+              <textarea class="text-msg" placeholder="Message" id="message" name="message"  data-parsley-trigger="keyup"></textarea>
               <button class="site-btn " type="submit" name="submit">send message</button>
             </div>
           </div>
@@ -97,26 +93,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="{{URL::to('/')}}/js/adminlte.min.js"></script>
  <script>
-    $(document).ready(function () {
-    $('#form').validate({ // initialize the plugin
-        rules: {
-            name: {
-                required: true
-            },
-            email: {
-               required: true,
-               maxlength: 50,
-               email: true,
-            },
-             subject: {
-                required: true
-            },
-             message: {
-                required: true
-            },
-        }
+ $(document).ready(function(){
+  $('#form').parsley();
+  $('#form').on('submit', function(event){
+   event.preventDefault();
+   if($('#form').parsley().isValid())
+   {
+    $.ajax({
+     method:"POST",
+     data:$(this).serialize(),
+     dataType:"json",
+     beforeSend:function()
+     {
+      $('#submit').attr('disabled', 'disabled');
+      $('#submit').val('Submitting...');
+     },
+     success:function(data)
+     {
+      $('#form')[0].reset();
+      $('#form').parsley().reset();
+      $('#submit').attr('disabled', false);
+      $('#submit').val('Submit');
+      alert(data.success);
+     }
     });
-});
-</script>
+   }
+  });
+
+ });
+ </script>
 </div>    
 @endsection

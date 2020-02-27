@@ -44,29 +44,29 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
-            'message' => 'required',
-        );
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-        return redirect('/contact')
-        ->withErrors($validator)
-        ->withInput();
-        }
-        $main_store = new Contact;
-        $names = Input::get('name');
-        $main_store->name = Str::ucfirst($names);
-        $main_store->email = Input::get('email');
-        $main_store->subject = Input::get('subject');
-        $main_store->message = Input::get('message');
-       
-       $main_store->save();
-       
-        return back(); 
-
+        if(request()->ajax())
+            {
+                $rules = array(
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'subject' => 'required',
+                    'message' => 'required',
+                );
+                $validator = Validator::make(Input::all(), $rules);
+                if ($validator->fails()) {
+                return redirect('/contact')
+                ->withErrors($validator)
+                ->withInput();
+                }
+                $main_store = new Contact;
+                $names = Input::get('name');
+                $main_store->name = Str::ucfirst($names);
+                $main_store->email = Input::get('email');
+                $main_store->subject = Input::get('subject');
+                $main_store->message = Input::get('message');
+                $main_store->save();
+                return response()->json(['success' => 'Data Added']);
+            }
 
     }
     /**

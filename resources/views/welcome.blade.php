@@ -61,7 +61,7 @@
                             @foreach($product_main->getProductDetail()->take(4)->get() as $product_detail)
                             <div class="col-lg-4 col-md-6" >
                                 <div class="feature-box">
-                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-index-img  " id="productpopover-{{$key+1}}" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{ strip_tags( str_limit($product_detail->description, 50) ) }}" data-original-title="{{$product_detail->title}}">
+                                    <img src="{{URL::to('/')}}/images/productdetail/{{$product_detail->image_enc}}" alt="{{$product_detail->title}}"  class="img-fluid w-100 main-product-index-img  " id="productpopover-{{$key+1}}" title="{{$product_detail->title}}" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{ strip_tags( str_limit($product_detail->description, 50) ) }}" data-original-title="{{$product_detail->title}}">
                                      <a href="{{URL::to('/')}}/product/{{$product_detail->getProduct->slug}}/{{$product_detail->slug}}">
                                      </a>
                                 </div>
@@ -88,9 +88,7 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
         placement : 'bottom',
         trigger : 'hover',
-
     });
 });
 </script>
-
 @endsection

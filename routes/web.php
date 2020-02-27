@@ -51,6 +51,8 @@ Route::get('/home/contact', 'ContactController@create')->name('homecontact');
 Route::get('/home/contact/{id}/delete', 'ContactController@destroy')->name('contact-delete');
 Route::resource('/home/social', 'Backend\SocialController');
 Route::get('/home/social/isactive/{id}', 'Backend\SocialController@isactive')->name('isactivesocial');
+Route::post('/home/social/savevalue', 'Backend\SocialController@savevalue')->name('savevalue');
+
 
 
 

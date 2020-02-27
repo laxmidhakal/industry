@@ -139,4 +139,19 @@ class SocialController extends Controller
         $isactive->update();
         return back()->withInput();
     }
+    public function savevalue(){
+        $main_store=Social::find($id);
+        $main_store->facebook = Input::get('facebook');
+        $main_store->linkedin = Input::get('linkedin');
+        $main_store->twitter = Input::get('twitter');
+        $main_store->google = Input::get('google');
+        $main_store->instagram = Input::get('instagram');
+        $main_store=$request->all();
+        if($main_store->update()){
+            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+        }else{
+            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+        }
+        return Response()->json($main_store);
+    }
 }

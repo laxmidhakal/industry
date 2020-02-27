@@ -67,8 +67,8 @@
                     <a href="{{ route('social.edit',$social->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <form action="{{ route('social.destroy',$social->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>
@@ -76,18 +76,11 @@
               </table>
             </div>
           </div>
-          <!-- /.card-body -->
           <div class="card-footer">
-            @if($counts==1)
-            Total:{{$counts}}
-            @endif
-           
+          <button id="save" type="submit"  class="btn btn-primary">Click to Save</button>
           </div>
-          <!-- /.card-footer-->
         </div>
-        <!-- /.card -->
       </section>
-      <!-- /.content -->
     </div>
     <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
       <div class="modal-dialog modal-lg">
@@ -128,10 +121,30 @@
             </div>
           </form>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
     @endsection
     @section('javascript')
+    <script type="text/javascript">
+        $("#save").click(function() {
+           var token = $('meta[name="csrf-token"]').attr('content'),
+           var id = $input.attr("id");
+           
+              id = ,
+              sort_id = ,
+
+debugger;
+            $.ajax({
+                type: 'post',
+                url: '/home/social/savevalue',
+                data: {
+                    _token: token,
+                    instagram:instagram,
+                },
+                success: function(data) {
+                  console.log('Save successfully');
+                },
+            });
+        });
+   </script>
     @endsection
