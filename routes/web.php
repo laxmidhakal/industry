@@ -31,6 +31,7 @@ Route::get('/home', 'Backend\HomeController@index')->name('home');
 Route::resource('/home/slider', 'Backend\SliderController');
 Route::resource('/home/about', 'Backend\AboutController');
 Route::get('/home/about/isactive/{id}', 'Backend\AboutController@isactive')->name('isactiveabout');
+Route::post('/home/sort/about', 'Backend\AboutController@isSort');
 Route::resource('/home/gallery', 'Backend\GalleryController');
 Route::get('/home/gallery/isactive/{id}', 'Backend\GalleryController@isactive')->name('isactivegallery');
 Route::resource('/home/company', 'Backend\CompanyController');

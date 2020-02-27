@@ -30,7 +30,6 @@
       </aside>
       <!-- /.control-sidebar -->
     </div>
-    <script src="{{URL::to('/')}}/backend/js/jquery.js"></script>
     <script src="{{URL::to('/')}}/backend/js/jquery.min.js"></script>
     <script src="{{URL::to('/')}}/backend/js/bootstrap.bundle.min.js"></script>
     <script src="{{URL::to('/')}}/backend/plugins/pace-progress/pace.min.js"></script>

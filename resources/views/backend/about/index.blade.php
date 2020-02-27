@@ -39,6 +39,7 @@
                     <th style="width: 10px">SN</th>
                     <th>Title</th>
                     <th>Description</th>
+                    <th style="width: 10px" class="text-center">Sort</th>
                     <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 150px" class="text-center" >Created By</th>
@@ -51,6 +52,9 @@
                   <td>{{$key+1}}</td>
                   <td>{{$about->title}}</td>
                   <td>{!! $about->description !!} </td>
+                  <td>
+                    <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about">{{$about->sort_id}}</p>
+                  </td>
                   <td>
                     @if($about->image_enc != "")
                     <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
@@ -143,10 +147,11 @@
         Pace.start();
         if (e.which == 9){
           var id = $(event.target).attr('ids'),
-          // val = $(event.target).attr('value'),
-          token = $('meta[name="csrf-token"]').attr('content');
-          value = document.getElementById('someElement'+id).innerHTML; //value of the text input
-          var url= "{{URL::to('/')}}/home/get-model/sort";
+              page = $(event.target).attr('page'),
+              token = $('meta[name="csrf-token"]').attr('content'),
+              value = document.getElementById('someElement'+id).innerHTML; //value of the text input
+          var url= "{{URL::to('/')}}/home/sort/"+page;
+        debugger;
           $.ajax({
             type:"POST",
             dataType:"JSON",
@@ -160,7 +165,7 @@
               location.reload();
             },
             error: function (e) {
-              alertify.alert('Sorry! this data is used some where');
+              alert('Sorry! this data is used some where');
               Pace.start();
             }
           });
