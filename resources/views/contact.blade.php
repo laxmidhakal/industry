@@ -26,7 +26,6 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.7045332455314!2d85.35806101467352!3d27.68885058279959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a23ff53c6c1%3A0xbf154d5bf0abe0ba!2sPepsicola!5e1!3m2!1sen!2snp!4v1581663076469!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
   </div>
 </div>
-
 <section class="contact-section spad">
   @if ($message = Session::get('success'))
   <div class="alert alert-success alert-block">
@@ -37,7 +36,7 @@
   @endif
   <div class="container">
     <div class="row">      
-      <div class="col-lg-8 box">
+      <div class="col-lg-8 ">
         <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="form" >
             {{ csrf_field() }}  
           <div class="row">

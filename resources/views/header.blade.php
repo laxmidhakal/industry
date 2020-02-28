@@ -66,7 +66,14 @@
                         <ul>
                             <li class="{{Request::route()->getName() == 'index' ? 'active' : ''}}"><a href="{{URL::to('/')}}">Home</a></li>
                             <li class="{{Request::route()->getName() == 'about' ? 'active' : ''}}"><a href="{{URL::to('/about')}}">About</a></li>
-                            <li class="{{Request::route()->getName() == 'companies' ? 'active' : ''}}"><a  href="{{URL::to('/companies')}}">Companies</a>
+                            <li class="{{Request::route()->getName() == 'companiesdetail' ? 'active' : ''}}"><a  href="javascript:void(0);">Companies</a>
+                                @if(count($company_menu))
+                                <ul class="sub-menu">
+                                    @foreach($company_menu as $menu_pro)
+                                    <li><a href="{{URL::to('/')}}/companies/{{$menu_pro->slug}}">{{$menu_pro->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                                @endif
                             </li>
                             <li class="{{Request::route()->getName() == 'gallery' ? 'active' : ''}}"><a href="{{URL::to('/gallery')}}">Gallery</a></li>
                             <li class="{{Request::route()->getName() == 'product' ? 'active' : ''}}"><a href="javascript:void(0);">Product</a>

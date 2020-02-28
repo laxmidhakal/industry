@@ -39,6 +39,7 @@
                   <tr>
                     <th style="width: 10px" >SN</th>
                     <th>Product</th>
+                    <th style="width: 10px" class="text-center">Sort</th>
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
@@ -47,10 +48,13 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>
-                  <a href="{{URL::to('/')}}/home/product/{{$product->slug}}/detail">
-                    {{$product->title}}
+                    <a href="{{URL::to('/')}}/home/product/{{$product->slug}}/detail">
+                      {{$product->title}}
+                    </a>
                   </td>
-                  </a>
+                  <td>
+                    <p id="someElement{{$product->id}}" ids="{{$product->id}}" class="text-center sort" contenteditable="plaintext-only" page="product">{{$product->sort_id}}</p>
+                  </td>
                   <td>
                     <a href="{{URL::to('/')}}/home/product/isactive/{{$product->id}}" class="btn {{ $product->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
                       <i class="fa {{ $product->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
@@ -60,8 +64,8 @@
                     <a href="{{ route('product.edit',$product->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <form action="{{ route('product.destroy',$product->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>
@@ -71,39 +75,71 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-             {!! $products->links("pagination::bootstrap-4") !!}
-          </div>
-          <!-- /.card-footer-->
+           {!! $products->links("pagination::bootstrap-4") !!}
+         </div>
+         <!-- /.card-footer-->
+       </div>
+       <!-- /.card -->
+     </section>
+     <!-- /.content -->
+   </div>
+   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Product </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Product </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <form role="form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="modal-body" >
+            <div class="form-group">
+              <label for="title">Product</label>
+              <input type="text" class="form-control" id="title" placeholder="Enter Product" name="title" required="true">
+            </div>
           </div>
-          <form role="form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="title">Product</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter Product" name="title" required="true">
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
-      <!-- /.modal-dialog -->
+      <!-- /.modal-content -->
     </div>
-    @endsection
+    <!-- /.modal-dialog -->
+  </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+    $(".sort").keydown(function (e) {
+      Pace.start();
+      if (e.which == 9){
+        var id = $(event.target).attr('ids'),
+            page = $(event.target).attr('page'),
+            token = $('meta[name="csrf-token"]').attr('content'),
+            value = document.getElementById('someElement'+id).innerHTML; //value of the text input
+        var url= "{{URL::to('/')}}/home/sort/"+page;
+      debugger;
+        $.ajax({
+          type:"POST",
+          dataType:"JSON",
+          url:url,
+          data:{
+            _token:token,
+            id : id,
+            value:value,
+          },
+          success:function(e){
+            location.reload();
+          },
+          error: function (e) {
+            alert('Sorry! this data is used some where');
+            Pace.start();
+          }
+        });
+      }
+    });
+  </script>
+@endsection

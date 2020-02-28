@@ -18,9 +18,7 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-  <!-- Main content -->
   <section class="content">
-    <!-- Default box -->
     <div class="card">
       <div class="card-header">
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
@@ -40,7 +38,8 @@
                     <th style="width: 10px">SN</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Image</th>
+                    <th style="width: 10px" class="text-center">Sort</th>
+                    <th style="width: 10px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
@@ -51,10 +50,13 @@
                   <td>{{$slider->title}}</td>
                   <td>{!! $slider->description !!}</td>
                   <td>
+                    <p id="someElement{{$slider->id}}" ids="{{$slider->id}}" class="text-center sort" contenteditable="plaintext-only" page="slider">{{$slider->sort_id}}</p>
+                  </td>
+                  <td>
                     @if($slider->image_enc != "")
-                      <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img center-block">
+                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img center-block">
                     @else
-                      <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                     @endif
                   </td>
                   <td>
@@ -66,8 +68,8 @@
                     <a href="{{ route('slider.edit',$slider->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                     <form action="{{ route('slider.destroy',$slider->id)}}" method="post" class="d-inline-block">
                       {{csrf_field()}}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>
@@ -75,51 +77,77 @@
               </table>
             </div>
           </div>
-          <!-- /.card-body -->
           <div class="card-footer">
-             {!! $sliders->links("pagination::bootstrap-4") !!}  
-          </div>
-          <!-- /.card-footer-->
+           {!! $sliders->links("pagination::bootstrap-4") !!}  
+         </div>
+       </div>
+     </section>
+   </div>
+   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form role="form" method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
-              </div>
-              <div class="form-group">
-                <label for="decription">Description</label>
-                <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
-              </div>
-              <div class="form-group">
-                <label for="image">Choose Image</label>
-                <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image" required="true">
-                </div>
+        <form role="form" method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="modal-body" >
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
+            </div>
+            <div class="form-group">
+              <label for="decription">Description</label>
+              <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="image">Choose Image</label>
+              <div class="input-group">
+                <input type="file" class="form-control" id="image" name="image" required="true">
               </div>
             </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    @endsection
+  </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+  $(".sort").keydown(function (e) {
+    Pace.start();
+    if (e.which == 9){
+      var id = $(event.target).attr('ids'),
+      page = $(event.target).attr('page'),
+      token = $('meta[name="csrf-token"]').attr('content'),
+value = document.getElementById('someElement'+id).innerHTML; //value of the text input
+var url= "{{URL::to('/')}}/home/sort/"+page;
+debugger;
+$.ajax({
+  type:"POST",
+  dataType:"JSON",
+  url:url,
+  data:{
+    _token:token,
+    id : id,
+    value:value,
+  },
+  success:function(e){
+    location.reload();
+  },
+  error: function (e) {
+    alert('Sorry! this data is used some where');
+    Pace.start();
+  }
+});
+}
+});
+</script>
+@endsection

@@ -59,6 +59,7 @@ class ProductDetailController extends Controller
         ->withInput();
         }
         $main_store = new Product_has_detail;
+        $product= new Product;
         $main_store->product_id = Input::get('product_id');        
         $main_store->title = Input::get('title');
         $main_store->slug = $this->helper->slug_converter($main_store->title);
@@ -87,10 +88,26 @@ class ProductDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   public function isSort()
+   {
+       $id = Input::get('id');
+       $value = Input::get('value');
+       $sort_ids =  Product_has_detail::find($id);
+       $sort_ids->sort_id = $value;
+       if($sort_ids->save()){
+         $response = array(
+           'status' => 'success',
+           'msg' => 'Successfully change',
+         );
+       }else{
+         $response = array(
+           'status' => 'failure',
+           'msg' => 'Sorry the data could not be change',
+         );
+       }
+       return Response::json($response);
+   }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -118,12 +135,13 @@ class ProductDetailController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/product')
+        return redirect()->route('productDetail', $main_store->getProduct->slug)
         ->withErrors($validator)
         ->withInput();
         }
+        $product_id = Product_has_detail::where('id',$id)->value('product_id');
         $main_store=Product_has_detail::find($id);
-        $main_store->product_id = Product_has_detail::value('product_id');
+        $main_store->product_id = $product_id;
         $main_store->title = Input::get('title');
         $main_store->slug = $this->helper->slug_converter($main_store->title);
         $image = Input::file('image');
@@ -133,7 +151,7 @@ class ProductDetailController extends Controller
             );
             $validator = Validator::make(Input::all(), $rules);
             if ($validator->fails()) {
-            return redirect('/home/product')
+            return redirect()->route('productDetail', $main_store->getProduct->slug)
             ->withErrors($validator)
             ->withInput();
             }
@@ -142,7 +160,6 @@ class ProductDetailController extends Controller
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
-            $destinationPath = 'images/productdetail/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -156,7 +173,7 @@ class ProductDetailController extends Controller
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
         }
-        return back()->withInput();
+        return redirect()->route('productDetail', $main_store->getProduct->slug);
     }
     /**
      * Remove the specified resource from storage.

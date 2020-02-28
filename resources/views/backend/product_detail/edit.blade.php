@@ -40,7 +40,6 @@
                 <div class="modal-body" >
                   <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="hidden" value="{{ $detail->product_id }}">
                     <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $detail->title }}">
                   </div>
                   <div class="form-group">

@@ -13,6 +13,7 @@ use App\Product;
 use App\Setting;
 use App\Contact;
 use App\Social;
+use App\Company;
 
 class ContactController extends Controller
 { 
@@ -24,7 +25,8 @@ class ContactController extends Controller
         $product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
         $socials = Social::orderBy('created_at','DESC')->get()->take(1);
         $page_title = "Contact ";
-        return view('contact',compact('settings','product_menu','socials','about_details','contacts','page_title'));
+        $company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+        return view('contact',compact('settings','product_menu','socials','about_details','contacts','page_title','company_menu'));
     }
     /**
      * Show the form for creating a new resource.

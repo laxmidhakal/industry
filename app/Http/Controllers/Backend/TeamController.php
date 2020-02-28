@@ -85,10 +85,25 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   public function isSort()
+   {
+       $id = Input::get('id');
+       $value = Input::get('value');
+       $sort_ids =  Team::find($id);
+       $sort_ids->sort_id = $value;
+       if($sort_ids->save()){
+         $response = array(
+           'status' => 'success',
+           'msg' => 'Successfully change',
+         );
+       }else{
+         $response = array(
+           'status' => 'failure',
+           'msg' => 'Sorry the data could not be change',
+         );
+       }
+       return Response::json($response);
+   }
     /**
      * Show the form for editing the specified resource.
      *

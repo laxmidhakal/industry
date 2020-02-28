@@ -19,7 +19,7 @@
           <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 product-img">
           <div class="fb-text">
             <h5>{{$main_data->title}}</h5>
-            <p>{!!$main_data->description!!} </p>
+            <p> {!! str_limit($main_data->description, 170)!!}</p>
             <a href="{{URL::to('/')}}/product/{{$main_data->getProduct->slug}}/{{$main_data->slug}}" class="fb-more-btn">Read More</a>
           </div>
         </div>

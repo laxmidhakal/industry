@@ -23,8 +23,9 @@ class IndustryController extends Controller
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title = "Gobal SAS Trading";
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
 		$socials = Social::orderBy('created_at','DESC')->get()->take(1);
-		return view('welcome',compact(['index_details','page_title','settings','about_details','product_menu','settings','socials']));
+		return view('welcome',compact(['index_details','page_title','settings','about_details','product_menu','settings','socials','company_menu']));
 	}
 
 	public function indexAbout()
@@ -34,8 +35,9 @@ class IndustryController extends Controller
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title = "About";
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('about',compact(['about_details','page_title','settings','product_menu','settings','team_details','socials']));
+		return view('about',compact(['about_details','page_title','settings','product_menu','settings','team_details','socials','company_menu']));
 	}
 
 	public function indexCompanies()
@@ -52,7 +54,8 @@ class IndustryController extends Controller
 			$product_details = $product_main->random(3);
 		}
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('companies',compact(['companies_details' ,'page_title','settings','product_menu','settings','about_details','product_details','socials']));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('companies',compact(['companies_details' ,'page_title','settings','product_menu','settings','about_details','product_details','socials','company_menu']));
 	}
 	public function indexCompaniesDetail($slug)
 	{
@@ -63,7 +66,8 @@ class IndustryController extends Controller
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$companies_details = Company::where('id',$company_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details'));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details','company_menu'));
 	}
 
 	public function indexGallery()
@@ -74,7 +78,8 @@ class IndustryController extends Controller
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title = "Gallery";
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('gallery' ,compact(['gallery_details' ,'page_title','settings','product_menu','settings','about_details','socials']));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('gallery' ,compact(['gallery_details' ,'page_title','settings','product_menu','settings','about_details','socials','company_menu']));
 	}
 
 
@@ -85,9 +90,10 @@ class IndustryController extends Controller
 		$page_title = "Product";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
+		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials'));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials','company_menu'));
 	}
 
 	public function indexProductDetail($product,$slug)
@@ -105,7 +111,8 @@ class IndustryController extends Controller
 			$products = $product_main->random(3);
 		}
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials','products'));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials','products','company_menu'));
 	}
 
 	public function indexTeam()
@@ -116,7 +123,8 @@ class IndustryController extends Controller
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title ='Team';
 		$socials = Social::orderBy('created_at','DESC')->get();
-		return view('team' ,compact(['team_details' ,'page_title','settings','product_menu','settings','about_details','socials']));
+		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+		return view('team' ,compact(['team_details' ,'page_title','settings','product_menu','settings','about_details','socials','company_menu']));
 	}
 
 	public function indexContact()

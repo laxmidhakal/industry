@@ -77,7 +77,6 @@
             </div>
           </div>
           <div class="card-footer">
-          <button id="save" type="submit"  class="btn btn-primary">Click to Save</button>
           </div>
         </div>
       </section>
@@ -124,27 +123,4 @@
       </div>
     </div>
     @endsection
-    @section('javascript')
-    <script type="text/javascript">
-        $("#save").click(function() {
-           var token = $('meta[name="csrf-token"]').attr('content'),
-           var id = $input.attr("id");
-           
-              id = ,
-              sort_id = ,
-
-debugger;
-            $.ajax({
-                type: 'post',
-                url: '/home/social/savevalue',
-                data: {
-                    _token: token,
-                    instagram:instagram,
-                },
-                success: function(data) {
-                  console.log('Save successfully');
-                },
-            });
-        });
-   </script>
-    @endsection
+  

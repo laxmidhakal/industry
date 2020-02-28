@@ -22,7 +22,10 @@
   <section class="content">
     <div class="card">
       <div class="card-header">
+        @if(count($abouts)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        @elseif(count($abouts)<='1')
+        @endif
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -53,7 +56,7 @@
                   <td>{{$about->title}}</td>
                   <td>{!! $about->description !!} </td>
                   <td>
-                    <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about">{{$about->sort_id}}</p>
+                    <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about" hidden="true">{{$about->sort_id}}</p>
                   </td>
                   <td>
                     @if($about->image_enc != "")

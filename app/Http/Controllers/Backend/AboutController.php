@@ -65,7 +65,6 @@ class AboutController extends Controller
         }
         $main_store = new About;
         $main_store->title = Input::get('title');
-            
         $main_store->slug = $this->helper->slug_converter($main_store->title);
         $image = Input::file('image');
         if($image != ""){
@@ -121,8 +120,8 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $abouts = About::where('id', $id)->get();
-        return view('backend.about.edit', compact('abouts','id'));
+      $abouts = About::where('id', $id)->get();
+      return view('backend.about.edit', compact('abouts'));
     }
     /**
      * Update the specified resource in storage.
@@ -186,28 +185,28 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        $about=About::find($id);
-        if($about->delete()){
-            $this->request->session()->flash('alert-success', 'Data delete successfully!!');
-        }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
-        }
-        return back()->withInput();
+      $about=About::find($id);
+      if($about->delete()){
+        $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+      }else{
+        $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+      }
+      return back()->withInput();
     }
     public function isactive(Request $request,$id)
     {
-        $get_is_active = About::where('id',$id)->value('is_active');
-        $isactive = About::find($id);
-        if($get_is_active == 0){
-            $isactive->is_active = 1;
-            $this->request->session()->flash('alert-success', 'Data  published!!');
-        }
-        else {
-            $isactive->is_active = 0;
-            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
+      $get_is_active = About::where('id',$id)->value('is_active');
+      $isactive = About::find($id);
+      if($get_is_active == 0){
+        $isactive->is_active = 1;
+        $this->request->session()->flash('alert-success', 'Data  published!!');
+      }
+      else {
+        $isactive->is_active = 0;
+        $this->request->session()->flash('alert-danger', 'Data could not be published!!');
 
-        }
-        $isactive->update();
-        return back()->withInput();
+      }
+      $isactive->update();
+      return back()->withInput();
     }
 }

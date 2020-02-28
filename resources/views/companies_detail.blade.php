@@ -10,23 +10,25 @@
     </div>
   </div>
 </section>
-<section class="blog-section spadpadding">
+<section class="video-section spad" >
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 order-1 order-lg-2">
       @foreach($companies_details as $main_data)
-      <div class="blog-post">
-        <div class="blog-thumb set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}" alt="{{$main_data->title}}">
+      <div class="col-lg-6">
+        <div class="video-text">
+          <h2>{{$main_data->title}} </h2>
+          <p>{!! $main_data->description !!}</p>
+          <a href="">Read More</a>
         </div>
-        <h2>{{$main_data->title}} </h2>
-        </a>
-        <p>{!! $main_data->description !!}</p>
-      </div> 
+      </div>
+      <div class="col-lg-6">
+        <div class="video-box set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
+          <a href="https://www.youtube.com/watch?v=7IRkdz2LZ6M" class="video-popup">
+            <i class="fa fa-play"></i>
+          </a>
+        </div>
+      </div>
       @endforeach
-      <div class="mt-4">
-        {!! $companies_details->links("pagination::bootstrap-4") !!}
-      </div>
-      </div>
     </div>
   </div>
 </section>
