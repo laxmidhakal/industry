@@ -20,7 +20,6 @@
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-      @include('backend.header')
       @include('backend.sidebar')
       @yield('content')
       @include('backend.footer')

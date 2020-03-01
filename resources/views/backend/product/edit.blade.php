@@ -23,42 +23,37 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        
         <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-            </div>
-          </div>
-          <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
-          <div class="card-body">
-            <div class="table-responsive">
-              @foreach($products as $product)
-              <form role="form" method="POST" action="{{ route('product.update',$product->id)}}" enctype="multipart/form-data">
-                 {{csrf_field()}}
-                 <input name="_method" type="hidden" value="PATCH">
-                <div class="modal-body" >
-                  <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $product->title }}">
-                  </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-              </form>
-              @endforeach
-            </div>
-          </div>
-          <style type="text/css">
-          </style>
-          <!-- /.card-body -->
-          <div class="card-footer">
-          </div>
-          <!-- /.card-footer-->
         </div>
+      </div>
+      <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
+      <div class="card-body">
+        <div class="table-responsive">
+          @foreach($products as $product)
+          <form role="form" method="POST" action="{{ route('product.update',$product->id)}}" enctype="multipart/form-data">
+           {{csrf_field()}}
+           <input name="_method" type="hidden" value="PATCH">
+           <div class="modal-body" >
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $product->title }}">
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+        @endforeach
+      </div>
+    </div>
+    <style type="text/css">
+    </style>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+    <!-- /.card-footer-->
+  </div>
         <!-- /.card -->
       </section>
       <!-- /.content -->

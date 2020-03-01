@@ -11,8 +11,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
+            <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}}  Company Detail Page</li>
           </ol>
         </div>
       </div>
@@ -23,10 +23,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        @if(count($settings)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-        @elseif(count($settings)<='1')
-        @endif
         <div class="card-tools">
         </div>
       </div>
@@ -37,41 +34,35 @@
             <thead class="bg-secondary">
               <tr>
                 <th style="width: 10px">SN</th>
+                <th>Title</th>
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Image</th>
+                <th>Video</th>
+                <th>Sort</th>
                 <th style="width: 10px" class="text-center">Label</th>
                 <th style="width: 90px" class="text-center">Action</th>
               </tr>
             </thead>
-            @foreach($settings as $key=>$setting)
+            @foreach($companydetails as $key=>$detail)
             <tr>
               <td>{{$key+1}}</td>
-              <td>{{$setting->address}}</td>
-              <td>{{$setting->phone}}</td>
-              <td>{{$setting->email}}</td>
-              <td>{{$setting->lat}}</td>
-              <td>{{$setting->long}}</td>
+              <td>{{$detail->getCompany->title}}</td>
+              <td>{{$detail->address}}</td>
+              <td>{{$detail->phone}}</td>
+              <td>{{$detail->email}}</td>
+              <td>{{$detail->video}}</td>
               <td>
-                <div class="">
-                  <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
-                </div>
+                <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="detail" >{{$detail->sort_id}}</p>
               </td>
               <td>
-                <a href="{{URL::to('/')}}/home/setting/isactive/{{$setting->id}}" class="btn {{ $setting->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
-                  <i class="fa {{ $setting->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                <a href="{{URL::to('/')}}/home/companydetail/isactive/{{$detail->id}}" class="btn {{ $detail->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                  <i class="fa {{ $detail->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
                 </a>
               </td>
               <td>
-                <a href="{{ route('setting.edit',$setting->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                <form action="{{ route('setting.destroy',$setting->id)}}" method="post" class="d-inline-block">
-                  {{csrf_field()}}
-                  <input name="_method" type="hidden" value="DELETE">
-                  <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
-                </form>
+                <a href="{{URL::to('/')}}/home/company/detail/{{$detail->id}}/edit" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                <a href="{{URL::to('/')}}/home/company/detail/{{$detail->id}}/delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
               </td>
             </tr>
             @endforeach
@@ -96,7 +87,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
+          <form role="form" method="POST" action="{{URL::to('/')}}/home/company/detail/store" enctype="multipart/form-data">
+          <input type="hidden" name="company_id" value="{{$company_id}}">
             {{ csrf_field() }}
             <div class="modal-body" >
               <div class="form-group">
@@ -112,18 +104,8 @@
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true">
               </div>
               <div class="form-group">
-                <label for="lat">Latitude</label>
-                <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" >
-              </div>
-              <div class="form-group">
-                <label for="long">Longitude</label>
-                <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" >
-              </div>
-              <div class="form-group">
-                <label for="image">Choose Logo(Logo must be in png)</label>
-                <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image" required="true">
-                </div>
+                <label for="video">Video</label>
+                <input type="text" class="form-control" id="video" placeholder="Enter link of video" name="video" required="true">
               </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -136,4 +118,36 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
+    @endsection
+    @section('javascript')
+    <script type="text/javascript">
+        $(".sort").keydown(function (e) {
+          Pace.start();
+          if (e.which == 9){
+            var id = $(event.target).attr('ids'),
+                page = $(event.target).attr('page'),
+                token = $('meta[name="csrf-token"]').attr('content'),
+                value = document.getElementById('someElement'+id).innerHTML; //value of the text input
+            var url= "{{URL::to('/')}}/home/sort/company/"+page;
+          debugger;
+            $.ajax({
+              type:"POST",
+              dataType:"JSON",
+              url:url,
+              data:{
+                _token:token,
+                id : id,
+                value:value,
+              },
+              success:function(e){
+                location.reload();
+              },
+              error: function (e) {
+                alert('Sorry! this data is used some where');
+                Pace.start();
+              }
+            });
+          }
+        });
+      </script>
     @endsection

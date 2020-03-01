@@ -117,9 +117,7 @@ class ProductController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/product')
-        ->withErrors($validator)
-        ->withInput();
+        return back()->withErrors($validator)->withInput();
         }
         $main_store=Product::find($id);
         $main_store->title = Input::get('title');

@@ -13,10 +13,11 @@ use Validator;
 use Session;
 use File;
 use Route;
-use App\Setting;
+use App\Company_has_contact;
+use App\Company;
 use App\Helper\Helper;
 
-class SettingController extends Controller
+class CompanyContactController extends Controller
 {
     public function __construct(Request $request, Helper $helper)
     {
@@ -24,10 +25,11 @@ class SettingController extends Controller
         $this->request = $request;
         $this->helper = $helper;
     }
-    public function index()
+    public function index($slug)
     {
-        $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-        return view('backend.setting.index',compact('settings'));
+        $company_id = Company::where('slug',$slug)->value('id'); 
+        $companydetails = Company_has_contact::where('company_id',$company_id)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
+        return view('backend.company_contact.index',compact('companydetails','company_id'));
     }
 
     /**
@@ -52,33 +54,22 @@ class SettingController extends Controller
             'address' => 'required',
             'phone' => 'required|unique:settings',
             'email' => 'required|email|unique:settings',
-            'lat' => 'required',
-            'long' => 'required',
-            'image' => 'required|mimes:png|max:1024',
+            'video' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/setting')
+        return redirect('/home/company')
         ->withErrors($validator)
         ->withInput();
         }
-        $main_store = new Setting;
+         $main_store = new Company_has_contact;
+        $product= new Company;
+        $main_store->company_id = Input::get('company_id'); 
         $mainaddress = Input::get('address');
         $main_store->address = Str::ucfirst($mainaddress);
         $main_store->phone = Input::get('phone');
-        $main_store->email = Input::get('email');
-        $main_store->lat = Input::get('lat');
-        $main_store->long = Input::get('long');
-        $image = Input::file('image');
-        if($image != ""){
-            $destinationPath = 'images/setting/'; // upload path
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-            $image->move($destinationPath, $fileName); /*move file on destination*/
-            $file_path = $destinationPath.'/'.$fileName;
-            $main_store->image_enc = $fileName;
-            $main_store->image = $image->getClientOriginalName();
-        }
+        $main_store->email = Input::get('email'); 
+        $main_store->video = Input::get('video');
         $main_store->created_by = Auth::user()->id;
         if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data save successfully!!');
@@ -87,16 +78,33 @@ class SettingController extends Controller
         }
         return back()->withInput();
     }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function isSort()
     {
-       
+        $id = Input::get('id');
+        $value = Input::get('value');
+        $sort_ids =  Company_has_contact::find($id);
+        $sort_ids->sort_id = $value;
+        if($sort_ids->save()){
+          $response = array(
+            'status' => 'success',
+            'msg' => 'Successfully change',
+          );
+        }else{
+          $response = array(
+            'status' => 'failure',
+            'msg' => 'Sorry the data could not be change',
+          );
+        }
+        return Response::json($response);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,9 +113,11 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-      $settings = Setting::where('id', $id)->get();
-      return view('backend.setting.edit', compact('settings'));
+        $companycontacts = Company_has_contact::where('id', $id)->get();
+        $companies = Company::where('id', $id)->get();
+        return view('backend.company_contact.edit', compact('companycontacts','companies'));
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -119,53 +129,32 @@ class SettingController extends Controller
     {
         $rules = array(
             'address' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'lat' => 'required',
-            'long' => 'required',
+            'phone' => 'required|unique:settings',
+            'email' => 'required|email|unique:settings',
+            'video' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
         return back()->withErrors($validator)->withInput();
         }
-        $main_store=Setting::find($id);
+        $company_id = Company_has_contact::where('id',$id)->value('company_id');
+        $main_store=Company_has_contact::find($id);
+        $main_store->company_id = $company_id; 
         $mainaddress = Input::get('address');
         $main_store->address = Str::ucfirst($mainaddress);
         $main_store->phone = Input::get('phone');
-        $main_store->email = Input::get('email');
-        $main_store->lat = Input::get('lat');
-        $main_store->long = Input::get('long');
-        $image = Input::file('image');
-        if($image != ""){
-             $rules = array(
-                'image' => 'required|mimes:png|max:1024',
-            );
-            $validator = Validator::make(Input::all(), $rules);
-            if ($validator->fails()) {
-            return redirect('/home/setting')
-            ->withErrors($validator)
-            ->withInput();
-            }
-            $destinationPath = 'images/setting/'; // upload path
-            $oldFilename=$destinationPath.$main_store->image_enc;
-            if(File::exists($oldFilename)) {
-                File::delete($oldFilename);
-            }
-            $destinationPath = 'images/setting/'; // upload path
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-            $image->move($destinationPath, $fileName); /*move file on destination*/
-            $file_path = $destinationPath.'/'.$fileName;
-            $main_store->image_enc = $fileName;
-            $main_store->image = $image->getClientOriginalName();
-        }
-        if($main_store->update()){
+        $main_store->email = Input::get('email'); 
+        $main_store->video = Input::get('video');
+        $main_store->created_by = Auth::user()->id;
+        if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
         }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
         }
-        return redirect('/home/setting');
+        return redirect()->route('companyDetail', $main_store->getCompany->slug);
+        
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -174,23 +163,25 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $setting=Setting::find($id);
-        if($setting->delete()){
-          $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+        $companycontact=Company_has_contact::find($id);
+        if($companycontact->delete()){
+            $this->request->session()->flash('alert-success', 'Data deleted successfully!!');
         }else{
-          $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
+            $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
         }
         return back()->withInput();
     }
     public function isactive(Request $request,$id)
     {
-        $get_is_active = Setting::where('id',$id)->value('is_active');
-        $isactive = Setting::find($id);
+        $get_is_active = Company_has_contact::where('id',$id)->value('is_active');
+        $isactive = Company_has_contact::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
+            $this->request->session()->flash('alert-success', 'Data  published!!');
         }
         else {
             $isactive->is_active = 0;
+            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
         }
         $isactive->update();
         return back()->withInput();

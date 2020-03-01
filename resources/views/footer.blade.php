@@ -1,27 +1,16 @@
-<section class="cta-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 d-flex align-items-center">
-                <h2>We produce or supply Goods, Services, or Sources</h2>
-            </div>
-            <div class="col-lg-3 text-lg-right" >
-                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <footer class="footer-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-widget">
-                    <h2 class="fw-title ">Useful Resources</h2>
+                    <h2 class="fw-title ">Pages Link</h2>
                     <ul >
                         <li><a href="{{URL::to('/about')}}">About Us</a></li>
                         <li><a href="{{URL::to('/gallery')}}">Gallery</a></li>
                         <li><a href="{{URL::to('/team')}}">Team</a></li>
-                        <li><a href="{{URL::to('/companies')}}">Companies</a></li>
+                        <li><a href="{{URL::to('/')}}">Home</a></li>
                     </ul>
                 </div>
             </div>

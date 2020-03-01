@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Slider;
 use App\About;
 use App\Company;
+use App\Company_has_contact;
 use App\Gallery;
 use App\Team;
 use App\Product;
@@ -67,7 +68,10 @@ class IndustryController extends Controller
 		$companies_details = Company::where('id',$company_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
 		$socials = Social::orderBy('created_at','DESC')->get();
 		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
-		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details','company_menu'));
+		$contact_id = Company::where('slug',$slug)->value('id');
+		$company_contacts = Company_has_contact::where('company_id',$contact_id)->where('is_active', true)->get();
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(6);
+		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details','company_menu','company_contacts','team_details'));
 	}
 
 	public function indexGallery()
@@ -90,7 +94,7 @@ class IndustryController extends Controller
 		$page_title = "Product";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
+		$product_details = Product_has_detail::where('product_id',$product_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(6);
 		$socials = Social::orderBy('created_at','DESC')->get();
 		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
 		return view('product',compact('settings','page_title','product_menu','product_details','product_menu','settings','about_details','socials','company_menu'));
@@ -117,7 +121,7 @@ class IndustryController extends Controller
 
 	public function indexTeam()
 	{
-		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(9);
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(6);
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();

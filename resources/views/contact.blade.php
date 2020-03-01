@@ -91,35 +91,6 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script src="{{URL::to('/')}}/js/adminlte.min.js"></script>
- <script>
- $(document).ready(function(){
-  $('#form').parsley();
-  $('#form').on('submit', function(event){
-   event.preventDefault();
-   if($('#form').parsley().isValid())
-   {
-    $.ajax({
-     method:"POST",
-     data:$(this).serialize(),
-     dataType:"json",
-     beforeSend:function()
-     {
-      $('#submit').attr('disabled', 'disabled');
-      $('#submit').val('Submitting...');
-     },
-     success:function(data)
-     {
-      $('#form')[0].reset();
-      $('#form').parsley().reset();
-      $('#submit').attr('disabled', false);
-      $('#submit').val('Submit');
-      alert(data.success);
-     }
-    });
-   }
-  });
-
- });
- </script>
+ 
 </div>    
 @endsection

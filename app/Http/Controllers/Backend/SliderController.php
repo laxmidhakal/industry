@@ -76,7 +76,6 @@ class SliderController extends Controller
      }else{
          $this->request->session()->flash('alert-waring', 'Data could not be add!!');
      }
-     //var_dump($name); die();
      return back()->withInput();
     }
     /**
@@ -130,9 +129,7 @@ class SliderController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/slider')
-        ->withErrors($validator)
-        ->withInput();
+        return back()->withErrors($validator)->withInput();
         }
         $main_store=Slider::find($id);
         $main_store->title = Input::get('title');
@@ -191,9 +188,11 @@ class SliderController extends Controller
         $isactive = Slider::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
+            $this->request->session()->flash('alert-success', 'Data  published!!');
         }
         else {
             $isactive->is_active = 0;
+            $this->request->session()->flash('alert-danger', 'Data could not be published!!');
         }
         $isactive->update();
         return back()->withInput();

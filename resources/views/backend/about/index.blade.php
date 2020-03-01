@@ -27,70 +27,70 @@
         @elseif(count($abouts)<='1')
         @endif
         <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-            </div>
-          </div>
-          <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
-                <thead class="bg-secondary">
-                  <tr>
-                    <th style="width: 10px">SN</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th style="width: 10px" class="text-center">Sort</th>
-                    <th style="width: 10px" class="text-center">Image</th>
-                    <th style="width: 10px" class="text-center">Label</th>
-                    <th style="width: 150px" class="text-center" >Created By</th>
-                    <th style="width: 150px" class="text-center">Created At</th>
-                    <th style="width: 95px" class="text-center">Action</th>
-                  </tr>
-                </thead>              
-                @foreach($abouts as $key=>$about)              
-                <tr>
-                  <td>{{$key+1}}</td>
-                  <td>{{$about->title}}</td>
-                  <td>{!! $about->description !!} </td>
-                  <td>
-                    <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about" hidden="true">{{$about->sort_id}}</p>
-                  </td>
-                  <td>
-                    @if($about->image_enc != "")
-                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
-                    @else
-                    <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
-                    @endif
-                  </td>
-                  <td>
-                    <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn {{ $about->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
-                      <i class="fa {{ $about->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
-                    </a>
-                  </td>
-                  <td class="text-center">{{$about->user->name}}</td>
-                  <td class="text-center">{{date('D, j M Y', strtotime($about->created_at))}}</td>
-                  <td class="text-center" >
-                    <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                    <form action="{{ route('about.destroy',$about->id)}}" method="post" class="d-inline-block">
-                      {{csrf_field()}}
-                      <input name="_method" type="hidden" value="DELETE">
-                      <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
-                    </form>
-                  </td> 
-                </tr>
-                @endforeach
-              </table>
-            </div>
-          </div>
-          <style type="text/css">
-          </style>
-          <div class="card-footer">
-           {!! $abouts->links("pagination::bootstrap-4") !!}
-         </div>
-       </div>
+          <button type="button" class="btn btn-tool" data-card-widget="" data-toggle="tooltip" title="Collapse">
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="" data-toggle="tooltip" title="Remove">
+          </button>
+        </div>
+      </div>
+      <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="bg-secondary">
+              <tr>
+                <th style="width: 10px">SN</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th style="width: 10px" class="text-center">Sort</th>
+                <th style="width: 10px" class="text-center">Image</th>
+                <th style="width: 10px" class="text-center">Label</th>
+                <th style="width: 150px" class="text-center" >Created By</th>
+                <th style="width: 150px" class="text-center">Created At</th>
+                <th style="width: 95px" class="text-center">Action</th>
+              </tr>
+            </thead>              
+            @foreach($abouts as $key=>$about)              
+            <tr>
+              <td>{{$key+1}}</td>
+              <td>{{$about->title}}</td>
+              <td>{!! $about->description !!} </td>
+              <td>
+                <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about" hidden="true">{{$about->sort_id}}</p>
+              </td>
+              <td>
+                @if($about->image_enc != "")
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
+                @else
+                <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                @endif
+              </td>
+              <td>
+                <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn {{ $about->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                  <i class="fa {{ $about->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                </a>
+              </td>
+              <td class="text-center">{{$about->user->name}}</td>
+              <td class="text-center">{{date('D, j M Y', strtotime($about->created_at))}}</td>
+              <td class="text-center" >
+                <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                <form action="{{ route('about.destroy',$about->id)}}" method="post" class="d-inline-block">
+                  {{csrf_field()}}
+                  <input name="_method" type="hidden" value="DELETE">
+                  <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                </form>
+              </td> 
+            </tr>
+            @endforeach
+          </table>
+        </div>
+      </div>
+      <style type="text/css">
+      </style>
+      <div class="card-footer">
+       {!! $abouts->links("pagination::bootstrap-4") !!}
+     </div>
+   </div>
      </section>
      <!-- /.content -->
    </div>

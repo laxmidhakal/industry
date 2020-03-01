@@ -29,27 +29,25 @@
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
       <div class="card-body">
         <div class="table-responsive">
-          @foreach($teams as $team)
-          <form role="form" method="POST" action="{{ route('team.update',$team->id)}}" enctype="multipart/form-data">
+          @foreach($companycontacts as $contact)
+          <form role="form" method="POST" action="{{URL::to('/')}}/home/company/detail/{{$contact->id}}/update" enctype="multipart/form-data">
            {{csrf_field()}}
-           <input name="_method" type="hidden" value="PATCH">
            <div class="modal-body" >
             <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $team->title }}">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" value="{{ $contact->address }}">
             </div>
             <div class="form-group">
-              <label for="designation">Designation</label>
-              <input type="text" class="form-control" id="designation" placeholder="Enter Designation" name="designation" value="{{ $team->designation}}">
+              <label for="phone">Phone</label>
+              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $contact->phone }}">
             </div>
             <div class="form-group">
-              <label for="image">Choose Image</label>
-              <input type="hidden" value="{{$team->image}}">
-              <div class="input-group">
-                <input type="file" class="form-control" id="image" name="image"  value="{{$team->image}}" >
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid editback-img center-block">
-
-              </div>
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true" value="{{ $contact->email }}">
+            </div>
+            <div class="form-group">
+              <label for="video">Video</label>
+              <input type="text" class="form-control" id="video" placeholder="Enter link of video" name="video" required="true" value="{{ $contact->video }}">
             </div>
           </div>
           <div class="modal-footer justify-content-between">
@@ -71,4 +69,5 @@
       </section>
       <!-- /.content -->
     </div>
+    
     @endsection

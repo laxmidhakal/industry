@@ -130,9 +130,7 @@ class GalleryController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/gallery')
-        ->withErrors($validator)
-        ->withInput();
+        return back()->withErrors($validator)->withInput();
         }
         $main_store=Gallery::find($id);
         $main_store->title = Input::get('title');

@@ -130,9 +130,7 @@ class TeamController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/team')
-        ->withErrors($validator)
-        ->withInput();
+        return back()->withErrors($validator)->withInput();
         }
         $main_store=Team::find($id);
         $main_store->title = Input::get('title');

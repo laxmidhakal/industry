@@ -25,66 +25,62 @@
     <div class="card-header">
       <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
       <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-          <i class="fas fa-minus"></i></button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-              <thead class="bg-secondary">
-                <tr>
-                  <th style="width: 10px" >SN</th>
-                  <th>Name</th>
-                  <th>Designation</th>
-                  <th style="width: 10px" class="text-center">Sort</th>
-                  <th style="width: 10px" class="text-center">Image</th>
-                  <th style="width: 10px" class="text-center">Label</th>
-                  <th style="width: 90px" class="text-center">Action</th>
-                </tr>
-              </thead>
-              @foreach($teams as $key=>$team)
-              <tr>
-                <td>{{$key+1}}</td>
-                <td>{{$team->title}}</td>
-                <td>{{$team->designation}}</td>
-                <td>
-                  <p id="someElement{{$team->id}}" ids="{{$team->id}}" class="text-center sort" contenteditable="plaintext-only" page="team">{{$team->sort_id}}</p>
-                </td>
-                <td>
-                  @if($team->image_enc != "")
-                  <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img center-block">
-                  @else
-                  <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
-                  @endif
-                </td>
-                <td>
-                  <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn {{ $team->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
-                    <i class="fa {{ $team->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
-                  </a>
-                </td>
-                <td>
-                  <a href="{{ route('team.edit',$team->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                  <form action="{{ route('team.destroy',$team->id)}}" method="post" class="d-inline-block">
-                    {{csrf_field()}}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
-                  </form>
-                </td>
-              </tr>
-              @endforeach
-            </table>
-          </div>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-         {!! $teams->links("pagination::bootstrap-4") !!}  
-       </div>
-       <!-- /.card-footer-->
-     </div>
+      </div>
+    </div>
+    <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="bg-secondary">
+            <tr>
+              <th style="width: 10px" >SN</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th style="width: 10px" class="text-center">Sort</th>
+              <th style="width: 10px" class="text-center">Image</th>
+              <th style="width: 10px" class="text-center">Label</th>
+              <th style="width: 90px" class="text-center">Action</th>
+            </tr>
+          </thead>
+          @foreach($teams as $key=>$team)
+          <tr>
+            <td>{{$key+1}}</td>
+            <td>{{$team->title}}</td>
+            <td>{{$team->designation}}</td>
+            <td>
+              <p id="someElement{{$team->id}}" ids="{{$team->id}}" class="text-center sort" contenteditable="plaintext-only" page="team">{{$team->sort_id}}</p>
+            </td>
+            <td>
+              @if($team->image_enc != "")
+              <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid back-img center-block">
+              @else
+              <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+              @endif
+            </td>
+            <td>
+              <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn {{ $team->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                <i class="fa {{ $team->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+              </a>
+            </td>
+            <td>
+              <a href="{{ route('team.edit',$team->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+              <form action="{{ route('team.destroy',$team->id)}}" method="post" class="d-inline-block">
+                {{csrf_field()}}
+                <input name="_method" type="hidden" value="DELETE">
+                <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </table>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+     {!! $teams->links("pagination::bootstrap-4") !!}  
+   </div>
+   <!-- /.card-footer-->
+ </div>
      <!-- /.card -->
    </section>
    <!-- /.content -->

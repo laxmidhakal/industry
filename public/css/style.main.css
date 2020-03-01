@@ -296,7 +296,7 @@ a.link.linkedin{
 }
 .main-productdetail-img{
 	height: 338px !important;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center center;
 }
 .main-product-index-img{
@@ -338,7 +338,7 @@ a.link.linkedin{
 	background-color: #163d5d;
 }
  .popover {
-    border: 2px dotted red !important;
+    border: 2px dotted !important;
   }
 
  /* Popover Header */

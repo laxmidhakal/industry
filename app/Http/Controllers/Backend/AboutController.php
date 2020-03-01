@@ -138,9 +138,7 @@ class AboutController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/about')
-        ->withErrors($validator)
-        ->withInput();
+        return back()->withErrors($validator)->withInput();
         }
         $main_store=About::find($id);
         $main_store->title = Input::get('title');

@@ -54,7 +54,7 @@ class ProductDetailController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect('/home/product')
+        return back()
         ->withErrors($validator)
         ->withInput();
         }
@@ -135,8 +135,7 @@ class ProductDetailController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-        return redirect()->route('productDetail', $main_store->getProduct->slug)
-        ->withErrors($validator)
+        return back()->withErrors($validator)
         ->withInput();
         }
         $product_id = Product_has_detail::where('id',$id)->value('product_id');

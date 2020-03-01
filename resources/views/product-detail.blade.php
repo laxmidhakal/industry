@@ -48,4 +48,16 @@
     @endif
   </div>
 </section>
+<section class="cta-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 d-flex align-items-center">
+                <h2>We produce or supply Goods, Services, or Sources</h2>
+            </div>
+            <div class="col-lg-3 text-lg-right" >
+                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

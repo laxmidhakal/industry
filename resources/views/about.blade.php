@@ -35,7 +35,7 @@
 	@if(count($team_details))
 	<div class="container">
 		<div class="team-text">
-			<h2 >Our Amazing Team</h2>
+			<h2 >Our Team</h2>
 		</div>
 		<div class="row">
 			@foreach($team_details->take(3) as $main_data)
@@ -50,13 +50,21 @@
 			</div>				
 			@endforeach
 		</div>
-		<div class="text-center pt-4">
-			<a class="mt-md-3  btn btn-outline-primary rounded-0 main-btn-outline" href="{{ route('team') }}">Read More</a>
-		</div>
 	</div>
 	@endif
 </section>
-        
+<section class="cta-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 d-flex align-items-center">
+                <h2>We produce or supply Goods, Services, or Sources</h2>
+            </div>
+            <div class="col-lg-3 text-lg-right" >
+                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
+            </div>
+        </div>
+    </div>
+</section>      
 @endsection
 
 
