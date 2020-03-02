@@ -65,12 +65,12 @@ class IndustryController extends Controller
 		$page_title = "Company detail";
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-		$companies_details = Company::where('id',$company_id)->where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(3);
+		$companies_details = Company::where('id',$company_id)->where('is_active', true)->get();
 		$socials = Social::orderBy('created_at','DESC')->get();
 		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
 		$contact_id = Company::where('slug',$slug)->value('id');
 		$company_contacts = Company_has_contact::where('company_id',$contact_id)->where('is_active', true)->get();
-		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(6);
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','ASC')->orderBy('created_at','ASC')->paginate(6);
 		return view('companies_detail',compact('settings','page_title','product_menu','product_menu','settings','about_details','socials','companies_details','company_menu','company_contacts','team_details'));
 	}
 
@@ -116,18 +116,19 @@ class IndustryController extends Controller
 		}
 		$socials = Social::orderBy('created_at','DESC')->get();
 		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
-		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials','products','company_menu'));
+		return view('product-detail',compact('settings','page_title','product_menu','product_details','settings','about_details','product_id','socials','products','company_menu','product'));
 	}
 
 	public function indexTeam()
 	{
-		$team_details = Team::where('is_active', true)->orderBy('sort_id','DESC')->paginate(6);
 		$settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
 		$page_title ='Team';
 		$socials = Social::orderBy('created_at','DESC')->get();
 		$company_menu = Company::where('is_active', true)->orderBy('sort_id','DESC')->get();
+
+		$team_details = Team::where('is_active', true)->orderBy('sort_id','ASC')->paginate(6);
 		return view('team' ,compact(['team_details' ,'page_title','settings','product_menu','settings','about_details','socials','company_menu']));
 	}
 

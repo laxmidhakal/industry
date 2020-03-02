@@ -61,13 +61,25 @@ class SliderController extends Controller
      $main_store->slug = $this->helper->slug_converter($main_store->title);
      $image = Input::file('image');
      if($image != ""){
+
          $destinationPath = 'images/slider/'; // upload path
          $extension = $image->getClientOriginalExtension(); // getting image extension
          $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+
          $image->move($destinationPath, $fileName); /*move file on destination*/
          $file_path = $destinationPath.'/'.$fileName;
          $main_store->image_enc = $fileName;
          $main_store->image = $image->getClientOriginalName();
+
+         $originalImage= $request->file('image');
+        $thumbnailImage = Image::make($image);
+        $thumbnailPath = public_path().'/thumbnail/';
+        $originalPath = public_path().'/images/slider/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
+
+        
      }
      $main_store->description = Input::get('description');
      $main_store->created_by = Auth::user()->id;

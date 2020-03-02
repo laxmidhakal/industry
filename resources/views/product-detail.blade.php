@@ -16,7 +16,7 @@
     <div class="row">
       @foreach($product_details as $about_data)
       <div class="col-lg-6">
-        <img src="{{URL::to('/')}}/images/productdetail/{{$about_data->image_enc}}" alt="{{$about_data->title}}" class="img-fluid w-100 main-productdetail-img pb-5 ">
+        <img src="{{URL::to('/')}}/images/productdetail/{{$about_data->image_enc}}" alt="{{$about_data->title}}" class="img-fluid w-100 main-about-img pb-5 ">
       </div>
       <div class="col-lg-6">
         <div class="about-text">
@@ -35,13 +35,15 @@
     <div class="row">
       @foreach($products as $product)
       <div class="col-lg-4 col-md-6">
-        <div class="feature-box">
-          <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
-          <div class="fb-text">
-            <h5>{{$product->title}}</h5>
-            <p>{!! str_limit($product->description, 170)!!}</p>
+        <a href="{{URL::to('/')}}/product/restaurant/{{$product->slug}}">
+          <div class="feature-box">
+            <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
+            <div class="fb-text">
+              <h5>{{$product->title}}</h5>
+              <p>{!! str_limit($product->description, 70)!!}</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
       @endforeach
     </div>

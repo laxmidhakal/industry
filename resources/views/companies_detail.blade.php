@@ -16,15 +16,17 @@
       @foreach($companies_details as $main_data)
       <div class="col-lg-6">
         <div class="video-text">
-          <h2>{{$main_data->title}} </h2>
+          <h2 class="text-capitalize">{{$main_data->title}} </h2>
           <p>{!! $main_data->description !!}</p>
         </div>
       </div>
       <div class="col-lg-6">
-        <div class="video-box set-bg" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
-          <a href="https://www.youtube.com/watch?v=7IRkdz2LZ6M" class="video-popup">
+        <div class="video-box set-bg main-about-img" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
+          @if($main_data->getCompanyContact != '')
+          <a href="{{$main_data->getCompanyContact->video}}" class="video-popup">
             <i class="fa fa-play"></i>
           </a>
+          @endif
         </div>
       </div>
       @endforeach
@@ -33,12 +35,10 @@
 </section>
 <section class="team-section my-3 pb-5">
   <div class="container">
-    <div class="text-center">
-      <h2>Our Team</h2>
-    </div>
+    
     <div class="row">
-      <div class="col-md-4">
          @foreach($company_contacts as $contact)
+      <div class="col-md-4">
            <div class="contact-text">
              <h2>Get in Touch</h2>
              <p>{{$contact->title}}</p>
@@ -60,19 +60,24 @@
                </div>
              </div>
            </div>
-         @endforeach
       </div>
-      @foreach($team_details->take(2) as $main_data)
-      <div class="col-md-4">
-        <div class="team-member">
-          <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-team-img">
-          <div class="member-info">
-            <h3>{{$main_data->title}}</h3>
-            <p>{{$main_data->designation}} </p>
+         @endforeach
+         <div class="col-md-8">
+          <h2>Our Team</h2>
+          <div class="row">
+            @foreach($team_details->take(2) as $main_data)
+            <div class="col-md-6">
+              <div class="team-member">
+                <img src="{{URL::to('/')}}/images/team/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 main-team-img">
+                <div class="member-info">
+                  <h3>{{$main_data->title}}</h3>
+                  <p>{{$main_data->designation}} </p>
+                </div>
+              </div>
+            </div>        
+            @endforeach
           </div>
-        </div>
-      </div>        
-      @endforeach
+         </div>
       
     </div>
   </div>

@@ -15,32 +15,21 @@
     <div class="row">
       @foreach($product_details as $main_data)
       <div class="col-lg-4 col-md-6">
-        <div class="feature-box">
-          <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 product-img">
-          <div class="fb-text">
-            <h5>{{$main_data->title}}</h5>
-            <p> {!! str_limit($main_data->description, 170)!!}</p>
-            <a href="{{URL::to('/')}}/product/{{$main_data->getProduct->slug}}/{{$main_data->slug}}" class="fb-more-btn">Read More</a>
-          </div>
+        <a href="{{URL::to('/')}}/product/{{$main_data->getProduct->slug}}/{{$main_data->slug}}">
+          <div class="feature-box">
+            <img src="{{URL::to('/')}}/images/productdetail/{{$main_data->image_enc}}" alt="{{$main_data->title}}" class="img-fluid w-100 product-img">
+            <div class="fb-text">
+              <h5>{{$main_data->title}}</h5>
+              <p> {!! str_limit($main_data->description, 35)!!}</p>
+            </div>
+          </a>
         </div>
-      </div>
+    </div>
       @endforeach
     </div>
-    <div class="mt-4">
+    <div class="mt-4 d-flex justify-content-center">
       {!! $product_details->links("pagination::bootstrap-4") !!}
     </div>
   </div>
   </section>
-  <section class="cta-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 d-flex align-items-center">
-                <h2>We produce or supply Goods, Services, or Sources</h2>
-            </div>
-            <div class="col-lg-3 text-lg-right" >
-                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection

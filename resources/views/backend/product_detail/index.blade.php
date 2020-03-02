@@ -98,11 +98,11 @@
           <div class="modal-body" >
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  required="true">
+              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  required="true" >
             </div>
             <div class="form-group">
               <label for="decription">Description</label>
-              <textarea name="description" id="description" class="form-control" placeholder="Enter description" maxlength="30" ></textarea>
+              <textarea name="description" id="description" class="form-control" placeholder="Enter description"  ></textarea>
             </div>
             <div class="form-group">
               <label for="image">Choose Image</label>
@@ -125,17 +125,18 @@
 @section('javascript')
 <script type="text/javascript" src="{{URL::to('/')}}/backend/js/bootstrap-maxlength.min.js"></script>
 <script type="text/javascript">
-  $('textarea#description').maxlength({
-    alwaysShow: true,
-    threshold: 10,
-    warningClass: "label label-success",
-    limitReachedClass: "label label-danger",
-    separator: ' out of ',
-    preText: 'Remaininig word ',
-    postText: ' chars.',
-    validate: true,
-    appendToParent:true,
-  });
+ $('textarea#message_area').on('keyup',function() 
+ {
+   var maxlen = $(this).attr('maxlength');
+   var length = $(this).val().length;
+   if(length > (maxlen-10) ){
+     $('#textarea_message').text('max length '+maxlen+' characters only!')
+   }
+   else
+     {
+       $('#textarea_message').text('');
+     }
+ });
 </script>
 <script type="text/javascript">
     $(".sort").keydown(function (e) {

@@ -32,32 +32,15 @@
     </div>
   </div>
 </section>
-<section class="cta-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 d-flex align-items-center">
-                <h2>We produce or supply Goods, Services, or Sources</h2>
-            </div>
-            <div class="col-lg-3 text-lg-right" >
-                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection
 @section('javascript')
-<script src="{{URL::to('/')}}/js/lightgallery.min.js"></script>
-<!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
 <!-- lightgallery plugins -->
-<script src="{{URL::to('/')}}/js/lg-thumbnail.min.js"></script>
-<script src="{{URL::to('/')}}/js/lg-fullscreen.min.js"></script>
+<script src="{{URL::to('/')}}/js/lightgallery-all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $('#lightgallery').lightGallery();
   });
 </script>
-<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
-<script src="{{URL::to('/')}}/js/lightgallery-all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 
 @endsection

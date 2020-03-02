@@ -23,6 +23,7 @@
   <!-- <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet"> -->
 </head>
 <body>
+  <a name="top"></a>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -30,6 +31,7 @@
   @include('header')
   @yield('content')
   @include('footer')
+  <a id="back2Top" title="Back to top" href="#">&#10148;</a>
   <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
       <div class="search-close-switch">+</div>
@@ -47,5 +49,24 @@
   <script src="{{URL::to('/')}}/js/main.js"></script>
   @yield('javascript')
   <!-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> -->
+  <script type="text/javascript">
+    $(window).scroll(function() {
+        var height = $(window).scrollTop();
+        if (height > 500) {
+            $('#back2Top').fadeIn();
+        } else {
+            $('#back2Top').fadeOut();
+        }
+    });
+    $(document).ready(function() {
+        $("#back2Top").click(function(event) {
+            event.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+
+    });
+  </script>
+
 </body>
 </html>
