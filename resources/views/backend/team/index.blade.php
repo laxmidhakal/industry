@@ -36,6 +36,9 @@
               <th style="width: 10px" >SN</th>
               <th>Name</th>
               <th>Designation</th>
+              <th>Facebook</th>
+              <th>Linkedin</th>
+              <th>Twitter</th>
               <th style="width: 10px" class="text-center">Sort</th>
               <th style="width: 10px" class="text-center">Image</th>
               <th style="width: 10px" class="text-center">Label</th>
@@ -47,6 +50,9 @@
             <td>{{$key+1}}</td>
             <td>{{$team->title}}</td>
             <td>{{$team->designation}}</td>
+            <td>{{$team->facebook}}</td>
+            <td>{{$team->linkedin}}</td>
+            <td>{{$team->twitter}}</td>
             <td>
               <p id="someElement{{$team->id}}" ids="{{$team->id}}" class="text-center sort" contenteditable="plaintext-only" page="team">{{$team->sort_id}}</p>
             </td>
@@ -110,6 +116,18 @@
             <div class="input-group">
               <input type="file" class="form-control" id="image" name="image" required="true">
             </div>
+          </div>
+          <div class="form-group">
+            <label for="facebook">Facebook</label>
+            <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
+          </div>
+          <div class="form-group">
+            <label for="linkedin">Linkedin</label>
+            <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
+          </div>
+          <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
           </div>
         </div>
         <div class="modal-footer justify-content-between">

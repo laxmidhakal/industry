@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <a href="{{URL::to('/')}}/index3.html" class="brand-link">
+  <a href="{{URL::to('/')}}/home" class="brand-link">
     <img src="{{URL::to('/')}}/img/sas.png"
     alt="AdminLTE Logo"
     class="brand-image img-circle elevation-3"
@@ -18,57 +18,45 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/slider" class="nav-link">
+          <a href="{{URL::to('/')}}/home/slider" class="nav-link  {{ (request()->is('/home/slider*')) ? 'active' : '' }}">
             <i class=" nav-icon fas fa-sliders-h"></i>
             <p>Slider</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/about" class="nav-link">
+        <li class="nav-item ">
+          <a href="{{URL::to('/')}}/home/about" class="nav-link  {{ (request()->is('/home/about*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-file"></i>
             <p>About</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/gallery" class="nav-link">
+        <li class="nav-item ">
+          <a href="{{URL::to('/')}}/home/gallery" class="nav-link active {{ (request()->is('/home/gallery*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-images"></i>
             <p>Gallery</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/company" class="nav-link">
+          <a href="{{URL::to('/')}}/home/company" class="nav-link active{{ (request()->is('/home/company*')) ? 'active' : '' }} ">
             <i class=" nav-icon fas fa-building"></i>
             <p>Company</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/product" class="nav-link">
+          <a href="{{URL::to('/')}}/home/product" class="nav-link active {{ (request()->is('/home/product*')) ? 'active' : '' }} ">
             <i class=" nav-icon fab fa-product-hunt"></i>
             <p>Product</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/team" class="nav-link">
+          <a href="{{URL::to('/')}}/home/team" class="nav-link active {{request()->is('/home/team*') ? 'active' : ''}} ">
             <i class=" nav-icon fas fa-user"></i>
             <p>Team</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/setting" class="nav-link">
-            <i class=" nav-icon fas fa-cog"></i>
-            <p>Setting</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/social" class="nav-link">
-            <i class=" nav-icon fas fa-share"></i>
-            <p> Social Links</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{URL::to('/')}}/home/contact" class="nav-link">
+          <a href="{{URL::to('/')}}/home/contact" class="nav-link active {{ Request::is('/home/contact*') ? 'active' : '' }} ">
             <i class=" nav-icon fas fa-address-book"></i>
-            <p>Contact Details</p>
+            <p>Contact</p>
           </a>
         </li>
       </ul>

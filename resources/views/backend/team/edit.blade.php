@@ -48,8 +48,19 @@
               <div class="input-group">
                 <input type="file" class="form-control" id="image" name="image"  value="{{$team->image}}" >
                 <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-fluid editback-img center-block">
-
               </div>
+            </div>
+            <div class="form-group">
+              <label for="facebook">Facebook</label>
+              <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook" value="{{ $team->facebook}}">
+            </div>
+            <div class="form-group">
+              <label for="linkedin">Linkedin</label>
+              <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin" value="{{ $team->linkedin}}">
+            </div>
+            <div class="form-group">
+              <label for="twitter">Twitter</label>
+              <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter" value="{{ $team->twitter}}">
             </div>
           </div>
           <div class="modal-footer justify-content-between">

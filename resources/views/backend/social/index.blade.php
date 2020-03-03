@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
           </ol>
         </div>
@@ -22,14 +22,13 @@
   <section class="content">
     <!-- Default box -->
     <div class="card">
+      @if(count($socials) == '0')
       <div class="card-header">
-        @if(count($socials)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-        @elseif(count($socials)<='1')
-        @endif
         <div class="card-tools">
         </div>
       </div>
+      @endif
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
       <div class="card-body">
         <div class="table-responsive">
@@ -49,7 +48,7 @@
             @foreach($socials as $key=>$social)
             <tr>
               <td>{{$key+1}}</td>
-              <td contenteditable="true">{{$social->facebook}}</td>
+              <td>{{$social->facebook}}</td>
               <td>{{$social->linkedin}}</td>
               <td>{{$social->twitter}}</td>
               <td>{{$social->google}}</td>
@@ -72,51 +71,50 @@
           </table>
         </div>
       </div>
-      <div class="card-footer">
+      
+    </div>
+  </section>
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-      </section>
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+      <form role="form" method="POST" action="{{route('social.store')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body" >
+          <div class="form-group">
+            <label for="facebook">Facebook</label>
+            <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
           </div>
-          <form role="form" method="POST" action="{{route('social.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="facebook">Facebook</label>
-                <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
-              </div>
-              <div class="form-group">
-                <label for="linkedin">Linkedin</label>
-                <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
-              </div>
-              <div class="form-group">
-                <label for="twitter">Twitter</label>
-                <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
-              </div>
-              <div class="form-group">
-                <label for="google">GooglePlus</label>
-                <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" name="google">
-              </div>
-              <div class="form-group">
-                <label for="instagram">Instagram</label>
-                <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" name="instagram">
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
+          <div class="form-group">
+            <label for="linkedin">Linkedin</label>
+            <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
+          </div>
+          <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
+          </div>
+          <div class="form-group">
+            <label for="google">GooglePlus</label>
+            <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" name="google">
+          </div>
+          <div class="form-group">
+            <label for="instagram">Instagram</label>
+            <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" name="instagram">
+          </div>
         </div>
-      </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
     @endsection
   

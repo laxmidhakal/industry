@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="content-wrapper">
-  
     @include('backend.flash.alertmsg')
 
     <!-- Content Header (Page header) -->
@@ -21,7 +20,6 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -31,14 +29,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$companies}}</h3>
 
-                <p>New Orders</p>
+                <p>Company</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fa fa-building"></i>
               </div>
-              <a href="{{URL::to('/')}}/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{URL::to('/')}}/home/company" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -46,14 +44,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{$product_details}}</h3>
 
-                <p>Bounce Rate</p>
+                <p>Product Category</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-shopping-bag"></i>
               </div>
-              <a href="{{URL::to('/')}}/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{URL::to('/')}}/home/product/product->slug/detail" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,14 +59,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$products}}</h3>
 
-                <p>User Registrations</p>
+                <p>Product Item</p>
               </div>
               <div class="icon">
-                <i class="fa fa-user"></i>
+                <i class="fa fa-shopping-bag"></i>
               </div>
-              <a href="{{URL::to('/')}}/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{URL::to('/')}}/home/product" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -76,14 +74,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$galleries}}</h3>
 
-                <p>Unique Visitors</p>
+                <p>Gallery</p>
               </div>
               <div class="icon">
-                <i class="fa fa-pie-graph"></i>
+                <i class="fa fa-images"></i>
               </div>
-              <a href="{{URL::to('/')}}/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{URL::to('/')}}/home/gallery" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

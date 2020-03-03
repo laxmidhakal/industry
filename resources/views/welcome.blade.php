@@ -71,9 +71,6 @@
                             </div>
                             @endforeach
                         </div>
-                        <div class="mt-md-5 d-flex justify-content-center">
-                            <a class="btn btn-outline-primary rounded-0 main-product-btn-outline" href="{{ URL::to('/')}}/product/{{$product_main->slug }}">Read More</a>
-                        </div>
                     </div>
                     @endif
                     @endforeach

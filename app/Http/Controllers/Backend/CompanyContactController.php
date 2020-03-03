@@ -52,9 +52,8 @@ class CompanyContactController extends Controller
     {
         $rules = array(
             'address' => 'required',
-            'phone' => 'required|unique:settings',
-            'email' => 'required|email|unique:settings',
-            'video' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

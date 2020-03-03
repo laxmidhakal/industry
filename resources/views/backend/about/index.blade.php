@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
           </ol>
         </div>
@@ -27,10 +27,6 @@
         @elseif(count($abouts)<='1')
         @endif
         <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="" data-toggle="tooltip" title="Collapse">
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="" data-toggle="tooltip" title="Remove">
-          </button>
         </div>
       </div>
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
@@ -42,11 +38,11 @@
                 <th style="width: 10px">SN</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th style="width: 10px" class="text-center">Sort</th>
+                <!-- <th style="width: 10px" class="text-center">Sort</th> -->
                 <th style="width: 10px" class="text-center">Image</th>
+                <!-- <th style="width: 150px" class="text-center" >Created By</th> -->
+                <!-- <th style="width: 150px" class="text-center">Created At</th> -->
                 <th style="width: 10px" class="text-center">Label</th>
-                <th style="width: 150px" class="text-center" >Created By</th>
-                <th style="width: 150px" class="text-center">Created At</th>
                 <th style="width: 95px" class="text-center">Action</th>
               </tr>
             </thead>              
@@ -55,9 +51,9 @@
               <td>{{$key+1}}</td>
               <td>{{$about->title}}</td>
               <td>{!! $about->description !!} </td>
-              <td>
+              <!-- <td>
                 <p id="someElement{{$about->id}}" ids="{{$about->id}}" class="text-center sort" contenteditable="plaintext-only" page="about" hidden="true">{{$about->sort_id}}</p>
-              </td>
+              </td> -->
               <td>
                 @if($about->image_enc != "")
                 <img src="{{URL::to('/')}}/images/{{$page}}/{{$about->image_enc}}" class="img-fluid back-img center-block">
@@ -65,13 +61,13 @@
                 <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                 @endif
               </td>
+              <!-- <td class="text-center">{{$about->user->name}}</td> -->
+              <!-- <td class="text-center">{{date('D, j M Y', strtotime($about->created_at))}}</td> -->
               <td>
                 <a href="{{URL::to('/')}}/home/about/isactive/{{$about->id}}" class="btn {{ $about->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
                   <i class="fa {{ $about->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
                 </a>
               </td>
-              <td class="text-center">{{$about->user->name}}</td>
-              <td class="text-center">{{date('D, j M Y', strtotime($about->created_at))}}</td>
               <td class="text-center" >
                 <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                 <form action="{{ route('about.destroy',$about->id)}}" method="post" class="d-inline-block">

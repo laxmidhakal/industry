@@ -40,7 +40,7 @@
             <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
             <div class="fb-text">
               <h5>{{$product->title}}</h5>
-              <p>{!! str_limit($product->description, 70)!!}</p>
+              <p>{!! str_limit($product->description, 35)!!}</p>
             </div>
           </div>
         </a>

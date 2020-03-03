@@ -35,8 +35,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $contacts=Contact::orderBy('created_at','DESC')->get();
-        return view('backend.contact.index',compact('contacts'));        
+        
     }
     /**
      * Store a newly created resource in storage.

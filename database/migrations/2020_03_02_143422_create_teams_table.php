@@ -21,6 +21,9 @@ class CreateTeamsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('image_enc')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->integer('created_by')->unsigned(); // fk to users

@@ -57,8 +57,8 @@
       </div>
       <div class="col-lg-4">
         <div class="contact-text">
-          <h2>Get in Touch</h2>
            @foreach($about_details as $main_data)
+          <h2>Get in Touch</h2>
           <p>{!! str_limit($main_data->description, 156)!!}</p>
           @endforeach
          @foreach($settings as $setting)

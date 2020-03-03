@@ -47,7 +47,6 @@ class SliderController extends Controller
     {
      $rules = array(
          'title' => 'required|unique:sliders',
-         'description' => 'required',
          'image' => 'required|mimes:jpeg,jpg|max:1024',
      );
      $validator = Validator::make(Input::all(), $rules);
@@ -65,23 +64,12 @@ class SliderController extends Controller
          $destinationPath = 'images/slider/'; // upload path
          $extension = $image->getClientOriginalExtension(); // getting image extension
          $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-
          $image->move($destinationPath, $fileName); /*move file on destination*/
          $file_path = $destinationPath.'/'.$fileName;
          $main_store->image_enc = $fileName;
          $main_store->image = $image->getClientOriginalName();
 
-         $originalImage= $request->file('image');
-        $thumbnailImage = Image::make($image);
-        $thumbnailPath = public_path().'/thumbnail/';
-        $originalPath = public_path().'/images/slider/';
-        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
-        $thumbnailImage->resize(150,150);
-        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
-
-        
      }
-     $main_store->description = Input::get('description');
      $main_store->created_by = Auth::user()->id;
      if($main_store->save()){
          $this->request->session()->flash('alert-success', 'Data save successfully!!');
@@ -137,7 +125,6 @@ class SliderController extends Controller
     {
         $rules = array(
             'title' => 'required',
-            'description' => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -170,7 +157,6 @@ class SliderController extends Controller
             $main_store->image_enc = $fileName;
             $main_store->image = $image->getClientOriginalName();
         }
-        $main_store->description = Input::get('description');
         if($main_store->update()){
             $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
         }else{

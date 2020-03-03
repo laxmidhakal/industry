@@ -17,7 +17,7 @@ class CreateAboutsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('image_enc')->nullable();
             $table->integer('sort_id')->nullable();

@@ -23,6 +23,7 @@
 				<div class="about-text">
 					<h2>{{$about_data->title}}</h2>
 					<p>{!! $about_data->description !!} </p>
+
 				</div>
 			</div>
 			@endforeach	
@@ -45,6 +46,45 @@
 					<div class="member-info">
 						<h3>{{$main_data->title}}</h3>
 						<p>{{$main_data->designation}} </p>
+						@if($main_data->facebook !='')
+						<li class="list-inline-item my-auto pb-4">
+						  <a href="{{$main_data->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
+						    <i class="fa fa-facebook main-spin"></i>
+						  </a>
+						</li>
+						@else
+						<li class="list-inline-item my-auto pb-4">
+						  <a href="{{$main_data->facebook}}"  title="Share on Facebook" class=" link facebook text-center">
+						    <i class="fa fa-facebook main-spin"></i>
+						  </a>
+						</li>
+						@endif
+						@if($main_data->twitter !='')
+						<li class="list-inline-item">
+						  <a href="{{$main_data->twitter}}" target="_blank" title="Share on Twitter" class="link twitter text-center">
+						    <i class="fa fa-twitter main-spin" ></i>
+						  </a>
+						</li>
+						 @else
+						 <li class="list-inline-item">
+						  <a href=""  title="Share on Twitter" class="link twitter text-center">
+						   <i class="fa fa-twitter main-spin" ></i>
+						  </a>
+						 </li>
+						  @endif
+						@if($main_data->linkedin !='')
+						<li class="list-inline-item">
+						  <a href="{{$main_data->linkedin}}" target="_blank" title="Share on Linkedin" class="link linkedin text-center">
+						    <i class="fa fa-linkedin main-spin"></i>
+						  </a>
+						</li>
+						@else
+						<li class="list-inline-item">
+						  <a href="{{$main_data->linkedin}}"  title="Share on Linkedin" class="link linkedin text-center">
+						    <i class="fa fa-linkedin main-spin"></i>
+						  </a>
+						</li>
+						@endif
 					</div>
 				</div>
 			</div>				

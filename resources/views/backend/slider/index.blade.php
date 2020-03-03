@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
           </ol>
         </div>
@@ -21,8 +21,16 @@
   <section class="content">
     <div class="card">
       <div class="card-header">
+        @if(count($sliders)=='0')
+        @elseif(count($sliders)=='1')
+        @elseif(count($sliders)=='2')
+        @elseif(count($sliders)=='3')
+        @elseif(count($sliders)=='4')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        @elseif(count($sliders)<='5')
+        @endif
         <div class="card-tools">
+          <small class="text-danger mr-4">* 5 slider only</small>
         </div>
       </div>
           <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
@@ -33,9 +41,9 @@
                   <tr>
                     <th style="width: 10px">SN</th>
                     <th>Title</th>
-                    <th>Description</th>
+                    <!-- <th>Description</th> -->
                     <th style="width: 10px" class="text-center">Sort</th>
-                    <th style="width: 10px" class="text-center">Image</th>
+                    <th style="width: 30px" class="text-center">Image</th>
                     <th style="width: 10px" class="text-center">Label</th>
                     <th style="width: 90px" class="text-center">Action</th>
                   </tr>
@@ -44,7 +52,7 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$slider->title}}</td>
-                  <td>{!! $slider->description !!}</td>
+                  <!-- <td>{!! $slider->description !!}</td> -->
                   <td>
                     <p id="someElement{{$slider->id}}" ids="{{$slider->id}}" class="text-center sort" contenteditable="plaintext-only" page="slider">{{$slider->sort_id}}</p>
                   </td>
@@ -95,10 +103,10 @@
               <label for="title">Title</label>
               <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="decription">Description</label>
               <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="image">Choose Image</label>
               <div class="input-group">

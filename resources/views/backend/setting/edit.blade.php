@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Update</li>
           </ol>
         </div>
@@ -24,6 +24,7 @@
     <div class="card">
       <div class="card-header">
         <div class="card-tools">
+        <small class="text-danger mr-4">* image must be of png only</small>
         </div>
       </div>
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>

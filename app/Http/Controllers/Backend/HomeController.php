@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Company;
+use App\Gallery;
+use App\Product;
+use App\Product_has_detail;
 
 class HomeController extends Controller
 {
@@ -14,7 +18,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.home');
+        $products = Product::get()->count();
+        $companies = Company::get()->count();
+        $product_details = Product_has_detail::get()->count();
+        $galleries = Gallery::get()->count();
+        return view('backend.home',compact(['products','companies','product_details','galleries']));
     }
     /**
      * Show the form for creating a new resource.

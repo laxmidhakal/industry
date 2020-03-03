@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Contact Page</li>
           </ol>
         </div>
@@ -22,10 +22,7 @@
   <section class="content">
     <!-- Default box -->
     <div class="card">
-      <div class="card-header">
-        <div class="card-tools">
-        </div>
-      </div>
+      
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
       <div class="card-body">
         <div class="table-responsive">
@@ -37,7 +34,6 @@
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Message</th>
-                <th style="width: 10px" class="text-center">Label</th>
                 <th style="width: 90px" class="text-center">Action</th>
               </tr>
             </thead>
@@ -48,11 +44,7 @@
               <td>{{$contact->email}}</td>
               <td>{{$contact->subject}}</td>
               <td>{{$contact->message}}</td>
-              <td>
-                <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-              </td>
-              <td>
-                <a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+              <td class="text-center">
                 <a href="{{URL::to('/')}}/home/contact/{{$contact->id}}/delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
               </td>
             </tr>

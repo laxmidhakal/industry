@@ -71,6 +71,9 @@ class TeamController extends Controller
         }
         $main_store->description = Input::get('description');
         $main_store->designation = Input::get('designation');
+        $main_store->facebook = Input::get('facebook');
+        $main_store->linkedin = Input::get('linkedin');
+        $main_store->twitter = Input::get('twitter');
         $main_store->created_by = Auth::user()->id;
         if($main_store->save()){
             $this->request->session()->flash('alert-success', 'Data save successfully!!');
@@ -160,6 +163,9 @@ class TeamController extends Controller
             $main_store->image = $image->getClientOriginalName();
         }
         $main_store->designation = Input::get('designation');
+        $main_store->facebook = Input::get('facebook');
+        $main_store->linkedin = Input::get('linkedin');
+        $main_store->twitter = Input::get('twitter');
         if($main_store->update()){
             $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
         }else{

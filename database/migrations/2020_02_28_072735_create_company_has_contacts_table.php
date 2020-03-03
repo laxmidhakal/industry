@@ -18,7 +18,7 @@ class CreateCompanyHasContactsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->integer('company_id')->unsigned(); // fk to categories

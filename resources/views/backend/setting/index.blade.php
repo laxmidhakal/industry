@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{URL::to('/')}}/home">Home</a></li>
             <li class="breadcrumb-item active text-capitalize">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Page</li>
           </ol>
         </div>
@@ -22,12 +22,13 @@
   <section class="content">
     <!-- Default box -->
     <div class="card">
+      @if(count($settings)=='0')
       <div class="card-header">
-        @if(count($settings)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($settings)<='1')
         @endif
         <div class="card-tools">
+        <small class="text-danger mr-4">* image must be of png only</small>
         </div>
       </div>
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
@@ -40,10 +41,11 @@
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
+                <!-- <th>Latitude</th> -->
+                <!-- <th>Longitude</th> -->
                 <th>Image</th>
                 <th style="width: 10px" class="text-center">Label</th>
+                <th style="width: 10px" class="text-center">Social</th>
                 <th style="width: 90px" class="text-center">Action</th>
               </tr>
             </thead>
@@ -53,8 +55,8 @@
               <td>{{$setting->address}}</td>
               <td>{{$setting->phone}}</td>
               <td>{{$setting->email}}</td>
-              <td>{{$setting->lat}}</td>
-              <td>{{$setting->long}}</td>
+              <!-- <td>{{$setting->lat}}</td> -->
+              <!-- <td>{{$setting->long}}</td> -->
               <td>
                 <div class="">
                   <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
@@ -63,6 +65,11 @@
               <td>
                 <a href="{{URL::to('/')}}/home/setting/isactive/{{$setting->id}}" class="btn {{ $setting->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
                   <i class="fa {{ $setting->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                </a>
+              </td>
+              <td>
+                <a href="{{URL::to('/')}}/home/social" class="btn btn-xs btn-info">
+                  <i class=" nav-icon fas fa-share-square"></i>
                 </a>
               </td>
               <td>
@@ -78,13 +85,9 @@
           </table>
         </div>
       </div>
-      <!-- /.card-body -->
-      <div class="card-footer">
-      </div>
-      <!-- /.card-footer-->
     </div>
-        <!-- /.card -->
-      </section>
+    <!-- /.card -->
+  </section>
       <!-- /.content -->
     </div>
     <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">

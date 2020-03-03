@@ -66,8 +66,8 @@ Route::get('/home/product/detail/{id}/delete', 'Backend\ProductDetailController@
 
 Route::resource('/home/setting', 'Backend\SettingController');
 Route::get('/home/setting/isactive/{id}', 'Backend\SettingController@isactive')->name('isactivesetting');
-Route::get('/home/contact', 'ContactController@create')->name('homecontact');
-Route::get('/home/contact/{id}/delete', 'ContactController@destroy')->name('contact-delete');
+Route::get('/home/contact', 'Backend\ContactController@index')->name('homecontact');
+Route::get('/home/contact/{id}/delete', 'Backend\ContactController@destroy')->name('contact-delete');
 Route::resource('/home/social', 'Backend\SocialController');
 Route::get('/home/social/isactive/{id}', 'Backend\SocialController@isactive')->name('isactivesocial');
 

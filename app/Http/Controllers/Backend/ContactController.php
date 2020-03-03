@@ -16,14 +16,14 @@ use App\Contact;
 
 class ContactController extends Controller
 {
-    public function __construct(Request $request, Helper $helper)
+    public function __construct(Request $request)
     {
         $this->middleware('auth');
         $this->request = $request;
     }
     public function index()
     {
-        $contacts=Contact::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(10);
+        $contacts=Contact::orderBy('created_at','DESC')->paginate(10);
         return view('backend.contact.index',compact('contacts'));
     }
     /**
@@ -43,29 +43,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        
-        if(request()->ajax())
-        {
-            $rules = array(
-                'name' => 'required|unique:contacts',
-                'email' => 'required|unique:contacts',
-                'subject' => 'required',
-                'message' => 'required',
-            );
-            $validator = Validator::make(Input::all(), $rules);
-            if ($validator->fails()) {
-            return redirect('/contact')
-            ->withErrors($validator)
-            ->withInput();
-            }
-            $main_store = new Contact;
-            $main_store->name = Input::get('name');
-            $main_store->email = Input::get('email');
-            $main_store->subject = Input::get('subject');
-            $main_store->message = Input::get('message');
-            $main_store->save();
-            return response()->json(['success' => 'Data Added']);
-       }
+        //
     }
     /**
      * Display the specified resource.
