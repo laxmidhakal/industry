@@ -10,4 +10,8 @@ class Company extends Model
     {
         return $this->hasOne('App\Company_has_contact');
     }
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = ucfirst($value);
+    }
 }

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-	public function setFirstNameAttribute($value)
+	public function setTitleAttribute($value)
 	{
-		$this->attributes['title'] = strtoupper($value);
+	    $this->attributes['title'] = ucfirst($value);
 	}
 }

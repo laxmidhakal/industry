@@ -10,4 +10,8 @@ class About extends Model
     {
         return $this->belongsTo('App\User','created_by','id');
     }
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = ucfirst($value);
+    }
 }
