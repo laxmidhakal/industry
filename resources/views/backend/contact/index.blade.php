@@ -53,6 +53,7 @@
       </div>
       <!-- /.card-body -->
       <div class="card-footer">    
+        {!! $contacts->links("pagination::bootstrap-4") !!} 
       </div>
       <!-- /.card-footer-->
     </div>

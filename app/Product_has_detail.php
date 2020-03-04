@@ -12,6 +12,6 @@ class Product_has_detail extends Model
 	}
 	public function setTitleAttribute($value)
 	{
-	    $this->attributes['title'] = ucfirst($value);
+	    $this->attributes['title'] = ucwords($value);
 	}
 }

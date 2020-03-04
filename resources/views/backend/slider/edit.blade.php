@@ -39,15 +39,11 @@
               <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $slider->title }}">
             </div>
             <div class="form-group">
-              <label for="decription">Description</label>
-              <textarea name="description" id="description" class="form-control" placeholder="Enter description" >{{ $slider->description}} </textarea>
-            </div>
-            <div class="form-group">
               <label for="image">Choose Image</label>
               <input type="hidden" value="{{$slider->image}}">
               <div class="input-group">
                 <input type="file" class="form-control" id="image" name="image"  value="{{$slider->image}}" >
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid editback-img center-block">
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid editback-gallery-img center-block">
               </div>
             </div>
           </div>

@@ -65,9 +65,19 @@ class ContactController extends Controller
       $main_store->email = Input::get('email');
       $main_store->subject = Input::get('subject');
       $main_store->message = Input::get('message');
-      $main_store->save();
-      $request->session()->flash('message-type', 'success');
-      return response()->json(['success' => ' Successfully Form Submitted']);
+      if($main_store->save()){
+      $response = array(
+      'status' => 'success',
+      'msg' => 'Successfully Changed',
+      );
+      }else{
+      $response = array(
+      'status' => 'failure',
+      'msg' => 'Change Unsuccessful',
+      );
+      }
+      return Response::json($main_store);
+     
 
     }
   }

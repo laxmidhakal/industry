@@ -40,6 +40,7 @@
       </form>
     </div>
   </div>
+  
   <script src="{{URL::to('/')}}/js/jquery-3.2.1.min.js"></script>
   <script src="{{URL::to('/')}}/js/bootstrap.min.js"></script>
   <script src="{{URL::to('/')}}/js/jquery.slicknav.min.js"></script>

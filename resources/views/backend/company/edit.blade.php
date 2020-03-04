@@ -36,7 +36,7 @@
            <div class="modal-body" >
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $company->title }}">
+              <input type="text" class="form-control" id="title" placeholder="Enter title" autocomplete="off" name="title"  value="{{ $company->title }}">
             </div>
             <div class="form-group">
               <label for="decription">Description</label>

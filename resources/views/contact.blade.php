@@ -2,6 +2,52 @@
 @section('tab_title'){{$page_title}}@endsection
 @section('style')
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+<style>
+ #snackbar {
+     visibility: hidden;
+     min-width: 250px;
+     margin-left: 0px;
+     background-color: #5cb85c;
+     border-color: #4cae4c;
+     color: #fff;
+     text-align: center;
+     border-radius: 2px;
+     padding: 16px;
+     position: fixed;
+     z-index: 1;
+     right:  8%;
+     top: 30px;
+     font-size: 17px;
+     
+ }
+
+ #snackbar.show {
+     visibility: visible;
+     -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+     animation: fadein 0.5s, fadeout 0.5s 3.5s;
+ }
+
+ @-webkit-keyframes fadein {
+     from {top: 0; opacity: 0;} 
+     to {top: 30px; opacity: 1;}
+ }
+
+ @keyframes fadein {
+     from {top: 0; opacity: 0;}
+     to {top: 30px; opacity: 1;}
+ }
+
+ @-webkit-keyframes fadeout {
+     from {top: 30px; opacity: 1;} 
+     to {top: 0; opacity: 0;}
+ }
+
+ @keyframes fadeout {
+     from {top: 30px; opacity: 1;}
+     to {top: 0; opacity: 0;}
+ }
+
+</style>
 @endsection
 @section('content')
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/4.jpg">
@@ -27,13 +73,6 @@
   </div>
 </div>
 <section class="contact-section spad">
-  @if ($message = Session::get('success'))
-  <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-  </div>
-  <br>
-  @endif
   <div class="container">
     <div class="row">      
       <div class="col-lg-8 ">
@@ -43,13 +82,13 @@
             <div class="row">
               @include('backend.frontflash.alertmsg')
               <div class="col-lg-6">
-                <input type="text"  id="name" placeholder="Enter Your Name" name="name"  required data-parsley-trigger="keyup">
+                <input type="text"  id="name" placeholder="Enter Your Name" name="name"  required data-parsley-trigger="keyup" autocomplete="off">
               </div>
               <div class="col-lg-6">
-                <input type="email" placeholder="Your Email" name="email" id="email"  autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup">
+                <input type="email" placeholder="Youremail@gmail.com" name="email" id="email"  autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup">
               </div>  
               <div class="col-lg-12">
-                <input type="text"  id="subject" placeholder="Subject" name="subject"  required data-parsley-trigger="keyup">
+                <input type="text"  id="subject" placeholder="Subject" name="subject"  required data-parsley-trigger="keyup" autocomplete="off">
                 <textarea class="text-msg" placeholder="Message" id="message" name="message" required data-parsley-trigger="keyup"></textarea>
                 <button class="site-btn " type="submit" name="submit">send message</button>
               </div>
@@ -87,55 +126,53 @@
     </div>
   </div>
 </section>
+<div id="snackbar"> Data is Submitted Successfully</div>
+
 @endsection
 @section('javascript')
 <script src="http://parsleyjs.org/dist/parsley.js"></script>
 <script>
-$(document).ready(function(){
- $('#validate_form').parsley();
- $('#validate_form').on('submit', function(event){
-  event.preventDefault();
-  if($('#validate_form').parsley().isValid())
-  {
-   $.ajax({
-    url: '{{URL::to('/')}}/contact/store',
-    method:"POST",
-    data:$(this).serialize(),
-    dataType:"json",
-    beforeSend:function()
+  $(document).ready(function(){
+   $('#validate_form').parsley();
+   $('#validate_form').on('submit', function(event){
+    event.preventDefault();
+    var url = '{{URL::to('/')}}/contact/store';
+    var x = document.getElementById("snackbar");
+    if($('#validate_form').parsley().isValid())
     {
-     $('#submit').attr('disabled', 'disabled');
-     $('#submit').val('Submitting...');
-    },
-    success:function(data)
-    {
-     $('#validate_form')[0].reset();
-     $('#validate_form').parsley().reset();
-     $('#submit').attr('disabled', false);
-     $('#submit').val('Submit');
-     
-     alert(data.success);
-    }
+      debugger;
+     $.ajax({
+      url: url,
+      method:"POST",
+      data:$(this).serialize(),
+      dataType:"json",
+      beforeSend:function()
+      {
+       $('#submit').attr('disabled', 'disabled');
+       $('#submit').val('Submitting...');
+     },
+     success:function(event)
+     {
+       debugger;
+       $('#validate_form')[0].reset();
+       $('#validate_form').parsley().reset();
+       $('#submit').attr('disabled', false);
+       $('#submit').val('Submit');
+       x.className = "show";
+       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+     },
+     error: function (event) {
+       alert('Sorry! this data is used some where');
+     }
    });
-  }
+   }
  });
 
-});
+ });
 </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
-
 <script>
-  @if(Session::has('success'))
-      toastr.success("{{ Session::get('success') }}");
-  @endif
-  @if(Session::has('info'))
-      toastr.info("{{ Session::get('info') }}");
-  @endif
-  @if(Session::has('warning'))
-      toastr.warning("{{ Session::get('warning') }}");
-  @endif
-  @if(Session::has('error'))
-      toastr.error("{{ Session::get('error') }}");
-  @endif
-</script>    
+  function myFunction() {
+    
+  }
+</script>
 @endsection

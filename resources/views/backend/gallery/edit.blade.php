@@ -47,7 +47,7 @@
               <input type="hidden" value="{{$gallery->image}}">
               <div class="input-group">
                 <input type="file" class="form-control" id="image" name="image"  value="{{$gallery->image}}" >
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$gallery->image_enc}}" class="img-fluid editback-img center-block">
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$gallery->image_enc}}" class="img-fluid editback-gallery-img center-block">
 
               </div>
             </div>
