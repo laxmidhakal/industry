@@ -20,15 +20,14 @@
   </section>
   <!-- Main content -->
   <section class="content">
-    <!-- Default box -->
     <div class="card">
-      @if(count($settings)=='0')
       <div class="card-header">
+        @if(count($settings)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($settings)<='1')
         @endif
         <div class="card-tools">
-        <small class="text-danger mr-4">* image must be of png only</small>
+          <small class="text-danger mr-4">* image must be of png only</small>
         </div>
       </div>
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
@@ -85,58 +84,62 @@
           </table>
         </div>
       </div>
-    </div>
-    <!-- /.card -->
-  </section>
-      <!-- /.content -->
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true">
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true">
-              </div>
-              <div class="form-group">
-                <label for="lat">Latitude</label>
-                <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" >
-              </div>
-              <div class="form-group">
-                <label for="long">Longitude</label>
-                <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" >
-              </div>
-              <div class="form-group">
-                <label for="image">Choose Logo(Logo must be in png)</label>
-                <div class="input-group">
-                    <input type="file" class="form-control" id="image" name="image" required="true">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
+      <style type="text/css">
+      </style>
+      <div class="card-footer">
+     </div>
+   </div>
+     </section>
+     <!-- /.content -->
+   </div>
+   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.modal-content -->
+        <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="modal-body" >
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true">
+            </div>
+            <div class="form-group">
+              <label for="lat">Latitude</label>
+              <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" >
+            </div>
+            <div class="form-group">
+              <label for="long">Longitude</label>
+              <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" >
+            </div>
+            <div class="form-group">
+              <label for="image">Choose Logo(Logo must be in png)</label>
+              <div class="input-group">
+                  <input type="file" class="form-control" id="image" name="image" required="true">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+        
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    @endsection
+  </div>
+  @endsection
+ 
+ 

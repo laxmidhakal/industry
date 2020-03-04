@@ -74,39 +74,21 @@
                 <p>{{$main_data->designation}} </p>
                 @if($main_data->facebook !='')
                 <li class="list-inline-item my-auto pb-4">
-                  <a href="{{$main_data->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
-                    <i class="fa fa-facebook main-spin"></i>
-                  </a>
-                </li>
-                @else
-                <li class="list-inline-item my-auto pb-4">
-                  <a href="{{$main_data->facebook}}"  title="Share on Facebook" class=" link facebook text-center">
+                  <a href="/{{$main_data->facebook}}" target="_blank" title="Share on Facebook" class=" link facebook text-center">
                     <i class="fa fa-facebook main-spin"></i>
                   </a>
                 </li>
                 @endif
                 @if($main_data->twitter !='')
                 <li class="list-inline-item">
-                  <a href="{{$main_data->twitter}}" target="_blank" title="Share on Twitter" class="link twitter text-center">
+                  <a href="/{{$main_data->twitter}}" target="_blank" title="Share on Twitter" class="link twitter text-center">
                     <i class="fa fa-twitter main-spin" ></i>
                   </a>
                 </li>
-                 @else
-                 <li class="list-inline-item">
-                  <a href=""  title="Share on Twitter" class="link twitter text-center">
-                   <i class="fa fa-twitter main-spin" ></i>
-                  </a>
-                 </li>
-                  @endif
+                @endif
                 @if($main_data->linkedin !='')
                 <li class="list-inline-item">
-                  <a href="{{$main_data->linkedin}}" target="_blank" title="Share on Linkedin" class="link linkedin text-center">
-                    <i class="fa fa-linkedin main-spin"></i>
-                  </a>
-                </li>
-                @else
-                <li class="list-inline-item">
-                  <a href="{{$main_data->linkedin}}"  title="Share on Linkedin" class="link linkedin text-center">
+                  <a href="/{{$main_data->linkedin}}" target="_blank" title="Share on Linkedin" class="link linkedin text-center">
                     <i class="fa fa-linkedin main-spin"></i>
                   </a>
                 </li>

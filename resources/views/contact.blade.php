@@ -37,28 +37,30 @@
   <div class="container">
     <div class="row">      
       <div class="col-lg-8 ">
-        <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="form" >
-            {{ csrf_field() }}  
-          <div class="row">
-            @include('backend.frontflash.alertmsg')
-            <div class="col-lg-6">
-              <input type="text"  id="name" placeholder="Enter Your Name" name="name"   data-parsley-trigger="keyup">
+        <div class="box">
+          <form class="contact-form" method="POST" action="{{URL::to('/')}}/contact/store" id="validate_form" >
+              {{ csrf_field() }}  
+            <div class="row">
+              @include('backend.frontflash.alertmsg')
+              <div class="col-lg-6">
+                <input type="text"  id="name" placeholder="Enter Your Name" name="name"  required data-parsley-trigger="keyup">
+              </div>
+              <div class="col-lg-6">
+                <input type="email" placeholder="Your Email" name="email" id="email"  autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup">
+              </div>  
+              <div class="col-lg-12">
+                <input type="text"  id="subject" placeholder="Subject" name="subject"  required data-parsley-trigger="keyup">
+                <textarea class="text-msg" placeholder="Message" id="message" name="message" required data-parsley-trigger="keyup"></textarea>
+                <button class="site-btn " type="submit" name="submit">send message</button>
+              </div>
             </div>
-            <div class="col-lg-6">
-              <input type="email" placeholder="Your Email" name="email" id="email"  autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup">
-            </div>  
-            <div class="col-lg-12">
-              <input type="text"  id="subject" placeholder="Subject" name="subject"   data-parsley-trigger="keyup">
-              <textarea class="text-msg" placeholder="Message" id="message" name="message"  data-parsley-trigger="keyup"></textarea>
-              <button class="site-btn " type="submit" name="submit">send message</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <div class="col-lg-4">
         <div class="contact-text">
-           @foreach($about_details as $main_data)
           <h2>Get in Touch</h2>
+           @foreach($about_details as $main_data)
           <p>{!! str_limit($main_data->description, 156)!!}</p>
           @endforeach
          @foreach($settings as $setting)
@@ -87,10 +89,53 @@
 </section>
 @endsection
 @section('javascript')
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-<script src="{{URL::to('/')}}/js/adminlte.min.js"></script>
- 
-</div>    
+<script src="http://parsleyjs.org/dist/parsley.js"></script>
+<script>
+$(document).ready(function(){
+ $('#validate_form').parsley();
+ $('#validate_form').on('submit', function(event){
+  event.preventDefault();
+  if($('#validate_form').parsley().isValid())
+  {
+   $.ajax({
+    url: '{{URL::to('/')}}/contact/store',
+    method:"POST",
+    data:$(this).serialize(),
+    dataType:"json",
+    beforeSend:function()
+    {
+     $('#submit').attr('disabled', 'disabled');
+     $('#submit').val('Submitting...');
+    },
+    success:function(data)
+    {
+     $('#validate_form')[0].reset();
+     $('#validate_form').parsley().reset();
+     $('#submit').attr('disabled', false);
+     $('#submit').val('Submit');
+     
+     alert(data.success);
+    }
+   });
+  }
+ });
+
+});
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+
+<script>
+  @if(Session::has('success'))
+      toastr.success("{{ Session::get('success') }}");
+  @endif
+  @if(Session::has('info'))
+      toastr.info("{{ Session::get('info') }}");
+  @endif
+  @if(Session::has('warning'))
+      toastr.warning("{{ Session::get('warning') }}");
+  @endif
+  @if(Session::has('error'))
+      toastr.error("{{ Session::get('error') }}");
+  @endif
+</script>    
 @endsection

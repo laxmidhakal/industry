@@ -22,12 +22,16 @@
     <div class="card">
       <div class="card-header">
         @if(count($sliders)=='0')
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($sliders)=='1')
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($sliders)=='2')
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($sliders)=='3')
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
         @elseif(count($sliders)=='4')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
-        @elseif(count($sliders)<='5')
+        @elseif(count($sliders)=='5')
         @endif
         <div class="card-tools">
           <small class="text-danger mr-4">* 5 slider only</small>
@@ -58,7 +62,7 @@
                   </td>
                   <td>
                     @if($slider->image_enc != "")
-                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img center-block">
+                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img center-block ">
                     @else
                     <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
                     @endif

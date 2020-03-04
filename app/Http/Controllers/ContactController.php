@@ -45,28 +45,32 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-       $rules = array(
-           'name' => 'required',
-           'email' => 'required|email',
-           'subject' => 'required',
-           'message' => 'required',
-       );
-       $validator = Validator::make(Input::all(), $rules);
-       if ($validator->fails()) {
-       return redirect('/contact')
-       ->withErrors($validator)
-       ->withInput();
-       }
-       $main_store = new Contact;
-       $names = Input::get('name');
-       $main_store->name = Str::ucfirst($names);
-       $main_store->email = Input::get('email');
-       $main_store->subject = Input::get('subject');
-       $main_store->message = Input::get('message');
-       $main_store->save();
-       return back()->withInput();
+     if(request()->ajax())
+     {
+      $rules = array(
+        'name' => 'required',
+        'email' => 'required|email',
+        'subject' => 'required',
+        'message' => 'required',
+      );
+      $validator = Validator::make(Input::all(), $rules);
+      if ($validator->fails()) {
+        return redirect('/contact')
+        ->withErrors($validator)
+        ->withInput();
+      }
+      $main_store = new Contact;
+      $names = Input::get('name');
+      $main_store->name = Str::ucfirst($names);
+      $main_store->email = Input::get('email');
+      $main_store->subject = Input::get('subject');
+      $main_store->message = Input::get('message');
+      $main_store->save();
+      $request->session()->flash('message-type', 'success');
+      return response()->json(['success' => ' Successfully Form Submitted']);
 
     }
+  }
     /**
      * Display the specified resource.
      *

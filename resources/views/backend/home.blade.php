@@ -51,7 +51,7 @@
               <div class="icon">
                 <i class="fa fa-shopping-bag"></i>
               </div>
-              <a href="{{URL::to('/')}}/home/product/product->slug/detail" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{URL::to('/')}}/home/product" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
