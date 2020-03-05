@@ -84,8 +84,6 @@
           </table>
         </div>
       </div>
-      <style type="text/css">
-      </style>
       <div class="card-footer">
      </div>
    </div>
