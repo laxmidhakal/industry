@@ -52,6 +52,12 @@
 						    <i class="fa fa-facebook main-spin"></i>
 						  </a>
 						</li>
+						@else
+						<li class="list-inline-item my-auto pb-4">
+						  <a href=""  title="Share on Facebook" class=" link facebook text-center">
+						    <i class="fa fa-facebook main-spin"></i>
+						  </a>
+						</li>
 						@endif
 						@if($main_data->twitter !='')
 						<li class="list-inline-item">
@@ -59,10 +65,22 @@
 						    <i class="fa fa-twitter main-spin" ></i>
 						  </a>
 						</li>
+						@else
+						<li class="list-inline-item">
+						  <a href=""  title="Share on Twitter" class="link twitter text-center">
+						    <i class="fa fa-twitter main-spin" ></i>
+						  </a>
+						</li>
 						@endif
 						@if($main_data->linkedin !='')
 						<li class="list-inline-item">
 						  <a href="{{$main_data->linkedin}}" target="_blank" title="Share on Linkedin" class="link linkedin text-center">
+						    <i class="fa fa-linkedin main-spin"></i>
+						  </a>
+						</li>
+						@else
+						<li class="list-inline-item">
+						  <a href=""  title="Share on Linkedin" class="link linkedin text-center">
 						    <i class="fa fa-linkedin main-spin"></i>
 						  </a>
 						</li>

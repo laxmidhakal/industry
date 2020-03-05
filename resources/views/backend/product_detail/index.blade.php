@@ -50,7 +50,7 @@
               <td>{{$detail->title}}</td>
               <td>{!! $detail->description !!}</td>
               <td>
-                <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="detail" >{{$detail->sort_id}}</p>
+                <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="product/detail" >{{$detail->sort_id}}</p>
               </td>
               <td>
                 @if($detail->image_enc != "")
@@ -138,34 +138,5 @@
      }
  });
 </script>
-<script type="text/javascript">
-    $(".sort").keydown(function (e) {
-      Pace.start();
-      if (e.which == 9){
-        var id = $(event.target).attr('ids'),
-            page = $(event.target).attr('page'),
-            token = $('meta[name="csrf-token"]').attr('content'),
-            value = document.getElementById('someElement'+id).innerHTML; //value of the text input
-        var url= "{{URL::to('/')}}/home/sort/product/"+page;
-      debugger;
-        $.ajax({
-          type:"POST",
-          dataType:"JSON",
-          url:url,
-          data:{
-            _token:token,
-            id : id,
-            value:value,
-          },
-          success:function(e){
-            location.reload();
-          },
-          error: function (e) {
-            alert('Sorry! this data is used some where');
-            Pace.start();
-          }
-        });
-      }
-    });
-  </script>
+
 @endsection

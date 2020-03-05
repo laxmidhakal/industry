@@ -21,7 +21,7 @@ class ContactController extends Controller
     {
         $contacts=Contact::orderBy('created_at','DESC')->get();
         $settings=Setting::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
-        $about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get()->take(1);
+        $about_details = About::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
         $product_menu = Product::where('is_active', true)->orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
         $socials = Social::orderBy('created_at','DESC')->get()->take(1);
         $page_title = "Contact ";

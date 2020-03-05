@@ -446,5 +446,6 @@ textarea.parsley-error {
 	text-align: left;
 	color:#17172d;
 	transition: text-align 2s ease;
+	transition-timing-function: linear;
 }
 

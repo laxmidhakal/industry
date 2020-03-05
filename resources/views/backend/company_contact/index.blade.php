@@ -23,7 +23,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} + </button>
+        <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Add+ </button>
         <div class="card-tools">
         </div>
       </div>
@@ -53,7 +53,7 @@
               <td>{{$detail->email}}</td>
               <td>{{$detail->video}}</td>
               <td>
-                <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="detail" >{{$detail->sort_id}}</p>
+                <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="company/detail" >{{$detail->sort_id}}</p>
               </td>
               <td>
                 <a href="{{URL::to('/')}}/home/companydetail/isactive/{{$detail->id}}" class="btn {{ $detail->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -119,35 +119,4 @@
       <!-- /.modal-dialog -->
     </div>
     @endsection
-    @section('javascript')
-    <script type="text/javascript">
-        $(".sort").keydown(function (e) {
-          Pace.start();
-          if (e.which == 9){
-            var id = $(event.target).attr('ids'),
-                page = $(event.target).attr('page'),
-                token = $('meta[name="csrf-token"]').attr('content'),
-                value = document.getElementById('someElement'+id).innerHTML; //value of the text input
-            var url= "{{URL::to('/')}}/home/sort/company/"+page;
-          debugger;
-            $.ajax({
-              type:"POST",
-              dataType:"JSON",
-              url:url,
-              data:{
-                _token:token,
-                id : id,
-                value:value,
-              },
-              success:function(e){
-                location.reload();
-              },
-              error: function (e) {
-                alert('Sorry! this data is used some where');
-                Pace.start();
-              }
-            });
-          }
-        });
-      </script>
-    @endsection
+    
