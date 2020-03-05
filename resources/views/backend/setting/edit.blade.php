@@ -37,23 +37,23 @@
            <div class="modal-body" >
             <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" value="{{ $setting->address }}">
+              <input type="text" class="form-control" autocomplete="off" id="address" placeholder="Enter address" name="address" required="true" value="{{ $setting->address }}">
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $setting->phone }}">
+              <input type="text" class="form-control" autocomplete="off" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $setting->phone }}">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true" value="{{ $setting->email }}">
+              <input type="email" class="form-control" autocomplete="off" id="email" placeholder="Enter email" name="email" required="true" value="{{ $setting->email }}">
             </div>
             <div class="form-group">
               <label for="lat">Latitude</label>
-              <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" value="{{ $setting->lat }}">
+              <input type="text"  class="form-control" autocomplete="off" id="lat" placeholder="Enter latitude" name="lat" value="{{ $setting->lat }}">
             </div>
             <div class="form-group">
               <label for="long">Longitude</label>
-              <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" value="{{ $setting->long }}">
+              <input type="text"  class="form-control" autocomplete="off" id="long" placeholder="Enter longitude" name="long" value="{{ $setting->long }}">
             </div>
             <div class="form-group">
               <label for="image">Choose Image</label>
@@ -65,7 +65,6 @@
             </div>
           </div>
           <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>

@@ -93,19 +93,19 @@
             <div class="modal-body" >
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true">
+                <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" autocomplete="off">
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true">
+                <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" autocomplete="off">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
               </div>
               <div class="form-group">
                 <label for="video">Video</label>
-                <input type="text" class="form-control" id="video" placeholder="Enter link of video" name="video" required="true">
+                <input type="text" class="form-control" id="video" autocomplete="off" placeholder="Enter link of video" name="video" required="true">
               </div>
             </div>
             <div class="modal-footer justify-content-between">

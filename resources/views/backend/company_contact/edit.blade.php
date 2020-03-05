@@ -35,23 +35,22 @@
            <div class="modal-body" >
             <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" value="{{ $contact->address }}">
+              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" autocomplete="off" value="{{ $contact->address }}">
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $contact->phone }}">
+              <input type="text" class="form-control" autocomplete="off" id="phone" placeholder="Enter phone" name="phone" required="true" value="{{ $contact->phone }}">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true" value="{{ $contact->email }}">
+              <input type="email" class="form-control" autocomplete="off" id="email" placeholder="Enter email" name="email" required="true" value="{{ $contact->email }}">
             </div>
             <div class="form-group">
               <label for="video">Video</label>
-              <input type="text" class="form-control" id="video" placeholder="Enter link of video" name="video" required="true" value="{{ $contact->video }}">
+              <input type="text" class="form-control" autocomplete="off" id="video" placeholder="Enter link of video" name="video" required="true" value="{{ $contact->video }}">
             </div>
           </div>
           <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>

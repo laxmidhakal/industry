@@ -89,23 +89,23 @@
         <div class="modal-body" >
           <div class="form-group">
             <label for="facebook">Facebook</label>
-            <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
+            <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" autocomplete="off" name="facebook">
           </div>
           <div class="form-group">
             <label for="linkedin">Linkedin</label>
-            <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
+            <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" autocomplete="off" name="linkedin">
           </div>
           <div class="form-group">
             <label for="twitter">Twitter</label>
-            <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
+            <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" autocomplete="off" name="twitter">
           </div>
           <div class="form-group">
             <label for="google">GooglePlus</label>
-            <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" name="google">
+            <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" autocomplete="off" name="google">
           </div>
           <div class="form-group">
             <label for="instagram">Instagram</label>
-            <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" name="instagram">
+            <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" autocomplete="off" name="instagram">
           </div>
         </div>
         <div class="modal-footer justify-content-between">

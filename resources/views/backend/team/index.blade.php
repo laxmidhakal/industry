@@ -105,7 +105,7 @@
         <div class="modal-body" >
           <div class="form-group">
             <label for="title">Name</label>
-            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required="true">
+            <input type="text" class="form-control" id="title" autocomplete="off" placeholder="Enter title" name="title" required="true">
           </div>              
           <div class="form-group">
             <label for="designation">Designation</label>
@@ -119,15 +119,15 @@
           </div>
           <div class="form-group">
             <label for="facebook">Facebook</label>
-            <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook">
+            <input type="text" class="form-control" id="facebook" autocomplete="off" placeholder="https://www.facebook.com/" name="facebook">
           </div>
           <div class="form-group">
             <label for="linkedin">Linkedin</label>
-            <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin">
+            <input type="text" class="form-control" id="linkedin" autocomplete="off" placeholder="https://www.linkedin.com/" name="linkedin">
           </div>
           <div class="form-group">
             <label for="twitter">Twitter</label>
-            <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter">
+            <input type="text" class="form-control" id="twitter" autocomplete="off" placeholder="https://twitter.com/" name="twitter">
           </div>
         </div>
         <div class="modal-footer justify-content-between">
@@ -140,36 +140,4 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-@endsection
-@section('javascript')
-<script type="text/javascript">
-  $(".sort").keydown(function (e) {
-    Pace.start();
-    if (e.which == 9){
-      var id = $(event.target).attr('ids'),
-      page = $(event.target).attr('page'),
-      token = $('meta[name="csrf-token"]').attr('content'),
-            value = document.getElementById('someElement'+id).innerHTML; //value of the text input
-            var url= "{{URL::to('/')}}/home/sort/"+page;
-            debugger;
-            $.ajax({
-              type:"POST",
-              dataType:"JSON",
-              url:url,
-              data:{
-                _token:token,
-                id : id,
-                value:value,
-              },
-              success:function(e){
-                location.reload();
-              },
-              error: function (e) {
-                alert('Sorry! this data is used some where');
-                Pace.start();
-              }
-            });
-          }
-        });
-</script>
 @endsection

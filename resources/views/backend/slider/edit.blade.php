@@ -36,7 +36,7 @@
            <div class="modal-body" >
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"  value="{{ $slider->title }}">
+              <input type="text" class="form-control" autocomplete="off" id="title" placeholder="Enter title" name="title"  value="{{ $slider->title }}">
             </div>
             <div class="form-group">
               <label for="image">Choose Image</label>
@@ -48,7 +48,6 @@
             </div>
           </div>
           <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>

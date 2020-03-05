@@ -36,27 +36,26 @@
            <div class="modal-body" >
             <div class="form-group">
               <label for="facebook">Facebook</label>
-              <input type="text" class="form-control" id="facebook" placeholder="https://www.facebook.com/" name="facebook" value="{{$social->facebook}}">
+              <input type="text" class="form-control" autocomplete="off" id="facebook" placeholder="https://www.facebook.com/" name="facebook" value="{{$social->facebook}}">
             </div>
             <div class="form-group">
               <label for="linkedin">Linkedin</label>
-              <input type="text" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/" name="linkedin" value="{{$social->linkedin}}">
+              <input type="text" class="form-control" id="linkedin" autocomplete="off" placeholder="https://www.linkedin.com/" name="linkedin" value="{{$social->linkedin}}">
             </div>
             <div class="form-group">
               <label for="twitter">Twitter</label>
-              <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/" name="twitter" value="{{$social->twitter}}">
+              <input type="text" class="form-control" id="twitter" autocomplete="off" placeholder="https://twitter.com/" name="twitter" value="{{$social->twitter}}">
             </div>
             <div class="form-group">
               <label for="google">GooglePlus</label>
-              <input type="text" class="form-control" id="google" placeholder="https://googleplus.com/" name="google value="{{$social->google}}"">
+              <input type="text" class="form-control" id="google" autocomplete="off" placeholder="https://googleplus.com/" name="google value="{{$social->google}}"">
             </div>
             <div class="form-group">
               <label for="instagram">Instagram</label>
-              <input type="text" class="form-control" id="instagram" placeholder="https://www.instagram.com/" name="instagram" value="{{$social->instagram}}">
+              <input type="text" class="form-control" id="instagram" autocomplete="off" placeholder="https://www.instagram.com/" name="instagram" value="{{$social->instagram}}">
             </div>
           </div>
           <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>

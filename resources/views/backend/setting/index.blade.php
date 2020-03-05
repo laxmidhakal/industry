@@ -106,23 +106,23 @@
           <div class="modal-body" >
             <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true">
+              <input type="text" class="form-control" id="address" placeholder="Enter address" autocomplete="off" name="address" required="true">
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true">
+              <input type="text" class="form-control" id="phone" placeholder="Enter phone" autocomplete="off" name="phone" required="true">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="true">
+              <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
             </div>
             <div class="form-group">
               <label for="lat">Latitude</label>
-              <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" name="lat" >
+              <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" autocomplete="off" name="lat" >
             </div>
             <div class="form-group">
               <label for="long">Longitude</label>
-              <input type="text"  class="form-control" id="long" placeholder="Enter longitude" name="long" >
+              <input type="text"  class="form-control" id="long" placeholder="Enter longitude" autocomplete="off" name="long" >
             </div>
             <div class="form-group">
               <label for="image">Choose Logo(Logo must be in png)</label>
