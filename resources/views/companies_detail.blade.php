@@ -37,7 +37,7 @@
   <div class="container">
     
     <div class="row">
-         @foreach($company_contacts as $contact)
+      @foreach($company_contacts as $contact)
       <div class="col-md-4">
            <div class="contact-text">
              <h2>Get in Touch</h2>

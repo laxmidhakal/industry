@@ -99,9 +99,11 @@
       <div class="col-lg-4">
         <div class="contact-text">
           <h2>Get in Touch</h2>
-           @foreach($about_details as $main_data)
+          @if(count($about_details))
+          @foreach($about_details as $main_data)
           <p>{!! str_limit($main_data->description, 156)!!}</p>
           @endforeach
+          @endif
          @foreach($settings as $setting)
           <div class="header-info-box">
             <div class="hib-icon">

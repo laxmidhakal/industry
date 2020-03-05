@@ -30,8 +30,8 @@
 </section>
 <section class="features-section spad set-bg" data-setbg="{{URL::to('/')}}img/features-bg.jpg" style="background-image: url(&quot;img/features-bg.jpg&quot;);">
   <div class="container">
-    <h1 class="display-4 text-center pb-4 text-capitalize">Other related products</h1>
     @if(count($products))
+    <h1 class="display-4 text-center pb-4 text-capitalize">Other related products</h1>
     <div class="row">
       @foreach($products as $product)
       <div class="col-lg-4 col-md-6">
@@ -50,16 +50,5 @@
     @endif
   </div>
 </section>
-<section class="cta-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 d-flex align-items-center">
-                <h2>We produce or supply Goods, Services, or Sources</h2>
-            </div>
-            <div class="col-lg-3 text-lg-right" >
-                <a href="{{URL::to('/contact')}}" class="site-btn sb-dark">contact us</a>
-            </div>
-        </div>
-    </div>
-</section>
+
 @endsection
