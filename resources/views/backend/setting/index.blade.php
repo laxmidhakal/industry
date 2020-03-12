@@ -89,69 +89,69 @@
         </div>
       </div>
       <div class="card-footer">
-     </div>
-   </div>
-     </section>
-     <!-- /.content -->
-   </div>
-   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
-          {{ csrf_field() }}
-          <div class="modal-body" >
-            <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Enter address" autocomplete="off" name="address" required="true">
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="text" class="form-control" id="phone" placeholder="Enter phone" autocomplete="off" name="phone" required="true">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
-            </div>
-            <div class="form-group">
-              <label for="lat">Latitude</label>
-              <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" autocomplete="off" name="lat" >
-            </div>
-            <div class="form-group">
-              <label for="long">Longitude</label>
-              <input type="text"  class="form-control" id="long" placeholder="Enter longitude" autocomplete="off" name="long" >
-            </div>
-            <div class="form-group">
-              <label for="image">Choose Logo(Logo must be in png)</label>
-              <div class="input-group">
-                  <input type="file" class="form-control d-none" id="image" name="image" required="true">
-                  <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-        
       </div>
     </div>
+  </section>
+  <!-- /.content -->
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form role="form" method="POST" action="{{route('setting.store')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body" >
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="Enter address" autocomplete="off" name="address" required="true">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter phone" autocomplete="off" name="phone" required="true">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
+          </div>
+          <div class="form-group">
+            <label for="lat">Latitude</label>
+            <input type="text"  class="form-control" id="lat" placeholder="Enter latitude" autocomplete="off" name="lat" >
+          </div>
+          <div class="form-group">
+            <label for="long">Longitude</label>
+            <input type="text"  class="form-control" id="long" placeholder="Enter longitude" autocomplete="off" name="long" >
+          </div>
+          <div class="form-group">
+            <label for="image">Choose Logo(Logo must be in png)</label>
+            <div class="input-group">
+              <input type="file" class="form-control d-none" id="image" name="image" required="true">
+              <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+      
+    </div>
   </div>
-  @endsection
-  @section('javascript')
-  <script type="text/javascript">
-   $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-     event.preventDefault();
-     $(this).ekkoLightbox();
-   });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-  @endsection
- 
- 
+</div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
+ });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+@endsection
+
+

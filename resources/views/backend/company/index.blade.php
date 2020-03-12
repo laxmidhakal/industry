@@ -1,6 +1,6 @@
 @extends('backend.app')
 @section('style')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -65,35 +65,35 @@
                   @endif
                 </a>
               </td>
-             <td>
-              <a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn {{ $company->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
-                <i class="fa {{ $company->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
-              </a>
-            </td>
-            <td>
-              <a href="{{ route('company.edit',$company->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-              <form action="{{ route('company.destroy',$company->id)}}" method="post" class="d-inline-block">
-                {{csrf_field()}}
-                <input name="_method" type="hidden" value="DELETE">
-                <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </table>
+              <td>
+                <a href="{{URL::to('/')}}/home/company/isactive/{{$company->id}}" class="btn {{ $company->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
+                  <i class="fa {{ $company->is_active == '1' ? 'fa-check':'fa-times'}}"></i>
+                </a>
+              </td>
+              <td>
+                <a href="{{ route('company.edit',$company->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                <form action="{{ route('company.destroy',$company->id)}}" method="post" class="d-inline-block">
+                  {{csrf_field()}}
+                  <input name="_method" type="hidden" value="DELETE">
+                  <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </table>
+        </div>
       </div>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-     {!! $companies->links("pagination::bootstrap-4") !!}            
+      <!-- /.card-body -->
+      <div class="card-footer">
+       {!! $companies->links("pagination::bootstrap-4") !!}            
+     </div>
+     <!-- /.card-footer-->
    </div>
-   <!-- /.card-footer-->
- </div>
-     <!-- /.card -->
-   </section>
-   <!-- /.content -->
- </div>
- <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+   <!-- /.card -->
+ </section>
+ <!-- /.content -->
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">

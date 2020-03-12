@@ -74,49 +74,48 @@
       </div>
       <!-- /.card-footer-->
     </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form role="form" method="POST" action="{{URL::to('/')}}/home/company/detail/store" enctype="multipart/form-data">
-          <input type="hidden" name="company_id" value="{{$company_id}}">
-            {{ csrf_field() }}
-            <div class="modal-body" >
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" autocomplete="off">
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" autocomplete="off">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
-              </div>
-              <div class="form-group">
-                <label for="video">Video</label>
-                <input type="text" class="form-control" id="video" autocomplete="off" placeholder="Enter link of video" name="video" required="true">
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!-- /.modal-dialog -->
+      <form role="form" method="POST" action="{{URL::to('/')}}/home/company/detail/store" enctype="multipart/form-data">
+        <input type="hidden" name="company_id" value="{{$company_id}}">
+        {{ csrf_field() }}
+        <div class="modal-body" >
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required="true" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required="true" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="email" required="true">
+          </div>
+          <div class="form-group">
+            <label for="video">Video</label>
+            <input type="text" class="form-control" id="video" autocomplete="off" placeholder="Enter link of video" name="video" required="true">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
-    @endsection
-    
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endsection

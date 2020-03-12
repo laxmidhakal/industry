@@ -57,9 +57,8 @@
       </div>
       <!-- /.card-footer-->
     </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
 @endsection
-   

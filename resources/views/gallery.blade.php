@@ -4,7 +4,6 @@
   <link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/css/lightgallery.css" />
 @endsection
 @section('content')
-
 <section class="main-page-top set-bg" data-setbg="{{URL::to('/')}}/img/page-top-bg/3.jpg">
   <div class="container">
     <div class="row">
@@ -42,5 +41,4 @@
     $('#lightgallery').lightGallery();
   });
 </script>
-
 @endsection

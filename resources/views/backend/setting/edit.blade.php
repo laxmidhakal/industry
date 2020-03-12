@@ -24,7 +24,7 @@
     <div class="card">
       <div class="card-header">
         <div class="card-tools">
-        <small class="text-danger mr-4">* image must be of png only</small>
+          <small class="text-danger mr-4">* image must be of png only</small>
         </div>
       </div>
       <?php $page = substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), ".")); ?>
@@ -78,8 +78,8 @@
     </div>
     <!-- /.card-footer-->
   </div>
-        <!-- /.card -->
-      </section>
-      <!-- /.content -->
-    </div>
-    @endsection
+  <!-- /.card -->
+</section>
+<!-- /.content -->
+</div>
+@endsection

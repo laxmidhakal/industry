@@ -1,6 +1,6 @@
 @extends('backend.app')
 @section('style')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -92,11 +92,11 @@
    </div>
    <!-- /.card-footer-->
  </div>
-     <!-- /.card -->
-   </section>
-   <!-- /.content -->
- </div>
- <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+ <!-- /.card -->
+</section>
+<!-- /.content -->
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">

@@ -1,6 +1,6 @@
 @extends('backend.app')
 @section('style')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -84,67 +84,67 @@
        {!! $abouts->links("pagination::bootstrap-4") !!}
      </div>
    </div>
-     </section>
-     <!-- /.content -->
-   </div>
-   <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form role="form" method="POST" action="{{route('about.store')}}" enctype="multipart/form-data">
-          {{ csrf_field() }}
-          <div class="modal-body" >
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text"  class="form-control max" id="title" placeholder="Enter title" name="title" required="true" maxlength="30" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <label for="decription">Description</label>
-              <textarea name="description"  id="description" class="form-control" placeholder="Enter description"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="image">Choose Image</label>
-              <div class="input-group">
-                <input type="file" class="form-control d-none" id="image" name="image" required="true">
-                <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+ </section>
+ <!-- /.content -->
+</div>
+<div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-capitalize">{{$page}} Add </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form role="form" method="POST" action="{{route('about.store')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <div class="modal-body" >
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text"  class="form-control max" id="title" placeholder="Enter title" name="title" required="true" maxlength="30" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="decription">Description</label>
+            <textarea name="description"  id="description" class="form-control" placeholder="Enter description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">Choose Image</label>
+            <div class="input-group">
+              <input type="file" class="form-control d-none" id="image" name="image" required="true">
+              <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
-  @endsection
-  @section('javascript')
-  <script type="text/javascript" src="{{URL::to('/')}}/backend/js/bootstrap-maxlength.min.js"></script>
-  <script type="text/javascript">
-    $('input#title').maxlength({
-      alwaysShow: true,
-      threshold: 10,
-      warningClass: "label label-success",
-      limitReachedClass: "label label-danger",
-      separator: ' out of ',
-      preText: 'Remaininig word ',
-      postText: ' chars.',
-      validate: true,
-      appendToParent:true,
-    });
-  </script>
-  <script type="text/javascript">
-   $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-     event.preventDefault();
-     $(this).ekkoLightbox();
-   });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-  @endsection
-  
+</div>
+@endsection
+@section('javascript')
+<script type="text/javascript" src="{{URL::to('/')}}/backend/js/bootstrap-maxlength.min.js"></script>
+<script type="text/javascript">
+  $('input#title').maxlength({
+    alwaysShow: true,
+    threshold: 10,
+    warningClass: "label label-success",
+    limitReachedClass: "label label-danger",
+    separator: ' out of ',
+    preText: 'Remaininig word ',
+    postText: ' chars.',
+    validate: true,
+    appendToParent:true,
+  });
+</script>
+<script type="text/javascript">
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
+ });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+@endsection
+
