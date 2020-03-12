@@ -1,4 +1,7 @@
 @extends('backend.app')
+@section('style')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+@endsection
 @section('content')
 <div class="content-wrapper">
   @include('backend.flash.alertmsg')
@@ -51,11 +54,13 @@
                 <p id="someElement{{$gallery->id}}" ids="{{$gallery->id}}" class="text-center sort" contenteditable="plaintext-only" page="gallery">{{$gallery->sort_id}}</p>
               </td>
               <td>
-                @if($gallery->image_enc != "")
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$gallery->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
-                @else
-                <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
-                @endif
+                <a href="{{URL::to('/')}}/images/{{$page}}/{{$gallery->image_enc}}" data-toggle="lightbox" data-title="Image">
+                  @if($gallery->image_enc != "")
+                  <img src="{{URL::to('/')}}/images/{{$page}}/{{$gallery->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
+                  @else
+                  <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                  @endif
+                </a>
               </td>
               <td>
                 <a href="{{URL::to('/')}}/home/gallery/isactive/{{$gallery->id}}" class="btn {{ $gallery->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -119,5 +124,14 @@
       </div>
     </div>
   </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
+ });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 @endsection
 

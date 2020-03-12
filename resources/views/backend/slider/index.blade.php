@@ -61,11 +61,13 @@
                     <p id="someElement{{$slider->id}}" ids="{{$slider->id}}" class="text-center sort" contenteditable="plaintext-only" page="slider">{{$slider->sort_id}}</p>
                   </td>
                   <td>
-                    @if($slider->image_enc != "")
-                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class=" img-thumbnail img-fluid back-img center-block  ">
-                    @else
-                    <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
-                    @endif
+                    <a href="{{URL::to('/')}}/images/slider/{{$slider->image_enc}}"  data-toggle="lightbox" data-title="Image">
+                      @if($slider->image_enc != "")
+                      <img src="{{URL::to('/')}}/images/slider/{{$slider->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
+                      @else
+                      <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                      @endif
+                    </a>
                   </td>
                   <td>
                     <a href="{{URL::to('/')}}/home/slider/isactive/{{$slider->id}}" class="btn {{ $slider->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -123,5 +125,14 @@
       </div>
     </div>
   </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
+ });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 @endsection
 

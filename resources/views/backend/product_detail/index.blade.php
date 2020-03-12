@@ -1,4 +1,7 @@
 @extends('backend.app')
+@section('style')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+@endsection
 @section('content')
 <div class="content-wrapper">
   @include('backend.flash.alertmsg')
@@ -53,11 +56,13 @@
                 <p id="someElement{{$detail->id}}" ids="{{$detail->id}}" class="text-center sort" contenteditable="plaintext-only" page="product/detail" >{{$detail->sort_id}}</p>
               </td>
               <td>
-                @if($detail->image_enc != "")
-                <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
-                @else
-                <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
-                @endif
+                <a href="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" data-toggle="lightbox" data-title="Image">
+                  @if($detail->image_enc != "")
+                  <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
+                  @else
+                  <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                  @endif
+                </a>
               </td>
               <td>
                 <a href="{{URL::to('/')}}/home/productdetail/isactive/{{$detail->id}}" class="btn {{ $detail->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -124,20 +129,11 @@
   </div>
 @endsection
 @section('javascript')
-<script type="text/javascript" src="{{URL::to('/')}}/backend/js/bootstrap-maxlength.min.js"></script>
 <script type="text/javascript">
- $('textarea#message_area').on('keyup',function() 
- {
-   var maxlen = $(this).attr('maxlength');
-   var length = $(this).val().length;
-   if(length > (maxlen-10) ){
-     $('#textarea_message').text('max length '+maxlen+' characters only!')
-   }
-   else
-     {
-       $('#textarea_message').text('');
-     }
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
  });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 @endsection

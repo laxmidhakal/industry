@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{URL::to('/')}}/backend/css/style.back.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -73,18 +74,18 @@
            });
    </script>
    <script type="text/javascript">
-       function readURL(input) {
-           if (input.files && input.files[0]) {
-               var reader = new FileReader();
-               reader.onload = function (e) {
-                   $('#profile-img-tag').attr('src', e.target.result);
-               }
-               reader.readAsDataURL(input.files[0]);
-           }
+     function readURL(input) {
+       if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function (e) {
+           $('#profile-img-tag').attr('src', e.target.result);
+         }
+         reader.readAsDataURL(input.files[0]);
        }
-       $("#image").change(function(){
-           readURL(this);
-       });
+     }
+     $("#image").change(function(){
+       readURL(this);
+     });
    </script>
 </body>
 </html>

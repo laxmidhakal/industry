@@ -1,4 +1,7 @@
 @extends('backend.app')
+@section('style')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+@endsection
 @section('content')
 <div class="content-wrapper">
  @include('backend.flash.alertmsg')
@@ -57,11 +60,13 @@
               <p id="someElement{{$team->id}}" ids="{{$team->id}}" class="text-center sort" contenteditable="plaintext-only" page="team">{{$team->sort_id}}</p>
             </td>
             <td>
-              @if($team->image_enc != "")
-              <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
-              @else
-              <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
-              @endif
+              <a href="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" data-toggle="lightbox" data-title="Image">
+                @if($team->image_enc != "")
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$team->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
+                @else
+                <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                @endif
+              </a>
             </td>
             <td>
               <a href="{{URL::to('/')}}/home/team/isactive/{{$team->id}}" class="btn {{ $team->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -141,4 +146,13 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
+@endsection
+@section('javascript')
+<script type="text/javascript">
+ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   event.preventDefault();
+   $(this).ekkoLightbox();
+ });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 @endsection

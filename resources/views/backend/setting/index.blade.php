@@ -57,11 +57,13 @@
               <!-- <td>{{$setting->lat}}</td> -->
               <!-- <td>{{$setting->long}}</td> -->
               <td>
-                @if($setting->image_enc != "")
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class=" img-thumbnail img-fluid back-img center-block  ">
-                @else
-                <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
-                @endif
+                <a href="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" data-toggle="lightbox" data-title="Image">
+                  @if($setting->image_enc != "")
+                  <img src="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" class="img-thumbnail img-fluid back-img center-block">
+                  @else
+                  <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                  @endif
+                </a>
               </td>
               <td>
                 <a href="{{URL::to('/')}}/home/setting/isactive/{{$setting->id}}" class="btn {{ $setting->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -141,6 +143,15 @@
       </div>
     </div>
   </div>
+  @endsection
+  @section('javascript')
+  <script type="text/javascript">
+   $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+     event.preventDefault();
+     $(this).ekkoLightbox();
+   });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
   @endsection
  
  
