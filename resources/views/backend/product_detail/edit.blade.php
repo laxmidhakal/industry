@@ -46,6 +46,7 @@
               <input type="hidden" value="{{$detail->image}}">
               <div class="input-group">
                 <input type="file" class="form-control" id="image" name="image"  value="{{$detail->image}}" >
+                <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
                 <img src="{{URL::to('/')}}/images/productdetail/{{$detail->image_enc}}" class="img-fluid editback-img center-block">
               </div>
             </div>

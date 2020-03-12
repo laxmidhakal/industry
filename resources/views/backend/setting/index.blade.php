@@ -57,9 +57,11 @@
               <!-- <td>{{$setting->lat}}</td> -->
               <!-- <td>{{$setting->long}}</td> -->
               <td>
-                <div class="">
-                  <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class="img-fluid back-img">
-                </div>
+                @if($setting->image_enc != "")
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$setting->image_enc}}" class=" img-thumbnail img-fluid back-img center-block  ">
+                @else
+                <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
+                @endif
               </td>
               <td>
                 <a href="{{URL::to('/')}}/home/setting/isactive/{{$setting->id}}" class="btn {{ $setting->is_active == '1' ? 'btn-success':'btn-danger'}} btn-xs">
@@ -125,7 +127,8 @@
             <div class="form-group">
               <label for="image">Choose Logo(Logo must be in png)</label>
               <div class="input-group">
-                  <input type="file" class="form-control" id="image" name="image" required="true">
+                  <input type="file" class="form-control d-none" id="image" name="image" required="true">
+                  <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
               </div>
             </div>
           </div>

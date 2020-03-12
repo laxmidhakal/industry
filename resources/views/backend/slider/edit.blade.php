@@ -42,8 +42,8 @@
               <label for="image">Choose Image</label>
               <input type="hidden" value="{{$slider->image}}">
               <div class="input-group">
-                <input type="file" class="form-control" id="image" name="image"  value="{{$slider->image}}" >
-                <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid editback-gallery-img center-block">
+                <input type="file" class="form-control d-none" id="image" name="image"  value="{{$slider->image}}" >
+                <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
               </div>
             </div>
           </div>
@@ -67,3 +67,4 @@
     </div>
     
     @endsection
+   

@@ -62,9 +62,9 @@
                   </td>
                   <td>
                     @if($slider->image_enc != "")
-                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class="img-fluid back-img center-block ">
+                    <img src="{{URL::to('/')}}/images/{{$page}}/{{$slider->image_enc}}" class=" img-thumbnail img-fluid back-img center-block  ">
                     @else
-                    <img src="{{URL::to('/')}}/img/sas.png" class="img-fluid back-img">
+                    <img src="{{URL::to('/')}}/img/sas.png" class="img-thumbnail img-fluid back-img">
                     @endif
                   </td>
                   <td>
@@ -107,14 +107,11 @@
               <label for="title">Title</label>
               <input type="text" class="form-control" id="title" placeholder="Enter title" autocomplete="off" name="title" required="true">
             </div>
-            <!-- <div class="form-group">
-              <label for="decription">Description</label>
-              <textarea name="description" id="description" class="form-control" placeholder="Enter description" ></textarea>
-            </div> -->
             <div class="form-group">
               <label for="image">Choose Image</label>
               <div class="input-group">
-                <input type="file" class="form-control" id="image" name="image" required="true">
+                <input type="file" class="form-control d-none" id="image" name="image">
+                <img src="{{URL::to('/')}}/img/thumbnail.png" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
               </div>
             </div>
           </div>
@@ -127,3 +124,4 @@
     </div>
   </div>
 @endsection
+

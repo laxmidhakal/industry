@@ -1,7 +1,7 @@
 /*table*/
 .back-img{
 	/*width: 60px;*/
-    height: 26px;
+    height: 30px;
     object-fit: contain;
     object-position: center center;
 }
@@ -17,8 +17,8 @@
     object-position: center center;
 }
 .editback-gallery-img{
-	width: 60px;
-    height: 38px;
+	width: 175px;
+    height: 140px;
     object-fit: cover;
     object-position: center center;
 }

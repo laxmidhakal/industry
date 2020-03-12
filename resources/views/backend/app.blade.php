@@ -52,7 +52,6 @@
          token = $('meta[name="csrf-token"]').attr('content'),
                value = document.getElementById('someElement'+id).innerHTML; //value of the text input
                var url= "{{URL::to('/')}}/home/sort/"+page;
-               debugger;
                $.ajax({
                  type:"POST",
                  dataType:"JSON",
@@ -72,6 +71,20 @@
                });
              }
            });
+   </script>
+   <script type="text/javascript">
+       function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                   $('#profile-img-tag').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+           }
+       }
+       $("#image").change(function(){
+           readURL(this);
+       });
    </script>
 </body>
 </html>
