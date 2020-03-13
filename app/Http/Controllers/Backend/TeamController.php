@@ -154,7 +154,6 @@ class TeamController extends Controller
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
-            $destinationPath = 'images/team/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -182,6 +181,11 @@ class TeamController extends Controller
     public function destroy($id)
     {
         $team=Team::find($id);
+        $destinationPath = 'images/team/'; // upload path
+        $oldFilename=$destinationPath.$main_store->image_enc;
+        if(File::exists($oldFilename)) {
+            File::delete($oldFilename);
+        }
         if($team->delete()){
             $this->request->session()->flash('alert-success', 'Data delete successfully!!');
         }else{

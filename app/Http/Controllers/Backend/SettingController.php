@@ -26,8 +26,8 @@ class SettingController extends Controller
     }
     public function index()
     {
-        $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
-        return view('backend.setting.index',compact('settings'));
+      $settings=Setting::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->get();
+      return view('backend.setting.index',compact('settings'));
     }
 
     /**
@@ -151,7 +151,6 @@ class SettingController extends Controller
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
-            $destinationPath = 'images/setting/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -174,14 +173,19 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $setting=Setting::find($id);
-        if($setting->delete()){
-          $this->request->session()->flash('alert-success', 'Data delete successfully!!');
+      $setting=Setting::find($id);
+      $destinationPath = 'images/setting/'; // upload path
+      $oldFilename=$destinationPath.$setting->image_enc;
+      if(File::exists($oldFilename)) {
+          File::delete($oldFilename);
+      }
+      if($setting->delete()){
+        $this->request->session()->flash('alert-success', 'Data delete successfully!!');
         }else{
           $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
         }
-        return back()->withInput();
-    }
+      return back()->withInput();
+      }
     public function isactive(Request $request,$id)
     {
         $get_is_active = Setting::where('id',$id)->value('is_active');

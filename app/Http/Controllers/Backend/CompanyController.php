@@ -33,7 +33,7 @@ class CompanyController extends Controller
   {
 
   }
-   
+
   public function store(Request $request)
   {
     $rules = array(
@@ -67,7 +67,6 @@ class CompanyController extends Controller
     }else{
     $this->request->session()->flash('alert-waring', 'Data could not be add!!');
     }
-//var_dump($name); die();
     return back()->withInput();
   }
     /**
@@ -78,22 +77,22 @@ class CompanyController extends Controller
      */
     public function isSort()
     {
-        $id = Input::get('id');
-        $value = Input::get('value');
-        $sort_ids =  Company::find($id);
-        $sort_ids->sort_id = $value;
-        if($sort_ids->save()){
-          $response = array(
-            'status' => 'success',
-            'msg' => 'Successfully change',
-          );
-        }else{
-          $response = array(
-            'status' => 'failure',
-            'msg' => 'Sorry the data could not be change',
-          );
-        }
-        return Response::json($response);
+      $id = Input::get('id');
+      $value = Input::get('value');
+      $sort_ids =  Company::find($id);
+      $sort_ids->sort_id = $value;
+      if($sort_ids->save()){
+        $response = array(
+          'status' => 'success',
+          'msg' => 'Successfully change',
+        );
+      }else{
+        $response = array(
+          'status' => 'failure',
+          'msg' => 'Sorry the data could not be change',
+        );
+      }
+      return Response::json($response);
     }
     /**
      * Show the form for editing the specified resource.
@@ -116,47 +115,46 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
       $rules = array(
-          'title' => 'required',
-          'description' => 'required',
+        'title' => 'required',
+        'description' => 'required',
       );
       $validator = Validator::make(Input::all(), $rules);
       if ($validator->fails()) {
-      return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput();
       }
       $main_store=Company::find($id);
       $main_store->title = Input::get('title');
       $main_store->slug = $this->helper->slug_converter($main_store->title);
       $image = Input::file('image');
       if($image != ""){
-           $rules = array(
-              'image' => 'required|mimes:jpeg,jpg|max:1024',
-          );
-          $validator = Validator::make(Input::all(), $rules);
-          if ($validator->fails()) {
-          return redirect('/home/company')
-          ->withErrors($validator)
-          ->withInput();
-          }
+       $rules = array(
+        'image' => 'required|mimes:jpeg,jpg|max:1024',
+      );
+       $validator = Validator::make(Input::all(), $rules);
+       if ($validator->fails()) {
+        return redirect('/home/company')
+        ->withErrors($validator)
+        ->withInput();
+      }
           $destinationPath = 'images/company/'; // upload path
           $oldFilename=$destinationPath.$main_store->image_enc;
           if(File::exists($oldFilename)) {
-              File::delete($oldFilename);
+            File::delete($oldFilename);
           }
-          $destinationPath = 'images/company/'; // upload path
           $extension = $image->getClientOriginalExtension(); // getting image extension
           $fileName = md5(mt_rand()).'.'.$extension; // renameing image
           $image->move($destinationPath, $fileName); /*move file on destination*/
           $file_path = $destinationPath.'/'.$fileName;
           $main_store->image_enc = $fileName;
           $main_store->image = $image->getClientOriginalName();
-      }
-      $main_store->description = Input::get('description');
-      if($main_store->update()){
+        }
+        $main_store->description = Input::get('description');
+        if($main_store->update()){
           $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
-      }else{
+        }else{
           $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
-      }
-      return redirect('/home/company');
+        }
+        return redirect('/home/company');
     }
     /**
      * Remove the specified resource from storage.
@@ -167,6 +165,11 @@ class CompanyController extends Controller
     public function destroy($id)
     {
       $company=Company::find($id);
+      $destinationPath = 'images/company/'; // upload path
+      $oldFilename=$destinationPath.$company->image_enc;
+      if(File::exists($oldFilename)) {
+        File::delete($oldFilename);
+      }
       if($company->delete()){
         $this->request->session()->flash('alert-success', 'Data delete successfully!!');
       }else{

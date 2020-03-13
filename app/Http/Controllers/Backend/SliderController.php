@@ -149,7 +149,6 @@ class SliderController extends Controller
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
-            $destinationPath = 'images/slider/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -173,6 +172,11 @@ class SliderController extends Controller
     public function destroy($id)
     {
        $slider=Slider::find($id);
+       $destinationPath = 'images/slider/'; // upload path
+       $oldFilename=$destinationPath.$slider->image_enc;
+       if(File::exists($oldFilename)) {
+           File::delete($oldFilename);
+       }
        if($slider->delete()){
          $this->request->session()->flash('alert-success', 'Data delete successfully!!');
        }else{

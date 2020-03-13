@@ -145,7 +145,7 @@ class ProductDetailController extends Controller
         $main_store->slug = $this->helper->slug_converter($main_store->title);
         $image = Input::file('image');
         if($image != ""){
-             $rules = array(
+            $rules = array(
                 'image' => 'required|mimes:jpeg,jpg|max:1024',
             );
             $validator = Validator::make(Input::all(), $rules);
@@ -183,13 +183,17 @@ class ProductDetailController extends Controller
     public function destroy($id)
     {
         $productdetail=Product_has_detail::find($id);
+        $destinationPath = 'images/productdetail/'; // upload path
+        $oldFilename=$destinationPath.$productdetail->image_enc;
+        if(File::exists($oldFilename)) {
+            File::delete($oldFilename);
+        }
         if($productdetail->delete()){
             $this->request->session()->flash('alert-success', 'Data deleted successfully!!');
         }else{
             $this->request->session()->flash('alert-waring', 'Data could not be deleted!!');
         }
         return back()->withInput();
-        
     }
     public function isactive(Request $request,$id)
     {

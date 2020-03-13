@@ -151,7 +151,6 @@ class GalleryController extends Controller
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
-            $destinationPath = 'images/gallery/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -176,6 +175,11 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $gallery=Gallery::find($id);
+        $destinationPath = 'images/gallery/'; // upload path
+        $oldFilename=$destinationPath.$gallery->image_enc;
+        if(File::exists($oldFilename)) {
+            File::delete($oldFilename);
+        }
         if($gallery->delete()){
             $this->request->session()->flash('alert-success', 'Data delete successfully!!');
         }else{

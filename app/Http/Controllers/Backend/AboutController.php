@@ -17,17 +17,17 @@ use App\About;
 
 class AboutController extends Controller
 {
-    public function __construct(Request $request, Helper $helper)
-    {
+  public function __construct(Request $request, Helper $helper)
+  {
     $this->middleware('auth');
     $this->request = $request;
     $this->helper = $helper;
-    }
-    public function index()
-    {
-      $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
-      return view('backend.about.index',compact('abouts'));
-    }
+  }
+  public function index()
+  {
+    $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
+    return view('backend.about.index',compact('abouts'));
+  }
 
     /**
      * Show the form for creating a new resource.
@@ -154,7 +154,6 @@ class AboutController extends Controller
             if(File::exists($oldFilename)) {
               File::delete($oldFilename);
             }
-            $destinationPath = 'images/about/'; // upload path
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = md5(mt_rand()).'.'.$extension; // renameing image
             $image->move($destinationPath, $fileName); /*move file on destination*/
@@ -179,6 +178,11 @@ class AboutController extends Controller
     public function destroy($id)
     {
       $about=About::find($id);
+      $destinationPath = 'images/about/'; // upload path
+      $oldFilename=$destinationPath.$about->image_enc;
+      if(File::exists($oldFilename)) {
+        File::delete($oldFilename);
+      }
       if($about->delete()){
         $this->request->session()->flash('alert-success', 'Data delete successfully!!');
       }else{
