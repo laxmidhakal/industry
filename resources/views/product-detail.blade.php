@@ -35,7 +35,7 @@
     <div class="row">
       @foreach($products as $product)
       <div class="col-lg-4 col-md-6">
-        <a href="{{URL::to('/')}}/product/restaurant/{{$product->slug}}">
+        <a href="{{URL::to('/')}}/product/{{$product->getProduct->slug}}/{{$product->slug}}">
           <div class="feature-box">
             <img src="{{URL::to('/')}}/images/productdetail/{{$product->image_enc}}" alt="{{$product->title}}" class="img-fluid w-100 main-productdetail-img">
             <div class="fb-text">

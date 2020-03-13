@@ -3,6 +3,7 @@
 	position: absolute;
 	z-index: 9;
 	top: 0;
+	left: 0;
 	background-color: #ffc000c7 !important;
 	width: 40% !important;
 }
@@ -276,8 +277,8 @@ a.link.linkedin{
 	text-decoration: none;
 }
 #back2Top:hover {
-	background-color: #DDF;
-	color: #000;
+	background-color: #555;
+	color: #DDD;
 }
 
 

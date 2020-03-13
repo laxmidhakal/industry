@@ -56,7 +56,7 @@
                 <div class="col-md-4">
                     <a href="" class="site-logo mt-md-2 pl-md-0 ">
                     @foreach($settings as $setting)
-                        <img src="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" alt="" class="img-fluid main-logo" >
+                        <img src="{{URL::to('/')}}/images/setting/{{$setting->image_enc}}" alt="global saas" class="img-fluid  main-logo" >
                     @endforeach
                     </a>
                 </div>
