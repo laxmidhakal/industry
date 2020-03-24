@@ -114,30 +114,7 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{url('/')}}/backend/js/dashboard.js"></script>
     <script src="{{url('/')}}/backend/pace-progress/pace.js"></script>
-<script type="text/javascript">
-    $(document).on('change', '#item_id', function(event) {
-// console.log('abc');
-var item_id =$('#item_id').val();
-$.ajax({
-    type:'POST',
-url:'sale/getItemPrice', //Make sure your URL is correct
-dataType: 'json', //Make sure your returning data type dffine as json
-data: {
-    "_token": "{{ csrf_token() }}",
-    item_id: item_id,
-},
- beforeSend: function() {
-        $("#loaderDiv").show();
-    },
 
-
-success:function(data){
-    $("#item_p").val(data[0].sale_price);
-     $("#loaderDiv").hide();
-}
-});
-});
-</script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script> 
 </body>
 </html>

@@ -182,7 +182,7 @@ class TeamController extends Controller
     {
         $team=Team::find($id);
         $destinationPath = 'images/team/'; // upload path
-        $oldFilename=$destinationPath.$main_store->image_enc;
+        $oldFilename=$destinationPath.$team->image_enc;
         if(File::exists($oldFilename)) {
             File::delete($oldFilename);
         }

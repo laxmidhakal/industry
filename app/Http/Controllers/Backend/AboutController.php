@@ -17,17 +17,17 @@ use App\About;
 
 class AboutController extends Controller
 {
-  public function __construct(Request $request, Helper $helper)
-  {
+    public function __construct(Request $request, Helper $helper)
+    {
     $this->middleware('auth');
     $this->request = $request;
     $this->helper = $helper;
-  }
-  public function index()
-  {
+    }
+    public function index()
+    {
     $abouts=About::orderBy('sort_id','DESC')->orderBy('created_at','DESC')->paginate(1);
     return view('backend.about.index',compact('abouts'));
-  }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -37,6 +37,10 @@ class AboutController extends Controller
     public function create()
     {
         //
+    }
+    public function show($id)
+    {
+      
     }
 
     /**
@@ -63,31 +67,24 @@ class AboutController extends Controller
       $main_store->slug = $this->helper->slug_converter($main_store->title);
       $image = Input::file('image');
       if($image != ""){
-            $destinationPath = 'images/about/'; // upload path
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-            $image->move($destinationPath, $fileName); /*move file on destination*/
-            $file_path = $destinationPath.'/'.$fileName;
-            $main_store->image_enc = $fileName;
-            $main_store->image = $image->getClientOriginalName();
-          }
-          $main_store->description = Input::get('description');
-          $main_store->created_by = Auth::user()->id;
-          if($main_store->save()){
-            $this->request->session()->flash('alert-success', 'Data save successfully!!');
-          }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be add!!');
-          }
-        //var_dump($name); die();
-
-          return back()->withInput();
-        }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $destinationPath = 'images/about/'; // upload path
+        $extension = $image->getClientOriginalExtension(); // getting image extension
+        $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+        $image->move($destinationPath, $fileName); /*move file on destination*/
+        $file_path = $destinationPath.'/'.$fileName;
+        $main_store->image_enc = $fileName;
+        $main_store->image = $image->getClientOriginalName();
+      }
+      $main_store->description = Input::get('description');
+      $main_store->created_by = Auth::user()->id;
+      if($main_store->save()){
+      $this->request->session()->flash('alert-success', 'Data save successfully!!');
+      }else{
+      $this->request->session()->flash('alert-waring', 'Data could not be add!!');
+      }
+      return back()->withInput();
+    }
+  
     public function isSort()
     {
       $id = Input::get('id');
@@ -149,26 +146,26 @@ class AboutController extends Controller
         ->withErrors($validator)
         ->withInput();
       }
-            $destinationPath = 'images/about/'; // upload path
-            $oldFilename=$destinationPath.$main_store->image_enc;
-            if(File::exists($oldFilename)) {
-              File::delete($oldFilename);
-            }
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = md5(mt_rand()).'.'.$extension; // renameing image
-            $image->move($destinationPath, $fileName); /*move file on destination*/
-            $file_path = $destinationPath.'/'.$fileName;
-            $main_store->image_enc = $fileName;
-            $main_store->image = $image->getClientOriginalName();
-          }
-          $main_store->description = Input::get('description');
-          if($main_store->update()){
-            $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
-          }else{
-            $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
-          }
-          return redirect('/home/about');
-        }
+      $destinationPath = 'images/about/'; // upload path
+      $oldFilename=$destinationPath.$main_store->image_enc;
+      if(File::exists($oldFilename)) {
+        File::delete($oldFilename);
+      }
+      $extension = $image->getClientOriginalExtension(); // getting image extension
+      $fileName = md5(mt_rand()).'.'.$extension; // renameing image
+      $image->move($destinationPath, $fileName); /*move file on destination*/
+      $file_path = $destinationPath.'/'.$fileName;
+      $main_store->image_enc = $fileName;
+      $main_store->image = $image->getClientOriginalName();
+      }
+      $main_store->description = Input::get('description');
+      if($main_store->update()){
+        $this->request->session()->flash('alert-success', 'Data Updated successfully!!');
+      }else{
+        $this->request->session()->flash('alert-waring', 'Data could not be updated  !!');
+      }
+      return redirect('/home/about');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -201,9 +198,8 @@ class AboutController extends Controller
       else {
         $isactive->is_active = 0;
         $this->request->session()->flash('alert-danger', 'Data could not be published!!');
-
       }
       $isactive->update();
       return back()->withInput();
     }
-  }
+}

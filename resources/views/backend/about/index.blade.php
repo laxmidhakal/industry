@@ -67,7 +67,7 @@
               </td>
               <td class="text-center" >
                 <a href="{{ route('about.edit',$about->id)}}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-                <form action="{{ route('about.destroy',$about->id)}}" method="post" class="d-inline-block">
+                <form  action="{{ route('about.destroy',$about->id)}}"  method="post" class="d-inline-block">
                   {{csrf_field()}}
                   <input name="_method" type="hidden" value="DELETE">
                   <button class="btn btn-xs btn-danger" type="submit"><i class="fa fa-trash"></i></button>

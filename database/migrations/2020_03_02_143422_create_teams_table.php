@@ -26,7 +26,7 @@ class CreateTeamsTable extends Migration
             $table->string('twitter')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->integer('created_by')->unsigned(); // fk to users
+            $table->integer('created_by')->unsigned(); 
             $table->foreign('created_by')->references('id')->on('users');
             $table->integer('updated_by')->nullable();
             $table->timestamps();

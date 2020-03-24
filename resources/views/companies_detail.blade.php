@@ -22,7 +22,7 @@
       </div>
       <div class="col-lg-6">
         <div class="video-box set-bg main-about-img" data-setbg="{{URL::to('/')}}/images/company/{{$main_data->image_enc}}">
-          @if($main_data->getCompanyContact != '')
+          @if($main_data->getCompanyContact->video != '')
           <a href="{{$main_data->getCompanyContact->video}}" class="video-popup">
             <i class="fa fa-play"></i>
           </a>

@@ -23,7 +23,10 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
+        @if(count($companydetails)=='0')
         <button class="btn btn-sm btn-info text-capitalize" data-toggle="modal" data-target="#modal-default">{{ substr((Route::currentRouteName()), 0, strpos((Route::currentRouteName()), "."))}} Add+ </button>
+        @elseif(count($companydetails)<='1')
+        @endif
         <div class="card-tools">
         </div>
       </div>

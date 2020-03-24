@@ -46,7 +46,7 @@
               <label for="image">Choose Image</label>
               <input type="hidden" value="{{$company->image}}">
               <div class="input-group">
-                <input type="file" class="form-control" id="image" name="image"  value="{{$company->image}}" >
+                <input type="file" class="form-control d-none" id="image" name="image"  value="{{$company->image}}" >
                 <img src="{{URL::to('/')}}/images/{{$page}}/{{$company->image_enc}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
               </div>
             </div>
